@@ -1,3 +1,8 @@
+" Pathogen!
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+Helptags
+
 " code style
 set expandtab
 set shiftwidth=4
