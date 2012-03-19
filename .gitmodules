@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/vim-pathogen"]
 	path = .vim/bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/vim-gnupg"]
+	path = .vim/bundle/vim-gnupg
+	url = git://gitorious.org/vim-gnupg/vim-gnupg.git
