@@ -16,6 +16,9 @@ syntax on
 filetype plugin indent on
 set hlsearch
 
+" omnicompletion
+set omnifunc=syntaxcomplete#Complete
+
 " theme
 set background=dark
 colorscheme darkblue
