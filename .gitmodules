@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/vim-css-color"]
 	path = .vim/bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
+[submodule ".vim/bundle/Vim-Jinja2-Syntax"]
+	path = .vim/bundle/Vim-Jinja2-Syntax
+	url = git://github.com/Glench/Vim-Jinja2-Syntax.git
