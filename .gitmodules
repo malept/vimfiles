@@ -40,3 +40,6 @@
 [submodule "vim/bundle/phpfolding.vim"]
 	path = vim/bundle/phpfolding.vim
 	url = git://github.com/vim-scripts/phpfolding.vim.git
+[submodule "vim/bundle/vim-indent-guides"]
+	path = vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
