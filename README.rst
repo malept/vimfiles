@@ -1,4 +1,5 @@
-= Vim Configuration =
+Vim Configuration
+=================
 
 This is Mark's Vim configuration. He's put it up here so that he can have
 a place to easily install it for whatever computer he's running Vim on.
@@ -10,7 +11,8 @@ pasting into your local config (which is never a good idea to begin with).
 This particular configuration attempts to emphasize the using Vim keybindings,
 as opposed to emulating other editors' keybindings.
 
-== Installation ==
+Installation
+------------
 
 To install everything, run the following commands::
 
@@ -21,11 +23,20 @@ To install everything, run the following commands::
 
 Partial installation is left as an exercise to the reader.
 
-== Bundled Plugins ==
+Bundles
+-------
 
 **TODO**
 
-== License ==
+Adding a new bundle
+~~~~~~~~~~~~~~~~~~~
+
+Use the ``add_bundle.sh`` script. Usage::
+
+    ./add_bundle.sh [git URL]
+
+License
+-------
 
 Everything not in ``vim/bundle`` is licensed under the terms of the LGPL 3
 or later, unless otherwise noted. Please see ``LICENSE`` for details.
