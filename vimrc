@@ -10,6 +10,7 @@ set tabstop=4
 set softtabstop=4
 set number " line numbers
 set smartindent
+set formatoptions=tcroqn " see :help fo-table for option explanations
 
 " highlighting
 syntax on
