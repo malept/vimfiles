@@ -35,6 +35,13 @@ Use the ``add_bundle.sh`` script. Usage::
 
     ./add_bundle.sh [git URL]
 
+Updating bundles
+~~~~~~~~~~~~~~~~
+
+You can update all of the bundles with ``update_bundles.sh``. Usage::
+
+    ./update_bundles.sh
+
 License
 -------
 
