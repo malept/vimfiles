@@ -20,6 +20,9 @@ set hlsearch
 " omnicompletion
 set omnifunc=syntaxcomplete#Complete
 
+" matching
+runtime macros/matchit.vim
+
 " theme
 set background=dark
 colorscheme darkblue
