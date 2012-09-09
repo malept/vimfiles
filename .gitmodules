@@ -70,3 +70,6 @@
 [submodule "special/pycomplexity"]
 	path = special/pycomplexity
 	url = https://github.com/garybernhardt/pycomplexity.git
+[submodule "vim/bundle/vim-ruby-complexity"]
+	path = vim/bundle/vim-ruby-complexity
+	url = git://github.com/skammer/vim-ruby-complexity.git
