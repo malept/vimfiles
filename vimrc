@@ -23,6 +23,9 @@ set omnifunc=syntaxcomplete#Complete
 " matching
 runtime macros/matchit.vim
 
+" ex command customization
+set wildmenu
+
 " theme
 set background=dark
 colorscheme darkblue
