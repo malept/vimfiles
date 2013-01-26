@@ -12,19 +12,11 @@ set number " line numbers
 set smartindent
 set formatoptions=tcroqn " see :help fo-table for option explanations
 
-" highlighting
-syntax on
-filetype plugin indent on
+" search
 set hlsearch
 
 " omnicompletion
 set omnifunc=syntaxcomplete#Complete
-
-" matching
-runtime macros/matchit.vim
-
-" ex command customization
-set wildmenu
 
 " theme
 set background=dark
