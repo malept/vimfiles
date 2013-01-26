@@ -8,7 +8,7 @@ If you're not Mark, you may want to look over the files to see what
 *exactly* is going on before installing it, instead of blindly copying and
 pasting into your local config (which is never a good idea to begin with).
 
-This particular configuration attempts to emphasize the using Vim keybindings,
+This particular configuration attempts to emphasize using Vim's keybindings,
 as opposed to emulating other editors' keybindings.
 
 Installation
