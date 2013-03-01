@@ -16,7 +16,8 @@ Installation
 
 To install everything, run the following commands::
 
-    git clone git://github.com/malept/vimfiles
+    git clone --recursive git://github.com/malept/vimfiles
+    cd vimfiles
     for f in vim vimrc gvimrc; do
         ln -s `pwd`/${f} ~/.${f}
     done
