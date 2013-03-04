@@ -16,7 +16,14 @@ set formatoptions=tcroqn " see :help fo-table for option explanations
 set hlsearch
 
 " omnicompletion
-set omnifunc=syntaxcomplete#Complete
+" From: http://www.vim.org/scripts/script.php?script_id=3172
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+  \ if &omnifunc == "" |
+  \   setlocal omnifunc=syntaxcomplete#Complete |
+  \ endif
+endif
+
 set completeopt+=longest
 
 " ex command customization
