@@ -82,3 +82,6 @@
 [submodule "vim/bundle/vim-flog"]
 	path = vim/bundle/vim-flog
 	url = git://github.com/malept/vim-flog.git
+[submodule "vim/bundle/SyntaxComplete"]
+	path = vim/bundle/SyntaxComplete
+	url = git://github.com/vim-scripts/SyntaxComplete.git
