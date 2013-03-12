@@ -12,6 +12,9 @@ set number " line numbers
 set smartindent
 set formatoptions=tcroqn " see :help fo-table for option explanations
 
+" modeline
+set modeline
+
 " search
 set hlsearch
 
