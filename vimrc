@@ -1,49 +1,14 @@
-" Pathogen!
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-Helptags
+" Make sure that the vimrc.d folder is visible to Vim
+" Based on http://stackoverflow.com/a/15006790
+"
+" Grab the absolute, non-symlinked path of this file
+let s:curfile = resolve(expand('<sfile>'))
+" dirname()
+let s:curfiledir = fnamemodify(s:curfile, ':h')
+" append to runtimepath - thanks, vim-pathogen!
+let &rtp .= ',' . s:curfiledir
+unlet s:curfiledir
+unlet s:curfile
 
-" code style
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set number " line numbers
-set smartindent
-set formatoptions=tcroqn " see :help fo-table for option explanations
-
-" modeline
-set modeline
-
-" search
-set hlsearch
-
-" omnicompletion
-" From: http://www.vim.org/scripts/script.php?script_id=3172
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-  \ if &omnifunc == "" |
-  \   setlocal omnifunc=syntaxcomplete#Complete |
-  \ endif
-endif
-
-set completeopt+=longest
-
-" ex command customization
-set wildmode=longest,list,full
-
-" theme
-set background=dark
-colorscheme darkblue
-
-" language-specific
-let g:ruby_debugger_fast_sender = 1
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-let g:rubycomplexity_medium_limit = 35
-let g:rubycomplexity_high_limit = 70
-
-" slime
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.cache/slime_paste"
+" vimrc.d
+runtime! vimrc.d/*.vim

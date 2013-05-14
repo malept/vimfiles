@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+
+import os
+from subprocess import call
+import sys
+from tempfile import NamedTemporaryFile
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
+
+
+def generate_runtimepath(profiles):
+    common_vimdirs = [
+        '$VIM/vimfiles',
+        '$VIMRUNTIME',
+        BASE_DIR,  # for vimrc.d
+        '$VIM/vimfiles/after',
+    ]
+    profile_vimdirs = [os.path.join(PROFILES_DIR, p) for p in profiles]
+    profile_after_vimdirs = [os.path.join(d, 'after') for d in profile_vimdirs]
+    vimdirs = profile_vimdirs + common_vimdirs + profile_after_vimdirs
+    return 'set runtimepath={}'.format(','.join(vimdirs))
+
+
+def pathogen_cmds(profiles):
+    profile_dirs = ["'{}/bundle/{{}}'".format(os.path.join(PROFILES_DIR, p))
+                    for p in profiles]
+    return '''
+runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect({profile_dirs})
+Helptags
+'''.format(profile_dirs=','.join(profile_dirs)).strip()
+
+
+def generate_vimrc(profiles):
+    return '''
+runtime vimrc
+{runtimepath}
+{pathogen}
+runtime vimrc.d/misc.vim
+'''.format(runtimepath=generate_runtimepath(profiles),
+           pathogen=pathogen_cmds(profiles))
+
+
+def run_vim(prog_name, profiles, vim_args):
+    vim = prog_name[:prog_name.index('-')]
+    with NamedTemporaryFile() as f:
+        f.write(generate_vimrc(profiles))
+        f.flush()
+        cmd = [vim, '-u', f.name] + vim_args
+        return call(cmd)
+
+
+def list_profiles():
+    print('List of profiles:')
+    [print('* {}'.format(d)) for d in os.listdir(PROFILES_DIR)
+     if os.path.isdir(os.path.join(PROFILES_DIR, d))]
+    return 0
+
+
+def main(args):
+    prog_name = args[0]
+    if len(args) < 2:
+        usage_msg = '''\
+Usage: {} (PROFILE_NAMES | --list-profiles) [Vim args...]
+
+Where PROFILE_NAMES is a comma-separated list of profiles to use.
+'''.format(prog_name)
+        print(usage_msg, file=sys.stderr)
+        return 1
+    prog_name = os.path.basename(prog_name)
+    profiles = args[1]
+    if profiles == '--list-profiles':
+        return list_profiles()
+    else:
+        return run_vim(prog_name, profiles.split(','), args[2:])
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))

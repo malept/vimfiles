@@ -28,7 +28,7 @@ Partial installation is left as an exercise to the reader.
 Bundles
 -------
 
-**TODO**
+To see a comprehensive list of bundles, check out the ``vim/bundle`` directory.
 
 Adding a new bundle
 ~~~~~~~~~~~~~~~~~~~
@@ -43,6 +43,20 @@ Updating bundles
 You can update all of the bundles with ``update_bundles.sh``. Usage::
 
     ./update_bundles.sh
+
+``vim-profile``
+---------------
+
+There is a way to load a subset of bundles by running Vim (or GVim) with
+``vim-profile`` (or ``gvim-profile``, respectively). Usage::
+
+    vim-profile [comma-separated profile names] [...additional Vim args...]
+
+Creating a profile
+~~~~~~~~~~~~~~~~~~
+
+A profile folder is basically a vim folder where subfolders such as ``bundle``
+and ``after``. Symlink everything that you want to include in the profile.
 
 License
 -------
