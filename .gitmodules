@@ -97,3 +97,6 @@
 [submodule "vim/bundle/gtk-vim-syntax"]
 	path = vim/bundle/gtk-vim-syntax
 	url = git://github.com/vim-scripts/gtk-vim-syntax.git
+[submodule "vim/bundle/vim-vala"]
+	path = vim/bundle/vim-vala
+	url = git://github.com/tkztmk/vim-vala.git
