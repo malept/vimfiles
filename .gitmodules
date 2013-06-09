@@ -94,3 +94,6 @@
 [submodule "vim/bundle/riv.vim"]
 	path = vim/bundle/riv.vim
 	url = git://github.com/Rykka/riv.vim.git
+[submodule "vim/bundle/gtk-vim-syntax"]
+	path = vim/bundle/gtk-vim-syntax
+	url = git://github.com/vim-scripts/gtk-vim-syntax.git
