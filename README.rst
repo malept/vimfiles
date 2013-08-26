@@ -47,8 +47,9 @@ You can update all of the bundles with ``update_bundles.sh``. Usage::
 ``vim-profile``
 ---------------
 
-There is a way to load a subset of bundles by running Vim (or GVim) with
-``vim-profile`` (or ``gvim-profile``, respectively). Usage::
+There is a way to load a subset of bundles by running Vim (or GVim, or
+``view``) with ``vim-profile`` (or ``gvim-profile``, or ``view-profile``,
+respectively). Usage::
 
     vim-profile [comma-separated profile names] [...additional Vim args...]
 
@@ -61,6 +62,6 @@ and ``after``. Symlink everything that you want to include in the profile.
 License
 -------
 
-Everything not in ``vim/bundle`` is licensed under the terms of the LGPL 3
-or later, unless otherwise noted. Please see ``LICENSE`` for details.
+Everything not in ``vim/bundle`` and ``special`` is licensed under the terms of
+the LGPL 3 or later, unless otherwise noted. Please see ``LICENSE`` for details.
 Alternative suggestions for a license are welcome.
