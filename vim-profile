@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 
+from glob import glob
 import os
 from subprocess import call
 import sys
@@ -35,13 +36,19 @@ Helptags
 
 
 def generate_vimrc(profiles):
+    vimrc_d_glob = os.path.join(BASE_DIR, 'vimrc.d', '*.vim')
+    vimrc_d_files = [f.replace(os.path.join(BASE_DIR, ''), '')
+                     for f in glob(vimrc_d_glob) if '001-pathogen' not in f]
+    runtime_vimrc_d = '\n'.join(['runtime {}'.format(f)
+                                 for f in sorted(vimrc_d_files)])
     return '''
 runtime vimrc
 {runtimepath}
 {pathogen}
-runtime vimrc.d/misc.vim
+{vimrc_d}
 '''.format(runtimepath=generate_runtimepath(profiles),
-           pathogen=pathogen_cmds(profiles))
+           pathogen=pathogen_cmds(profiles),
+           vimrc_d=runtime_vimrc_d)
 
 
 def run_vim(prog_name, profiles, vim_args):
