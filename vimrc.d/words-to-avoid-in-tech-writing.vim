@@ -10,20 +10,21 @@
 " (License: unknown)
 " Source URL: https://github.com/pengwynn/dotfiles/commit/12159ea2
 
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-
 function MatchTechWordsToAvoid()
-  match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
+  highlight TechWordsToAvoid ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
+  2match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
 endfunction
 
-autocmd FileType markdown call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertLeave *.md call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.md call clearmatches()
+augroup mtwta_md
+  autocmd!
+  autocmd FileType markdown call MatchTechWordsToAvoid()
+  autocmd BufWinEnter,InsertEnter,InsertLeave *.md call MatchTechWordsToAvoid()
+  autocmd BufWinLeave *.md call clearmatches()
+augroup END
 
-autocmd FileType rst call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.rst call MatchTechWordsToAvoid()
-autocmd InsertEnter *.rst call MatchTechWordsToAvoid()
-autocmd InsertLeave *.rst call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.rst call clearmatches()
+augroup mtwta_rst
+  autocmd!
+  autocmd FileType rst call MatchTechWordsToAvoid()
+  autocmd BufWinEnter,InsertEnter,InsertLeave *.rst call MatchTechWordsToAvoid()
+  autocmd BufWinLeave *.rst call clearmatches()
+augroup END
