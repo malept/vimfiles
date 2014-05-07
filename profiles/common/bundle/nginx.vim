@@ -1,0 +1,1 @@
+../../../vim/bundle/nginx.vim
