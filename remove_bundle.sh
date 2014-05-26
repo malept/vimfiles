@@ -14,6 +14,9 @@ for f in .git/config .gitmodules; do
     git config -f $f --remove-section submodule.$bundle_path
 done
 git add .gitmodules
+if test -n "$(ls profiles/*/$bundle 2>/dev/null)"; then
+    git rm profiles/*/$BUNDLE
+fi
 git rm --cached "$bundle_path"
 git commit -m "Removed the $BUNDLE bundle"
 rm -rf $bundle_path
