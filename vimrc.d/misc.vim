@@ -54,3 +54,6 @@ let g:uscore_tpl_interpolate_end = '\]\]'
 " slime
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.cache/slime_paste"
+
+" riv.vim
+let g:riv_rst2html_args = '--syntax-highlight=short'
