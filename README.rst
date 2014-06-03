@@ -53,6 +53,8 @@ respectively). Usage::
 
     vim-profile [comma-separated profile names] [...additional Vim args...]
 
+``vim-profile`` requires Python 2.7. It does not currently work with Python 3.
+
 Creating a profile
 ~~~~~~~~~~~~~~~~~~
 
