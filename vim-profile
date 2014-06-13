@@ -7,6 +7,7 @@ import os
 from subprocess import call
 import sys
 from tempfile import NamedTemporaryFile
+from time import sleep
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
@@ -29,6 +30,9 @@ def pathogen_cmds(profiles):
     profile_dirs = ["'{}/bundle/{{}}'".format(os.path.join(PROFILES_DIR, p))
                     for p in profiles]
     return '''
+if has("mac")
+  set nocp
+endif
 runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect({profile_dirs})
 Helptags
@@ -57,7 +61,12 @@ def run_vim(prog_name, profiles, vim_args):
         f.write(generate_vimrc(profiles))
         f.flush()
         cmd = [vim, '-u', f.name] + vim_args
-        return call(cmd)
+        ret = call(cmd)
+        if vim.startswith('mvim'):
+            # MacVim loads too slowly, the generated vimrc file is deleted
+            # before it tries to load it.
+            sleep(5)
+        return ret
 
 
 def list_profiles():
