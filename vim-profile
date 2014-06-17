@@ -76,11 +76,25 @@ def list_profiles():
     return 0
 
 
+def list_profileless_bundles():
+    print('List of bundles not in any profile:')
+    bundle_dir = os.path.join(BASE_DIR, 'vim', 'bundle')
+    all_bundles = [d for d in os.listdir(bundle_dir)
+                   if os.path.isdir(os.path.join(bundle_dir, d))]
+    profile_glob = os.path.join(PROFILES_DIR, '*', 'bundle', '*')
+    bundles_in_profiles = [os.path.basename(l) for l in glob(profile_glob)
+                           if os.path.islink(l)]
+    profileless_bundles = sorted(set(all_bundles) - set(bundles_in_profiles))
+    [print('* {}'.format(b)) for b in profileless_bundles]
+    return 0
+
+
 def main(args):
     prog_name = args[0]
     if len(args) < 2:
         usage_msg = '''\
-Usage: {} (PROFILE_NAMES | --list-profiles) [Vim args...]
+Usage: {} (PROFILE_NAMES | --list-profiles | --list-profileless-bundles) \
+[Vim args...]
 
 Where PROFILE_NAMES is a comma-separated list of profiles to use.
 '''.format(prog_name)
@@ -90,6 +104,8 @@ Where PROFILE_NAMES is a comma-separated list of profiles to use.
     profiles = args[1]
     if profiles == '--list-profiles':
         return list_profiles()
+    elif profiles == '--list-profileless-bundles':
+        return list_profileless_bundles()
     else:
         return run_vim(prog_name, profiles.split(','), args[2:])
 
