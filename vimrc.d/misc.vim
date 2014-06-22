@@ -51,3 +51,6 @@ let g:slime_paste_file = "$HOME/.cache/slime_paste"
 
 " riv.vim
 let g:riv_rst2html_args = '--syntax-highlight=short'
+
+" indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
