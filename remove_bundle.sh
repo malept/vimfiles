@@ -18,6 +18,6 @@ if test -n "$(ls profiles/*/$bundle 2>/dev/null)"; then
     git rm profiles/*/$BUNDLE
 fi
 git rm --cached "$bundle_path"
-git commit -m "Removed the $BUNDLE bundle"
+git commit -m "Remove the $BUNDLE bundle"
 rm -rf $bundle_path
 rm -rf .git/modules/$bundle_path

@@ -3,4 +3,4 @@
 git submodule foreach 'git pull --recurse-submodules origin master'
 git add vim/bundle
 git add special
-git commit -m "Updated all bundles"
+git commit -m "Update all bundles"
