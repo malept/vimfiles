@@ -1,5 +1,6 @@
 * SyntaxComplete: Presumably Vim, because an earlier version is bundled with Vim.
 * Vim-Jinja2-Syntax: At least partially BSD, as the Jinja2 syntax files are taken from upstream.
+* ag.vim: Vim (per ``README.md``, "copied almost entirely [from] ack.vim", which mentions its license in ``doc/ack.txt``)
 * gtk-vim-syntax: Public domain (per ``README.orig``)
 * hardmode: GPLv2 (per ``README.md``)
 * html5.vim: MIT (per ``README.md``)
@@ -8,10 +9,10 @@
 * nginx.vim: **UNKNOWN**
 * phpfolding.vim: **UNKNOWN**
 * pycomplexity: **UNKNOWN** (``doc/complexity.txt`` says "TODO")
-* salt-vim: **UNKNOWN**
+* riv.vim: **UNKNOWN**
+* salt-vim: Apache v2 (per ``LICENSE``)
 * syntastic: WTFPLv2 (per ``LICENCE``)
-* tcomment_vim: GPL (per ``@License`` in ``plugin/tcomment.vim``)
-* vcscommand: MIT (per ``doc/vcscommand.txt``)
+* underscore-templates.vim: **UNKNOWN** (My changes are licensed under the Vim license)
 * vim-bundler: Vim (per ``README.markdown``)
 * vim-coffee-script: WTFPLv2 (per ``Copying.md``)
 * vim-css-color: WTFPL (per ``@Licence`` in ``after/syntax/css.vim``)
@@ -24,10 +25,14 @@
 * vim-javascript: **UNKNOWN** (Perhaps Vim, since it seems to be based on an earlier version bundled with Vim?)
 * vim-pathogen: Vim (per ``README.markdown``)
 * vim-rails: Vim (per ``README.markdown``)
+* vim-repeat: Vim (per ``README.markdown``)
 * vim-ruby: Presumably Vim, because an earlier version is bundled with Vim.
 * vim-ruby-refactoring: **UNKNOWN**
+* vim-rvm: Vim (per ``README.markdown``)
 * vim-sensible: Vim (per ``README.markdown``)
-* vim-slime: MIT (per ``LICENSE.txt``)
 * vim-surround: Vim (per ``README.markdown``)
 * vim-trailing-whitespace: CC-BY-SA (``README`` says that it's based on code on a Vim Wikia page, and that wiki is licensed CC-BY-SA)
+* vim-turbux: Vim (per ``doc/turbux.txt``)
+* vim-vala: Indent file is MIT (see file), rest is **UNKNOWN**
 * vim-virtualenv: Vim (per ``License`` in ``doc/virtualenv.txt``)
+* vim-wordy: MIT (per ``LICENSE``)
