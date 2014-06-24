@@ -34,5 +34,6 @@
 * vim-trailing-whitespace: CC-BY-SA (``README`` says that it's based on code on a Vim Wikia page, and that wiki is licensed CC-BY-SA)
 * vim-turbux: Vim (per ``doc/turbux.txt``)
 * vim-vala: Indent file is MIT (see file), rest is **UNKNOWN**
+* vim-vinegar: Vim (per ``README.markdown``)
 * vim-virtualenv: Vim (per ``License`` in ``doc/virtualenv.txt``)
 * vim-wordy: MIT (per ``LICENSE``)
