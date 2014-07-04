@@ -39,6 +39,9 @@ colorscheme darkblue
 let g:jedi#popup_on_dot = 0
 let g:jedi#autocompletion_command = "<C-J>"
 
+"" Sieve
+autocmd BufRead,BufNewFile *.sieve setfiletype sieve
+
 "" Underscore templates
 let g:uscore_tpl_eval_start = '\[%'
 let g:uscore_tpl_eval_end = '%\]'
