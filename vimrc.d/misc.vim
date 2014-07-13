@@ -29,7 +29,7 @@ set wildmode=longest,list,full
 
 " theme
 set background=dark
-colorscheme darkblue
+colorscheme muzzl
 
 " language-specific
 

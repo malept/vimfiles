@@ -124,3 +124,6 @@
 [submodule "vim/bundle/vim-vinegar"]
 	path = vim/bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/bundle/muzzl.vim"]
+	path = vim/bundle/muzzl.vim
+	url = https://github.com/vim-scripts/muzzl.vim.git
