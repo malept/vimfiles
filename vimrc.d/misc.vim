@@ -29,7 +29,11 @@ set wildmode=longest,list,full
 
 " theme
 set background=dark
-colorscheme muzzl
+if findfile("colors/muzzl.vim", &rtp) == ""
+  colorscheme darkblue
+else
+  colorscheme muzzl
+endif
 
 " language-specific
 
