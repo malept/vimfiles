@@ -9,6 +9,18 @@ if test -z "$URL"; then
 fi
 
 bundle=$(basename "$URL" .git)
+commit_msg="Add the $bundle bundle"
+
+if test -n "$PROFILES"; then
+    for p in $PROFILES; do
+        (
+            cd profiles/$p/bundle/
+            ln -s ../../../vim/bundle/$bundle .
+            git add $bundle
+        )
+    done
+    commit_msg="$commit_msg to the following profiles: $PROFILES"
+fi
 
 git submodule add "$@" -- "$URL" vim/bundle/$bundle
-git commit -m "Add the $bundle bundle"
+git commit -m "$commit_msg"
