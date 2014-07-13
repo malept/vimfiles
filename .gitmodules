@@ -127,3 +127,6 @@
 [submodule "vim/bundle/muzzl.vim"]
 	path = vim/bundle/muzzl.vim
 	url = https://github.com/vim-scripts/muzzl.vim.git
+[submodule "vim/bundle/Recover.vim"]
+	path = vim/bundle/Recover.vim
+	url = https://github.com/chrisbra/Recover.vim.git
