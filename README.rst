@@ -21,7 +21,6 @@ To install everything, run the following commands::
     for f in vim vimrc gvimrc; do
         ln -s `pwd`/${f} ~/.${f}
     done
-    mkdir -p ~/.local/share/vim/{swap,undo,backup}
 
 Partial installation is left as an exercise to the reader.
 

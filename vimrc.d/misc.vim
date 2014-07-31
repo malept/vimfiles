@@ -7,6 +7,24 @@ set number " line numbers
 set smartindent
 set formatoptions=tcroqn " see :help fo-table for option explanations
 
+" directories
+" From: https://bitbucket.org/sjl/dotfiles/src/e6f6389e598f/vim/vimrc#cl-198
+set undodir=~/.local/share/vim/undo/
+set backupdir=~/.local/share/vim/backup/
+"" swap files
+set directory=~/.local/share/vim/swap/
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+  call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+  call mkdir(expand(&directory), "p")
+endif
+
 " modeline
 set modeline
 
