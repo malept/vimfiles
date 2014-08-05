@@ -53,6 +53,10 @@ else
   colorscheme muzzl
 endif
 
+" From: https://bitbucket.org/sjl/dotfiles/src/e6f6389/vim/vimrc#cl-233
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 " language-specific
 
 "" Ruby: see vimrc.d/ruby.vim
