@@ -57,8 +57,16 @@ respectively). Usage::
 Creating a profile
 ~~~~~~~~~~~~~~~~~~
 
-A profile folder is basically a vim folder where subfolders such as ``bundle``
-and ``after``. Symlink everything that you want to include in the profile.
+A profile folder is a vim folder where subfolders such as ``bundle`` and
+``after`` reside. Symlink everything that you want to include in the profile.
+
+Adding a bundle to an existing profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``add_bundle.sh`` contains a shortcut for adding a bundle and adding it to one
+or more profiles in the same commit. Run ``add_bundle.sh`` as shown above,
+but first make sure that theenvironment variable ``PROFILES`` is set to a
+space-separated list of existing profiles to which the bundle should be added.
 
 License
 -------
