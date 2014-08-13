@@ -133,3 +133,6 @@
 [submodule "vim/bundle/vim-niceblock"]
 	path = vim/bundle/vim-niceblock
 	url = https://github.com/kana/vim-niceblock.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
