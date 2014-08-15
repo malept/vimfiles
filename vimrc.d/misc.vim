@@ -83,3 +83,6 @@ let g:riv_rst2html_args = '--syntax-highlight=short'
 
 " indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
+
+" ag
+let g:agprg="ag --column --ignore='*.log'"
