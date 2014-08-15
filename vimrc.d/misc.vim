@@ -65,6 +65,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 let g:jedi#popup_on_dot = 0
 let g:jedi#autocompletion_command = "<C-J>"
 
+"" Shell
+
+let g:is_bash = 1
+
 "" Sieve
 autocmd BufRead,BufNewFile *.sieve setfiletype sieve
 
