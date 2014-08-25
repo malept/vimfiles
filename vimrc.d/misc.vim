@@ -59,6 +59,12 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " language-specific
 
+"" CoffeeScript
+augroup coffeescript
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 "" Ruby: see vimrc.d/ruby.vim
 
 "" Python: jedi-vim
