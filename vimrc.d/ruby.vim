@@ -1,4 +1,7 @@
-autocmd FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
+augroup ruby
+  autocmd!
+  autocmd FileType ruby setl tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 let g:ruby_debugger_fast_sender = 1
 let g:rubycomplete_buffer_loading = 1
