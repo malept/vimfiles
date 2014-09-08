@@ -71,6 +71,11 @@ augroup END
 let g:jedi#popup_on_dot = 0
 let g:jedi#autocompletion_command = "<C-J>"
 
+"" JSON
+
+" Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
+map <Leader>j !python -m json.tool<CR>
+
 "" Shell
 
 let g:is_bash = 1
