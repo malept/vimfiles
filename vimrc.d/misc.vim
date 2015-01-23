@@ -76,6 +76,12 @@ let g:jedi#autocompletion_command = "<C-J>"
 " Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 map <Leader>j !python -m json.tool<CR>
 
+"" YAML
+augroup yaml
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.yml setl tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 "" Shell
 
 let g:is_bash = 1
