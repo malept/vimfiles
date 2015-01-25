@@ -67,6 +67,12 @@ augroup END
 
 "" Ruby: see vimrc.d/ruby.vim
 
+"" SCSS
+augroup scss
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.scss setl tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 "" Python: jedi-vim
 let g:jedi#popup_on_dot = 0
 let g:jedi#autocompletion_command = "<C-J>"
