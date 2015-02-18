@@ -92,6 +92,9 @@ augroup END
 
 let g:is_bash = 1
 
+""" .env-*
+autocmd BufRead,BufNewFile .env-* setfiletype sh
+
 "" Sieve
 autocmd BufRead,BufNewFile *.sieve setfiletype sieve
 
