@@ -82,6 +82,9 @@ let g:jedi#autocompletion_command = "<C-J>"
 " Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 map <Leader>j !python -m json.tool<CR>
 
+"" XML
+map <Leader>x !xmllint --format -<CR>
+
 "" YAML
 augroup yaml
   autocmd!
