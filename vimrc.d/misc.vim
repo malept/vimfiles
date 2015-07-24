@@ -57,6 +57,9 @@ endif
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" Redraw via keyboard shortcut
+map <Leader>r :redraw!<cr>
+
 " language-specific
 
 "" CoffeeScript
