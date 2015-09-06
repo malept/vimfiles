@@ -145,3 +145,6 @@
 [submodule "vim/bundle/vim-toml"]
 	path = vim/bundle/vim-toml
 	url = https://github.com/cespare/vim-toml
+[submodule "vim/bundle/racer"]
+	path = vim/bundle/racer
+	url = https://github.com/phildawes/racer.git
