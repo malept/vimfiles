@@ -66,6 +66,8 @@ def run_vim(prog_name, profiles, vim_args):
             environ['LD_LIBRARY_PATH'] += os.pathsep + rvm_libdir
         else:
             environ['LD_LIBRARY_PATH'] = rvm_libdir
+    if vim == 'nvim':
+        environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
     with NamedTemporaryFile() as f:
         f.write(generate_vimrc(profiles))
         f.flush()
