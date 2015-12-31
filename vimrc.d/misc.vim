@@ -103,6 +103,10 @@ augroup yaml
   autocmd BufNewFile,BufReadPost *.yml setl tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+"" SQL
+
+let g:sql_type_default = 'postgresql'
+
 "" Shell
 
 let g:is_bash = 1
