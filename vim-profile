@@ -41,7 +41,13 @@ Helptags
 '''.format(profile_dirs=','.join(profile_dirs)).strip()
 
 
-def generate_vimrc(profiles):
+def generate_vimrc(vim, profiles):
+    common = ['common']
+    if vim == 'nvim':
+        common.append('common-nvim')
+    else:
+        common.append('common-vim')
+    profiles = common + profiles
     vimrc_d_glob = os.path.join(BASE_DIR, 'vimrc.d', '*.vim')
     vimrc_d_files = [f.replace(os.path.join(BASE_DIR, ''), '')
                      for f in glob(vimrc_d_glob) if '001-pathogen' not in f]
@@ -69,7 +75,7 @@ def run_vim(prog_name, profiles, vim_args):
     if vim == 'nvim':
         environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
     with NamedTemporaryFile() as f:
-        f.write(generate_vimrc(profiles))
+        f.write(generate_vimrc(vim, profiles))
         f.flush()
         cmd = [vim, '-u', f.name] + vim_args
         ret = call(cmd, env=environ)
@@ -81,7 +87,7 @@ def run_vim(prog_name, profiles, vim_args):
 
 
 def list_profiles():
-    print('List of profiles:')
+    print('List of profiles (common and common-{vim,nvim} is default):')
     [print('* {}'.format(d)) for d in os.listdir(PROFILES_DIR)
      if os.path.isdir(os.path.join(PROFILES_DIR, d))]
     return 0
@@ -102,23 +108,27 @@ def list_profileless_bundles():
 
 def main(args):
     prog_name = args[0]
-    if len(args) < 2:
+    if len(args) < 1:
         usage_msg = '''\
 Usage: {} (PROFILE_NAMES | --list-profiles | --list-profileless-bundles) \
 [Vim args...]
 
 Where PROFILE_NAMES is a comma-separated list of profiles to use.
+The "common" profile is enabled by default.
 '''.format(prog_name)
         print(usage_msg, file=sys.stderr)
         return 1
     prog_name = os.path.basename(prog_name)
-    profiles = args[1]
-    if profiles == '--list-profiles':
+    if len(args) > 1:
+        profiles = args[1].split(',')
+    else:
+        profiles = []
+    if profiles == ['--list-profiles']:
         return list_profiles()
-    elif profiles == '--list-profileless-bundles':
+    elif profiles == ['--list-profileless-bundles']:
         return list_profileless_bundles()
     else:
-        return run_vim(prog_name, profiles.split(','), args[2:])
+        return run_vim(prog_name, profiles, args[2:])
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
