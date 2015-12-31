@@ -70,6 +70,8 @@ augroup END
 
 "" Ruby: see vimrc.d/ruby.vim
 
+"" Rust: see vimrc.d/rust.vim
+
 "" SCSS
 augroup scss
   autocmd!
