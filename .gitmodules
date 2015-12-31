@@ -100,6 +100,7 @@
 [submodule "vim/bundle/underscore-templates.vim"]
 	path = vim/bundle/underscore-templates.vim
 	url = git://github.com/malept/underscore-templates.vim.git
+	branch = variable-block-delimiters
 [submodule "vim/bundle/vim-wordy"]
 	path = vim/bundle/vim-wordy
 	url = git://github.com/reedes/vim-wordy.git

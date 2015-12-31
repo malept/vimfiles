@@ -111,6 +111,8 @@ let g:uscore_tpl_eval_start = '\[%'
 let g:uscore_tpl_eval_end = '%\]'
 let g:uscore_tpl_interpolate_start = '\[\['
 let g:uscore_tpl_interpolate_end = '\]\]'
+let g:uscore_tpl_escape_start = '\[%-'
+let g:uscore_tpl_escape_end = '%\]'
 
 " riv.vim
 let g:riv_rst2html_args = '--syntax-highlight=short'
