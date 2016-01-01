@@ -149,3 +149,6 @@
 [submodule "vim/bundle/vim-racer"]
 	path = vim/bundle/vim-racer
 	url = https://github.com/racer-rust/vim-racer.git
+[submodule "vim/bundle/vim-dispatch-neovim"]
+	path = vim/bundle/vim-dispatch-neovim
+	url = https://github.com/radenling/vim-dispatch-neovim
