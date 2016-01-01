@@ -152,3 +152,6 @@
 [submodule "vim/bundle/vim-dispatch-neovim"]
 	path = vim/bundle/vim-dispatch-neovim
 	url = https://github.com/radenling/vim-dispatch-neovim
+[submodule "vim/bundle/deoplete.nvim"]
+	path = vim/bundle/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim
