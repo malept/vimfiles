@@ -15,6 +15,18 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
 
 
+def home_vimdir(vim):
+    if vim == 'nvim':
+        vim_folder = 'nvim'
+    else:
+        vim_folder = 'vim'
+    cfg = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
+    vimdir = os.path.join(cfg, vim_folder)
+    if not os.path.exists(vimdir):
+        os.makedirs(vimdir)
+    return vimdir
+
+
 def generate_runtimepath(profiles):
     common_vimdirs = [
         '$VIM/vimfiles',
@@ -28,7 +40,7 @@ def generate_runtimepath(profiles):
     return 'set runtimepath={}'.format(','.join(vimdirs))
 
 
-def pathogen_cmds(profiles):
+def pathogen_cmds(vim, profiles):
     profile_dirs = ["'{}/bundle/{{}}'".format(os.path.join(PROFILES_DIR, p))
                     for p in profiles]
     return '''
@@ -37,8 +49,9 @@ if has("mac")
 endif
 runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect({profile_dirs})
+set runtimepath^={home_vimdir}
 Helptags
-'''.format(profile_dirs=','.join(profile_dirs)).strip()
+'''.format(home_vimdir=home_vimdir(vim), profile_dirs=','.join(profile_dirs)).strip()
 
 
 def generate_vimrc(vim, profiles):
@@ -59,7 +72,7 @@ runtime vimrc
 {pathogen}
 {vimrc_d}
 '''.format(runtimepath=generate_runtimepath(profiles),
-           pathogen=pathogen_cmds(profiles),
+           pathogen=pathogen_cmds(vim, profiles),
            vimrc_d=runtime_vimrc_d)
 
 
