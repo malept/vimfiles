@@ -65,7 +65,7 @@ Adding a bundle to an existing profile
 
 ``add_bundle.sh`` contains a shortcut for adding a bundle and adding it to one
 or more profiles in the same commit. Run ``add_bundle.sh`` as shown above,
-but first make sure that theenvironment variable ``PROFILES`` is set to a
+but first make sure that the environment variable ``PROFILES`` is set to a
 space-separated list of existing profiles to which the bundle should be added.
 
 License
