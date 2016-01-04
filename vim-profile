@@ -51,7 +51,8 @@ runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect({profile_dirs})
 set runtimepath^={home_vimdir}
 Helptags
-'''.format(home_vimdir=home_vimdir(vim), profile_dirs=','.join(profile_dirs)).strip()
+'''.format(home_vimdir=home_vimdir(vim),
+           profile_dirs=','.join(profile_dirs)).strip()
 
 
 def generate_vimrc(vim, profiles):
