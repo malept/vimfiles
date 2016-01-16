@@ -161,3 +161,6 @@
 [submodule "vim/bundle/vim-monster"]
 	path = vim/bundle/vim-monster
 	url = https://github.com/osyo-manga/vim-monster
+[submodule "vim/bundle/vimproc.vim"]
+	path = vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim
