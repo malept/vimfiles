@@ -11,3 +11,7 @@ let g:rubycomplete_use_bundler = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplexity_medium_limit = 35
 let g:rubycomplexity_high_limit = 70
+
+if has('nvim')
+  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+endif
