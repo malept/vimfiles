@@ -92,6 +92,7 @@ def run_vim(prog_name, profiles, vim_args):
         else:
             environ['LD_LIBRARY_PATH'] = rvm_libdir
     if vim == 'nvim':
+        environ['EDITOR'] = 'nvim'
         # tmux does not support 24 bit color yet, see:
         # https://github.com/tmux/tmux/pull/112
         if 'TMUX' in environ:
