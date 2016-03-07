@@ -60,6 +60,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Redraw via keyboard shortcut
 map <Leader>r :redraw!<cr>
 
+if !has('gui_running')
+  set title
+endif
+
 " language-specific
 
 "" CoffeeScript
