@@ -91,6 +91,10 @@ def run_vim(prog_name, profiles, vim_args):
             environ['LD_LIBRARY_PATH'] += os.pathsep + rvm_libdir
         else:
             environ['LD_LIBRARY_PATH'] = rvm_libdir
+    if 'rust' in profiles and 'RUST_SRC_PATH' not in environ:
+        default_rust_src_path = '/opt/multirust/rust-src/stable'
+        if os.path.isdir(default_rust_src_path):
+            environ['RUST_SRC_PATH'] = default_rust_src_path
     if vim == 'nvim':
         environ['EDITOR'] = 'nvim'
         # tmux does not support 24 bit color yet, see:
