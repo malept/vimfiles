@@ -99,7 +99,7 @@ def run_vim(prog_name, profiles, vim_args):
         environ['EDITOR'] = 'nvim'
         # tmux does not support 24 bit color yet, see:
         # https://github.com/tmux/tmux/pull/112
-        if 'TMUX' in environ:
+        if 'TMUX' in environ and 'FORCE_TRUECOLOR' not in environ:
             environ['TERM'] = 'xterm-256color'
         else:
             environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
