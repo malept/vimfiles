@@ -58,7 +58,11 @@ endif
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Redraw via keyboard shortcut
-map <Leader>r :redraw!<cr>
+map <Leader>r :redraw!<CR>
+
+" Shortcut to copy/paste from OS registers
+map <Leader>y "+y
+map <Leader>p "+p
 
 if !has('gui_running')
   set title
