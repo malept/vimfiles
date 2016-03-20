@@ -167,3 +167,6 @@
 [submodule "vim/bundle/tmux.vim"]
 	path = vim/bundle/tmux.vim
 	url = https://github.com/keith/tmux.vim
+[submodule "vim/bundle/deoplete-jedi"]
+	path = vim/bundle/deoplete-jedi
+	url = https://github.com/zchee/deoplete-jedi
