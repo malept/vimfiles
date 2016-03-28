@@ -1,4 +1,8 @@
 if has('nvim')
+  " Needed so that locally installed dictionaries work
+  set rtp+=~/.local/share/nvim/site
+
+  " Neomake
   autocmd! BufWritePost * Neomake
 
   " Deoplete
