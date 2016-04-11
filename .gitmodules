@@ -170,3 +170,6 @@
 [submodule "vim/bundle/deoplete-jedi"]
 	path = vim/bundle/deoplete-jedi
 	url = https://github.com/zchee/deoplete-jedi
+[submodule "vim/bundle/editorconfig-vim"]
+	path = vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim

@@ -145,5 +145,8 @@ let g:riv_rst2html_args = '--syntax-highlight=short'
 " indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
 
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " ag
 let g:ag_prg="ag --column --ignore='*.log'"
