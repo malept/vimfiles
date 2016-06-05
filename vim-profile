@@ -92,7 +92,7 @@ def run_vim(prog_name, profiles, vim_args):
         else:
             environ['LD_LIBRARY_PATH'] = rvm_libdir
     if 'rust' in profiles and 'RUST_SRC_PATH' not in environ:
-        default_rust_src_path = '/opt/multirust/rust-src/stable'
+        default_rust_src_path = '/opt/multirust/rust-src/stable/src'
         if os.path.isdir(default_rust_src_path):
             environ['RUST_SRC_PATH'] = default_rust_src_path
     if vim == 'nvim':
