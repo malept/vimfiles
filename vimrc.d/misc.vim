@@ -47,6 +47,9 @@ set wildmode=longest,list,full
 
 " theme
 set background=dark
+if has("termguicolors")
+  set termguicolors
+endif
 if findfile("colors/muzzl.vim", &rtp) == ""
   colorscheme darkblue
 else
