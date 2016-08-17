@@ -4,6 +4,7 @@ augroup ruby
 augroup END
 
 let g:ruby_debugger_fast_sender = 1
+let g:ruby_ident_access_modifier_style = 'indent'
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_load_gemfile = 1
