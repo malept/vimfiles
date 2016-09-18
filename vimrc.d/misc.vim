@@ -49,8 +49,8 @@ set wildmode=longest,list,full
 set background=dark
 if has("termguicolors")
   set termguicolors
-endif
-if findfile("colors/muzzl.vim", &rtp) == ""
+  colorscheme gruvbox
+elseif findfile("colors/muzzl.vim", &rtp) == ""
   colorscheme darkblue
 else
   colorscheme muzzl
