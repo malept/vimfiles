@@ -49,6 +49,8 @@ set wildmode=longest,list,full
 set background=dark
 if has("termguicolors")
   set termguicolors
+  let g:gruvbox_italic = 1
+  let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
 elseif findfile("colors/muzzl.vim", &rtp) == ""
   colorscheme darkblue
