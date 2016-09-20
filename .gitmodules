@@ -182,3 +182,6 @@
 [submodule "vim/bundle/vim-endwise"]
 	path = vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise
+[submodule "vim/bundle/vim-dasht"]
+	path = vim/bundle/vim-dasht
+	url = https://github.com/sunaku/vim-dasht
