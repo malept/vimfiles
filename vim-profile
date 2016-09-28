@@ -78,8 +78,17 @@ runtime vimrc
     return vimrc.encode('utf-8')
 
 
+def run_cmd(cmd):
+    return str(check_output(cmd, shell=True).strip())
+
+
 def get_rvm_libdir():
-    return str(check_output('rvm config-get libdir', shell=True).strip())
+    return run_cmd('rvm config-get libdir')
+
+
+def get_rust_src():
+    return os.path.join(run_cmd('rustc --print sysroot'), 'lib', 'rustlib',
+                        'src', 'rust', 'src')
 
 
 def run_vim(prog_name, profiles, vim_args):
@@ -92,7 +101,7 @@ def run_vim(prog_name, profiles, vim_args):
         else:
             environ['LD_LIBRARY_PATH'] = rvm_libdir
     if 'rust' in profiles and 'RUST_SRC_PATH' not in environ:
-        default_rust_src_path = '/opt/multirust/rust-src/stable/src'
+        default_rust_src_path = get_rust_src()
         if os.path.isdir(default_rust_src_path):
             environ['RUST_SRC_PATH'] = default_rust_src_path
     if vim == 'nvim':
