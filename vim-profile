@@ -110,8 +110,6 @@ def run_vim(prog_name, profiles, vim_args):
         environ['TERM'] = 'xterm-256color'
         ## Needed for Neovim < 0.1.5
         environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
-        # Needed for remote plugins configuration file
-        environ['MYVIMRC'] = '~/.local/share/vim/nvim'
     with NamedTemporaryFile() as f:
         f.write(generate_vimrc(vim, profiles))
         f.flush()
