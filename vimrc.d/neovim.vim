@@ -9,6 +9,10 @@ if has('nvim')
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#omni#input_patterns = {}
 
+  " python-neovim
+  let g:python2_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
+  let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
+
   " Terminal
   "" Max out the terminal scrollback buffer
   let g:terminal_scrollback_buffer_size = 100000
