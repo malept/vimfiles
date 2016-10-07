@@ -5,6 +5,7 @@ from __future__ import print_function
 from copy import deepcopy
 from distutils.spawn import find_executable
 from glob import glob
+from itertools import chain
 import os
 from subprocess import call, check_output
 import sys
@@ -15,11 +16,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
 
 
-def home_vimdir(vim):
+def vim_impl(vim):
     if vim == 'nvim':
-        vim_folder = 'nvim'
+        return 'nvim'
     else:
-        vim_folder = 'vim'
+        return 'vim'
+
+
+def home_vimdir(vim):
+    vim_folder = vim_impl(vim)
     cfg = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
     vimdir = os.path.join(cfg, vim_folder)
     if not os.path.exists(vimdir):
@@ -27,41 +32,45 @@ def home_vimdir(vim):
     return vimdir
 
 
-def generate_runtimepath(profiles):
+def profile_dirs(profiles):
+    for profile in profiles:
+        yield os.path.join(PROFILES_DIR, profile)
+
+
+def generate_runtimepath(vim,profiles):
     common_vimdirs = [
         '$VIM/vimfiles',
         '$VIMRUNTIME',
         BASE_DIR,  # for vimrc.d
         '$VIM/vimfiles/after',
     ]
-    profile_vimdirs = [os.path.join(PROFILES_DIR, p) for p in profiles]
-    profile_after_vimdirs = [os.path.join(d, 'after') for d in profile_vimdirs]
-    vimdirs = profile_vimdirs + common_vimdirs + profile_after_vimdirs
+    profile_vimdirs = [vdir for vdir in profile_dirs(profiles) if os.path.isdir(vdir)]
+    vimdirs = profile_vimdirs + common_vimdirs
     return 'set runtimepath={}'.format(','.join(vimdirs))
 
 
 def pathogen_cmds(vim, profiles):
-    profile_dirs = ["'{}/bundle/{{}}'".format(os.path.join(PROFILES_DIR, p))
-                    for p in profiles]
+    bundle_dirs = ["'{}/bundle/{{}}'".format(p) for p in profile_dirs(profiles)]
     return '''
 if has("mac")
   set nocp
 endif
 runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect({profile_dirs})
+call pathogen#infect({bundle_dirs})
 set runtimepath^={home_vimdir}
 Helptags
 '''.format(home_vimdir=home_vimdir(vim),
-           profile_dirs=','.join(profile_dirs)).strip()
+           bundle_dirs=','.join(bundle_dirs)).strip()
+
+
+def impl_profiles(vim, profiles):
+    impl = vim_impl(vim)
+    for profile in chain(['common'], profiles):
+        yield [profile, '{}-{}'.format(profile, impl)]
 
 
 def generate_vimrc(vim, profiles):
-    common = ['common']
-    if vim == 'nvim':
-        common.append('common-nvim')
-    else:
-        common.append('common-vim')
-    profiles = common + profiles
+    all_profiles = list(chain.from_iterable(impl_profiles(vim, profiles)))
     vimrc_d_glob = os.path.join(BASE_DIR, 'vimrc.d', '*.vim')
     vimrc_d_files = [f.replace(os.path.join(BASE_DIR, ''), '')
                      for f in glob(vimrc_d_glob) if '001-pathogen' not in f]
@@ -72,8 +81,8 @@ runtime vimrc
 {runtimepath}
 {pathogen}
 {vimrc_d}
-'''.format(runtimepath=generate_runtimepath(profiles),
-           pathogen=pathogen_cmds(vim, profiles),
+'''.format(runtimepath=generate_runtimepath(vim, all_profiles),
+           pathogen=pathogen_cmds(vim, all_profiles),
            vimrc_d=runtime_vimrc_d)
     return vimrc.encode('utf-8')
 
