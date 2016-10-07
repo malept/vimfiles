@@ -125,9 +125,10 @@ def run_vim(prog_name, profiles, vim_args):
 
 
 def list_profiles():
-    print('List of profiles (common and common-{vim,nvim} is default):')
-    [print('* {}'.format(d)) for d in os.listdir(PROFILES_DIR)
-     if os.path.isdir(os.path.join(PROFILES_DIR, d))]
+    print('List of profiles (common and common-{vim,nvim} are default):')
+    for d in os.listdir(PROFILES_DIR):
+        if os.path.isdir(os.path.join(PROFILES_DIR, d)) and not d.endswith(('-vim', '-nvim')):
+            print('* {}'.format(d))
     return 0
 
 
