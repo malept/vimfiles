@@ -132,7 +132,6 @@ def list_profiles():
 
 
 def list_profileless_bundles():
-    print('List of bundles not in any profile:')
     bundle_dir = os.path.join(BASE_DIR, 'vim', 'bundle')
     all_bundles = [d for d in os.listdir(bundle_dir)
                    if os.path.isdir(os.path.join(bundle_dir, d))]
@@ -140,7 +139,11 @@ def list_profileless_bundles():
     bundles_in_profiles = [os.path.basename(l) for l in glob(profile_glob)
                            if os.path.islink(l)]
     profileless_bundles = sorted(set(all_bundles) - set(bundles_in_profiles))
-    [print('* {}'.format(b)) for b in profileless_bundles]
+    if len(profileless_bundles) > 0:
+        print('List of bundles not in any profile:')
+        [print('* {}'.format(b)) for b in profileless_bundles]
+    else:
+        print('All bundles are in at least one profile.')
     return 0
 
 
