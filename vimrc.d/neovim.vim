@@ -7,6 +7,8 @@ if has('nvim')
 
   " Deoplete
   let g:deoplete#enable_at_startup = 1
+  "" Close the preview window after completion is done
+  autocmd CompleteDone * pclose!
 
   " python-neovim
   let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
