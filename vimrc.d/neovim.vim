@@ -9,7 +9,7 @@ if has('nvim')
   let g:deoplete#enable_at_startup = 1
 
   " python-neovim
-  let g:python2_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
+  let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
   let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
 
   " Terminal
