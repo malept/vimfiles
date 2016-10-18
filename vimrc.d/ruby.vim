@@ -14,7 +14,3 @@ let g:rubycomplexity_medium_limit = 35
 let g:rubycomplexity_high_limit = 70
 
 let test#ruby#minitest#executable = 'RAILS_ENV=test bundle exec rake'
-
-if has('nvim')
-  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-endif

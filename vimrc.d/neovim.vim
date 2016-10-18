@@ -7,7 +7,6 @@ if has('nvim')
 
   " Deoplete
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#omni#input_patterns = {}
 
   " python-neovim
   let g:python2_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
