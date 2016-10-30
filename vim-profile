@@ -129,6 +129,8 @@ def generated_vimrc(vim, profiles):
 
 def call_vim(vim, vimrc, vim_args, environ):
     cmd = [vim, '-u', vimrc.name] + vim_args
+    if 'VIM_GDB' in environ:
+        cmd = ['gdb', '--args'] + cmd
     return call(cmd, env=environ)
 
 
