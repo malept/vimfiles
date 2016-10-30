@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 
+from contextlib import contextmanager
 from copy import deepcopy
 from distutils.spawn import find_executable
 from glob import glob
@@ -118,6 +119,19 @@ def set_nvim_environment(environ):
     environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
 
 
+@contextmanager
+def generated_vimrc(vim, profiles):
+    with NamedTemporaryFile() as vimrc:
+        vimrc.write(generate_vimrc(vim, profiles))
+        vimrc.flush()
+        yield vimrc
+
+
+def call_vim(vim, vimrc, vim_args, environ):
+    cmd = [vim, '-u', vimrc.name] + vim_args
+    return call(cmd, env=environ)
+
+
 def run_vim(prog_name, profiles, vim_args):
     vim = prog_name[:prog_name.index('-')]
     environ = deepcopy(os.environ)
@@ -127,16 +141,13 @@ def run_vim(prog_name, profiles, vim_args):
         set_rust_src_path(environ)
     if vim == 'nvim':
         set_nvim_environment(environ)
-    with NamedTemporaryFile() as f:
-        f.write(generate_vimrc(vim, profiles))
-        f.flush()
-        cmd = [vim, '-u', f.name] + vim_args
-        ret = call(cmd, env=environ)
+    with generated_vimrc(vim, profiles) as vimrc:
+        retcode = call_vim(vim, vimrc, vim_args, environ)
         if vim.startswith('mvim'):
             # MacVim loads too slowly, the generated vimrc file is deleted
             # before it tries to load it.
             sleep(5)
-        return ret
+        return retcode
 
 
 def list_profiles():
