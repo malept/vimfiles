@@ -67,7 +67,9 @@ map <Leader>r :redraw!<CR>
 
 " Shortcut to copy/paste from OS registers
 map <Leader>y "+y
+map <Leader>Y "+Y
 map <Leader>p "+p
+map <Leader>P "+P
 
 if !has('gui_running')
   set title
