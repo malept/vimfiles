@@ -153,5 +153,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" ag
-let g:ag_prg="ag --column --ignore='*.log'"
+" ack.vim
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading'
+elseif executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
