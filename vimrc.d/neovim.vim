@@ -24,4 +24,12 @@ if has('nvim')
   map <Leader>st :split \| terminal<CR>
   "" Shortcut for :vsp | term
   map <Leader>vt :vertical split \| terminal<CR>
+
+  " From vim-sensible (left out of neovim defaults, see
+  " https://github.com/neovim/neovim/issues/2676)
+  set ruler
+  "" Use <C-L> to clear the highlighting of :set hlsearch.
+  if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  endif
 end
