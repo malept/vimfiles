@@ -113,7 +113,13 @@ def set_rust_src_path(environ):
 def set_nvim_environment(environ):
     environ['EDITOR'] = 'nvim'
     # Needed for truecolor support
-    if 'TMUX' not in environ:
+    if 'TMUX' in environ:
+        ncurses_version = run_cmd('reset -V').split(' ', 2)[1]
+        if int(ncurses_version.split('.')[0]) < 6:
+            environ['TERM'] = 'screen-256color'
+        else:
+            environ['TERM'] = 'tmux-256color'
+    else:
         environ['TERM'] = 'xterm-256color'
     # Needed for Neovim < 0.1.5
     environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
