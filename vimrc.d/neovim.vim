@@ -2,6 +2,13 @@ if has('nvim')
   " Needed so that locally installed dictionaries work
   set rtp+=~/.local/share/nvim/site
 
+  " inccommand (AKA live substitution)
+  if exists('&inccommand')
+    " Can't do split until https://github.com/neovim/neovim/issues/5584
+    " is fixed
+    set inccommand=nosplit
+  endif
+
   " Neomake
   autocmd! BufWritePost * Neomake
 
