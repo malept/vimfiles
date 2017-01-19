@@ -83,6 +83,12 @@ augroup coffeescript
   autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+"" JavaScript
+augroup javascript
+  autocmd!
+  autocmd FileType javascript,json setl tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 "" Ruby: see vimrc.d/ruby.vim
 
 "" Rust: see vimrc.d/rust.vim
