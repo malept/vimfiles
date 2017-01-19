@@ -21,6 +21,9 @@ if has('nvim')
   let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
   let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
 
+  " neovim-fuzzy
+  nnoremap <C-p> :FuzzyOpen<CR>
+
   " Terminal
   "" Max out the terminal scrollback buffer
   let g:terminal_scrollback_buffer_size = 100000
