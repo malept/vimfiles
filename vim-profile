@@ -133,6 +133,8 @@ def set_nvim_environment(environ):
         environ['TERM'] = 'xterm-256color'
     # Needed for Neovim < 0.1.5
     environ['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
+    # cursor shapes don't work with Debian Jessie's vte
+    environ['NVIM_TUI_ENABLE_CURSOR_SHAPE'] = '0'
 
 
 @contextmanager
