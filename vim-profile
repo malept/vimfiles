@@ -18,6 +18,7 @@ PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
 GLOB_PROFILE_MAP = {
     'bower.json': 'frontend',
     'package.json': 'frontend',
+    'app/assets': 'frontend', # Rails
     'README.rst': 'python',
     'requirements.txt': 'python',
     'setup.py': 'python',
