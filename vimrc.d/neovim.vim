@@ -22,10 +22,12 @@ if has('nvim')
 
   " LanguageServer
   let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'typescript': ['javascript-typescript-stdio'],
     \ }
+  if executable('javascript-typescript-stdio')
+    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+    let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+  endif
   let g:LanguageClient_autoStart = 1
   let g:LanguageClient_signColumnAlwaysOn = 0
   nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
