@@ -37,6 +37,8 @@ if has('nvim')
   map <Leader>st :split \| terminal<CR>
   "" Shortcut for :vsp | term
   map <Leader>vt :vertical split \| terminal<CR>
+  "" Disable line numbers
+  autocmd TermOpen * setlocal nonumber
 
   " From vim-sensible (left out of neovim defaults, see
   " https://github.com/neovim/neovim/issues/2676)
