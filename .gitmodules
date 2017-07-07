@@ -185,3 +185,6 @@
 [submodule "vim/bundle/neovim-fuzzy"]
 	path = vim/bundle/neovim-fuzzy
 	url = https://github.com/cloudhead/neovim-fuzzy
+[submodule "vim/bundle/LanguageClient-neovim"]
+	path = vim/bundle/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim

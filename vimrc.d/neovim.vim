@@ -20,6 +20,18 @@ if has('nvim')
   "" Close the preview window after completion is done
   autocmd CompleteDone * pclose!
 
+  " LanguageServer
+  let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ }
+  let g:LanguageClient_autoStart = 1
+  let g:LanguageClient_signColumnAlwaysOn = 0
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
   " python-neovim
   let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
   let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
