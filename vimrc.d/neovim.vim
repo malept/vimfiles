@@ -34,6 +34,11 @@ if has('nvim')
   nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
+  " neovim-remote
+  if executable('nvr')
+    let $EDITOR = 'nvr -cc split --remote-wait'
+  endif
+
   " python-neovim
   let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
   let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
