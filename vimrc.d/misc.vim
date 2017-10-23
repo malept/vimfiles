@@ -83,11 +83,20 @@ augroup coffeescript
   autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+"" HTML
+if executable('xmllint')
+  map <Leader>h !xmllint --format --html -<CR>
+endif
+
 "" JavaScript
 augroup javascript
   autocmd!
   autocmd FileType javascript,json setl tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
+
+"" Python: jedi-vim
+let g:jedi#popup_on_dot = 0
+let g:jedi#autocompletion_command = "<C-J>"
 
 "" Ruby: see vimrc.d/ruby.vim
 
@@ -98,10 +107,6 @@ augroup scss
   autocmd!
   autocmd BufNewFile,BufReadPost *.scss setl tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
-
-"" Python: jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#autocompletion_command = "<C-J>"
 
 "" JSON
 
@@ -122,7 +127,9 @@ augroup vimscript
 augroup END
 
 "" XML
-map <Leader>x !xmllint --format -<CR>
+if executable('xmllint')
+  map <Leader>x !xmllint --format -<CR>
+endif
 
 "" YAML
 augroup yaml
