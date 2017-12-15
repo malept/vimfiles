@@ -40,8 +40,15 @@ if has('nvim')
   endif
 
   " python-neovim
-  let g:python_host_prog = $HOME . "/.local/share/virtualenv/neovim/bin/python"
-  let g:python3_host_prog = $HOME . "/.local/share/virtualenv/neovim3/bin/python"
+  let _venv_python2 = expand('~/.local/share/virtualenv/neovim')
+  let _venv_python3 = expand('~/.local/share/virtualenv/neovim3')
+  if isdirectory(_venv_python2)
+    let g:python_host_prog = _venv_python2 . "/bin/python"
+  endif
+  if isdirectory(_venv_python3)
+    let g:python3_host_prog = _venv_python3 . "/bin/python"
+  endif
+  unlet _venv_python2 _venv_python3
 
   " neovim-fuzzy
   nnoremap <C-p> :FuzzyOpen<CR>
