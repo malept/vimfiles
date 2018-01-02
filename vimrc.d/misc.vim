@@ -75,6 +75,10 @@ if !has('gui_running')
   set title
 endif
 
+" character indicators
+set list
+set listchars=tab:»\ ,nbsp:⎵
+
 " language-specific
 
 "" CoffeeScript
