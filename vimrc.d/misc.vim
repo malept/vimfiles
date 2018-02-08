@@ -92,10 +92,10 @@ if executable('xmllint')
   map <Leader>h !xmllint --format --html -<CR>
 endif
 
-"" JavaScript
+"" JavaScript/JSON/TypeScript
 augroup javascript
   autocmd!
-  autocmd FileType javascript,json setl tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType javascript,json,typescript setl tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 "" Python: jedi-vim
