@@ -19,6 +19,7 @@ GLOB_PROFILE_MAP = {
     'bower.json': 'frontend',
     'package.json': 'frontend',
     'app/assets': 'frontend', # Rails
+    'manage.py': 'python', # Django
     'README.rst': 'python',
     'requirements.txt': 'python',
     'setup.py': 'python',
