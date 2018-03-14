@@ -149,6 +149,9 @@ let g:sql_type_default = 'postgresql'
 
 let g:is_bash = 1
 
+" Make current file executable
+map <Leader>X !chmod +x %<CR>
+
 """ .env-*
 autocmd BufRead,BufNewFile .env-* setfiletype sh
 
