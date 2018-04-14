@@ -34,6 +34,15 @@ if has('nvim')
     let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
     let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
   endif
+  if executable('css-languageserver')
+    let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
+  endif
+  if executable('html-languageserver')
+    let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
+  endif
+  if executable('json-languageserver')
+    let g:LanguageClient_serverCommands.json = ['json-languageserver', '--stdio']
+  endif
   let g:LanguageClient_autoStart = 1
   let g:LanguageClient_signColumnAlwaysOn = 0
   nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
