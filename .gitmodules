@@ -43,9 +43,6 @@
 [submodule "vim/bundle/vim-virtualenv"]
 	path = vim/bundle/vim-virtualenv
 	url = git://github.com/jmcantrell/vim-virtualenv.git
-[submodule "vim/bundle/vim-ipython"]
-	path = vim/bundle/vim-ipython
-	url = git://github.com/ivanov/vim-ipython.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
