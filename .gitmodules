@@ -67,9 +67,6 @@
 [submodule "vim/bundle/hardmode"]
 	path = vim/bundle/hardmode
 	url = git://github.com/wikitopian/hardmode.git
-[submodule "vim/bundle/SyntaxComplete"]
-	path = vim/bundle/SyntaxComplete
-	url = git://github.com/vim-scripts/SyntaxComplete.git
 [submodule "vim/bundle/javascript-libraries-syntax.vim"]
 	path = vim/bundle/javascript-libraries-syntax.vim
 	url = git://github.com/othree/javascript-libraries-syntax.vim.git
