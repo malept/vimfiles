@@ -14,7 +14,6 @@ from tempfile import NamedTemporaryFile
 from time import sleep
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROFILES_DIR = os.path.join(BASE_DIR, 'profiles')
 GLOB_PROFILE_MAP = {
     'bower.json': 'frontend',
     'package.json': 'frontend',
@@ -45,41 +44,28 @@ def home_vimdir(vim):
     return vimdir
 
 
-def profile_dirs(profiles):
-    for profile in profiles:
-        yield os.path.join(PROFILES_DIR, profile)
-
-
-def generate_runtimepath(vim,profiles):
+def generate_runtimepath(vim):
     common_vimdirs = [
         '$VIM/vimfiles',
         '$VIMRUNTIME',
-        BASE_DIR,  # for vimrc.d
+        '{}/vimrc.d'.format(BASE_DIR),
         '$VIM/vimfiles/after',
     ]
-    profile_vimdirs = [vdir for vdir in profile_dirs(profiles) if os.path.isdir(vdir)]
-    vimdirs = profile_vimdirs + common_vimdirs
+    vimdirs = common_vimdirs
     return 'set runtimepath={}'.format(','.join(vimdirs))
 
 
-def impl_profiles(vim, profiles):
-    impl = vim_impl(vim)
-    for profile in chain(['common'], profiles):
-        yield [profile, '{}-{}'.format(profile, impl)]
-
-
-def generate_vimrc(vim, profiles):
-    all_profiles = list(chain.from_iterable(impl_profiles(vim, profiles)))
+def generate_vimrc(vim):
     vimrc_d_glob = os.path.join(BASE_DIR, 'vimrc.d', '*.vim')
     vimrc_d_files = [f.replace(os.path.join(BASE_DIR, ''), '')
-                     for f in glob(vimrc_d_glob) if '001-plug' not in f]
-    runtime_vimrc_d = '\n'.join(['runtime {}'.format(f)
+                     for f in glob(vimrc_d_glob)]
+    runtime_vimrc_d = '\n'.join(['runtime {}'.format(os.path.basename(f))
                                  for f in sorted(vimrc_d_files)])
     vimrc = u'''
 runtime vimrc
 {runtimepath}
 {vimrc_d}
-'''.format(runtimepath=generate_runtimepath(vim, all_profiles),
+'''.format(runtimepath=generate_runtimepath(vim),
            vimrc_d=runtime_vimrc_d)
     return vimrc.encode('utf-8')
 
@@ -126,9 +112,9 @@ def set_nvim_environment(environ):
 
 
 @contextmanager
-def generated_vimrc(vim, profiles):
+def generated_vimrc(vim):
     with NamedTemporaryFile() as vimrc:
-        vimrc.write(generate_vimrc(vim, profiles))
+        vimrc.write(generate_vimrc(vim))
         vimrc.flush()
         yield vimrc
 
@@ -149,7 +135,7 @@ def run_vim(prog_name, profiles, vim_args):
         set_rust_src_path(environ)
     if vim == 'nvim':
         set_nvim_environment(environ)
-    with generated_vimrc(vim, profiles) as vimrc:
+    with generated_vimrc(vim) as vimrc:
         retcode = call_vim(vim, vimrc, vim_args, environ)
         if vim.startswith('mvim'):
             # MacVim loads too slowly, the generated vimrc file is deleted
@@ -164,26 +150,10 @@ def detect_profiles():
 
 
 def list_profiles():
-    print('List of profiles (common and common-{vim,nvim} are default):')
+    print('List of profiles:')
     for d in os.listdir(PROFILES_DIR):
         if os.path.isdir(os.path.join(PROFILES_DIR, d)) and not d.endswith(('-vim', '-nvim')):
             print('* {}'.format(d))
-    return 0
-
-
-def list_profileless_bundles():
-    bundle_dir = os.path.join(BASE_DIR, 'vim', 'bundle')
-    all_bundles = [d for d in os.listdir(bundle_dir)
-                   if os.path.isdir(os.path.join(bundle_dir, d))]
-    profile_glob = os.path.join(PROFILES_DIR, '*', 'bundle', '*')
-    bundles_in_profiles = [os.path.basename(l) for l in glob(profile_glob)
-                           if os.path.islink(l)]
-    profileless_bundles = sorted(set(all_bundles) - set(bundles_in_profiles))
-    if len(profileless_bundles) > 0:
-        print('List of bundles not in any profile:')
-        [print('* {}'.format(b)) for b in profileless_bundles]
-    else:
-        print('All bundles are in at least one profile.')
     return 0
 
 
@@ -191,7 +161,7 @@ def main(args):
     prog_name = args[0]
     if len(args) < 1:
         usage_msg = '''\
-Usage: {} (PROFILE_NAMES | --list-profiles | --list-profileless-bundles) \
+Usage: {} (PROFILE_NAMES | --list-profiles) \
 [Vim args...]
 
 Where PROFILE_NAMES is a comma-separated list of profiles to use.
@@ -206,8 +176,6 @@ The "common" profile is enabled by default.
         profiles = detect_profiles()
     if profiles == ['--list-profiles']:
         return list_profiles()
-    elif profiles == ['--list-profileless-bundles']:
-        return list_profileless_bundles()
     else:
         return run_vim(prog_name, profiles, args[2:])
 
