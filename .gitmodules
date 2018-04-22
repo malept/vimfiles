@@ -197,3 +197,6 @@
 [submodule "vim/bundle/typescript-vim"]
 	path = vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule "vim/bundle/vim-plug"]
+	path = vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug

@@ -62,20 +62,6 @@ def generate_runtimepath(vim,profiles):
     return 'set runtimepath={}'.format(','.join(vimdirs))
 
 
-def pathogen_cmds(vim, profiles):
-    bundle_dirs = ["'{}/bundle/{{}}'".format(p) for p in profile_dirs(profiles)]
-    return '''
-if has("mac")
-  set nocp
-endif
-runtime vim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect({bundle_dirs})
-set runtimepath^={home_vimdir}
-Helptags
-'''.format(home_vimdir=home_vimdir(vim),
-           bundle_dirs=','.join(bundle_dirs)).strip()
-
-
 def impl_profiles(vim, profiles):
     impl = vim_impl(vim)
     for profile in chain(['common'], profiles):
@@ -86,16 +72,14 @@ def generate_vimrc(vim, profiles):
     all_profiles = list(chain.from_iterable(impl_profiles(vim, profiles)))
     vimrc_d_glob = os.path.join(BASE_DIR, 'vimrc.d', '*.vim')
     vimrc_d_files = [f.replace(os.path.join(BASE_DIR, ''), '')
-                     for f in glob(vimrc_d_glob) if '001-pathogen' not in f]
+                     for f in glob(vimrc_d_glob) if '001-plug' not in f]
     runtime_vimrc_d = '\n'.join(['runtime {}'.format(f)
                                  for f in sorted(vimrc_d_files)])
     vimrc = u'''
 runtime vimrc
 {runtimepath}
-{pathogen}
 {vimrc_d}
 '''.format(runtimepath=generate_runtimepath(vim, all_profiles),
-           pathogen=pathogen_cmds(vim, all_profiles),
            vimrc_d=runtime_vimrc_d)
     return vimrc.encode('utf-8')
 
