@@ -73,7 +73,7 @@ endif
 if has('nvim')
   call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
   call s:plugify('deoplete-jedi')
-  call s:plugify('LanguageClient-neovim')
+  call s:plugify('LanguageClient-neovim', { 'do': 'bash install.sh' })
   call s:plugify('vim-dispatch-neovim')
 
   if executable('fzy')
