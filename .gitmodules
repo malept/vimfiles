@@ -167,7 +167,7 @@
 [submodule "vim/bundle/LanguageClient-neovim"]
 	path = vim/bundle/LanguageClient-neovim
 	url = https://github.com/autozimu/LanguageClient-neovim
-    branch = next
+	branch = next
 [submodule "vim/bundle/csv.vim"]
 	path = vim/bundle/csv.vim
 	url = https://github.com/chrisbra/csv.vim
