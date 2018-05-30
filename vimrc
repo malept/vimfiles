@@ -7,6 +7,7 @@ let s:curfile = resolve(expand('<sfile>'))
 let s:curfiledir = fnamemodify(s:curfile, ':h')
 " append to runtimepath - syntax from vim-pathogen
 let &rtp .= ',' . s:curfiledir
+let &rtp .= ',' . s:curfiledir . '/vimrc.d'
 unlet s:curfiledir
 unlet s:curfile
 
