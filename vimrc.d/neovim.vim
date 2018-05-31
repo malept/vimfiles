@@ -4,9 +4,12 @@ if has('nvim')
 
   " inccommand (AKA live substitution)
   if exists('&inccommand')
-    " Can't do split until https://github.com/neovim/neovim/issues/5584
-    " is fixed
-    set inccommand=nosplit
+    if has('nvim-0.3')
+      set inccommand=split
+    else
+      " https://github.com/neovim/neovim/issues/5584
+      set inccommand=nosplit
+    endif
   endif
 
   " Neomake
