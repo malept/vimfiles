@@ -31,7 +31,7 @@ if has('nvim')
 
   " LanguageServer
   let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rls'],
     \ }
   if executable('javascript-typescript-langserver')
     let g:LanguageClient_serverCommands.javascript = ['tcp://localhost:2089']
