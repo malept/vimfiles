@@ -71,6 +71,11 @@ map <Leader>Y "+Y
 map <Leader>p "+p
 map <Leader>P "+P
 
+" Tab navigation
+
+map <Leader>tp :tabprev<CR>
+map <Leader>tn :tabnext<CR>
+
 if !has('gui_running')
   set title
 endif
