@@ -126,12 +126,12 @@ def call_vim(vim, vimrc, vim_args, environ):
     return call(cmd, env=environ)
 
 
-def run_vim(prog_name, profiles, vim_args):
+def run_vim(prog_name, vim_args):
     vim = prog_name[:prog_name.index('-')]
     environ = deepcopy(os.environ)
     if find_executable('rvm'):
         set_rvm_libdir(environ)
-    if 'rust' in profiles and 'RUST_SRC_PATH' not in environ:
+    if 'RUST_SRC_PATH' not in environ:
         set_rust_src_path(environ)
     if vim == 'nvim':
         set_nvim_environment(environ)
@@ -144,40 +144,16 @@ def run_vim(prog_name, profiles, vim_args):
         return retcode
 
 
-def detect_profiles():
-    return [profile for suffix, profile in GLOB_PROFILE_MAP.items()
-                    if glob(os.path.join(os.path.curdir, suffix))]
-
-
-def list_profiles():
-    print('List of profiles:')
-    for d in os.listdir(PROFILES_DIR):
-        if os.path.isdir(os.path.join(PROFILES_DIR, d)) and not d.endswith(('-vim', '-nvim')):
-            print('* {}'.format(d))
-    return 0
-
-
 def main(args):
     prog_name = args[0]
     if len(args) < 1:
         usage_msg = '''\
-Usage: {} (PROFILE_NAMES | --list-profiles) \
-[Vim args...]
-
-Where PROFILE_NAMES is a comma-separated list of profiles to use.
-The "common" profile is enabled by default.
+Usage: {} [Vim args...]
 '''.format(prog_name)
         print(usage_msg, file=sys.stderr)
         return 1
     prog_name = os.path.basename(prog_name)
-    if len(args) > 1:
-        profiles = args[1].split(',')
-    else:
-        profiles = detect_profiles()
-    if profiles == ['--list-profiles']:
-        return list_profiles()
-    else:
-        return run_vim(prog_name, profiles, args[2:])
+    return run_vim(prog_name, args[1:])
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))

@@ -10,13 +10,17 @@ fi
 
 bundle_path=vim/bundle/$BUNDLE
 
+if grep -qF "s:plugify('$BUNDLE'" vimrc.d/001-plug.vim; then
+    echo "Remove the new bundle from vimrc.d/001-plug.vim before calling this script" 1>&2
+    exit 1
+else
+    git add vimrc.d/001-plug.vim
+fi
+
 for f in .git/config .gitmodules; do
     git config -f $f --remove-section submodule.$bundle_path
 done
 git add .gitmodules
-if test -n "$(ls profiles/*/$bundle 2>/dev/null)"; then
-    git rm profiles/*/$BUNDLE
-fi
 git rm --cached "$bundle_path"
 git commit -m "Remove the $BUNDLE bundle"
 rm -rf $bundle_path
