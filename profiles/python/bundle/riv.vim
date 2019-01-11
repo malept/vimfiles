@@ -1,1 +1,0 @@
-../../../vim/bundle/riv.vim

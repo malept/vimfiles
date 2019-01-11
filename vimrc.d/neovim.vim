@@ -4,9 +4,12 @@ if has('nvim')
 
   " inccommand (AKA live substitution)
   if exists('&inccommand')
-    " Can't do split until https://github.com/neovim/neovim/issues/5584
-    " is fixed
-    set inccommand=nosplit
+    if has('nvim-0.3')
+      set inccommand=split
+    else
+      " https://github.com/neovim/neovim/issues/5584
+      set inccommand=nosplit
+    endif
   endif
 
   " Neomake
@@ -28,20 +31,23 @@ if has('nvim')
 
   " LanguageServer
   let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rls'],
     \ }
-  if executable('javascript-typescript-stdio')
-    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-    let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+  if executable('javascript-typescript-langserver')
+    let g:LanguageClient_serverCommands.javascript = ['tcp://localhost:2089']
+    let g:LanguageClient_serverCommands.typescript = ['tcp://localhost:2089']
   endif
   if executable('css-languageserver')
-    let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
+    let g:LanguageClient_serverCommands.css = ['tcp://localhost:2090']
   endif
   if executable('html-languageserver')
-    let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
+    let g:LanguageClient_serverCommands.html = ['tcp://localhost:2091']
   endif
   if executable('json-languageserver')
-    let g:LanguageClient_serverCommands.json = ['json-languageserver', '--stdio']
+    let g:LanguageClient_serverCommands.json = ['tcp://localhost:2092']
+  endif
+  if executable('solargraph')
+    let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
   endif
   let g:LanguageClient_autoStart = 1
   let g:LanguageClient_signColumnAlwaysOn = 0
@@ -78,6 +84,8 @@ if has('nvim')
   map <Leader>st :split \| terminal<CR>
   "" Shortcut for :vsp | term
   map <Leader>vt :vertical split \| terminal<CR>
+  "" Shortcut for :tabnew | term
+  map <Leader>tt :tabnew \| terminal<CR>
   "" Disable line numbers
   autocmd TermOpen * setlocal nonumber
 

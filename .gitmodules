@@ -1,9 +1,3 @@
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/vim-gnupg"]
 	path = vim/bundle/vim-gnupg
 	url = git://github.com/jamessan/vim-gnupg.git
@@ -49,9 +43,6 @@
 [submodule "vim/bundle/vim-virtualenv"]
 	path = vim/bundle/vim-virtualenv
 	url = git://github.com/jmcantrell/vim-virtualenv.git
-[submodule "vim/bundle/vim-ipython"]
-	path = vim/bundle/vim-ipython
-	url = git://github.com/ivanov/vim-ipython.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
@@ -70,9 +61,6 @@
 [submodule "vim/bundle/hardmode"]
 	path = vim/bundle/hardmode
 	url = git://github.com/wikitopian/hardmode.git
-[submodule "vim/bundle/SyntaxComplete"]
-	path = vim/bundle/SyntaxComplete
-	url = git://github.com/vim-scripts/SyntaxComplete.git
 [submodule "vim/bundle/javascript-libraries-syntax.vim"]
 	path = vim/bundle/javascript-libraries-syntax.vim
 	url = git://github.com/othree/javascript-libraries-syntax.vim.git
@@ -137,9 +125,6 @@
 [submodule "vim/bundle/vim-toml"]
 	path = vim/bundle/vim-toml
 	url = https://github.com/cespare/vim-toml
-[submodule "vim/bundle/vim-racer"]
-	path = vim/bundle/vim-racer
-	url = https://github.com/racer-rust/vim-racer.git
 [submodule "vim/bundle/vim-dispatch-neovim"]
 	path = vim/bundle/vim-dispatch-neovim
 	url = https://github.com/radenling/vim-dispatch-neovim
@@ -152,12 +137,6 @@
 [submodule "vim/bundle/vim-test"]
 	path = vim/bundle/vim-test
 	url = https://github.com/janko-m/vim-test
-[submodule "vim/bundle/vim-monster"]
-	path = vim/bundle/vim-monster
-	url = https://github.com/osyo-manga/vim-monster
-[submodule "vim/bundle/vimproc.vim"]
-	path = vim/bundle/vimproc.vim
-	url = https://github.com/Shougo/vimproc.vim
 [submodule "vim/bundle/tmux.vim"]
 	path = vim/bundle/tmux.vim
 	url = https://github.com/keith/tmux.vim
@@ -188,6 +167,7 @@
 [submodule "vim/bundle/LanguageClient-neovim"]
 	path = vim/bundle/LanguageClient-neovim
 	url = https://github.com/autozimu/LanguageClient-neovim
+	branch = next
 [submodule "vim/bundle/csv.vim"]
 	path = vim/bundle/csv.vim
 	url = https://github.com/chrisbra/csv.vim
@@ -197,3 +177,9 @@
 [submodule "vim/bundle/typescript-vim"]
 	path = vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule "vim/bundle/vim-plug"]
+	path = vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular
