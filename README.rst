@@ -16,7 +16,7 @@ Installation
 
 To install everything, run the following commands::
 
-    git clone --recursive git://github.com/malept/vimfiles
+    git clone --recursive https://github.com/malept/vimfiles
     cd vimfiles
     for f in vim vimrc gvimrc; do
         ln -s `pwd`/${f} ~/.${f}
@@ -46,27 +46,13 @@ You can update all of the bundles with ``update_bundles.sh``. Usage::
 ``vim-profile``
 ---------------
 
-There is a way to load a subset of bundles by running Vim (or GVim, or
-``view``) with ``vim-profile`` (or ``gvim-profile``, or ``view-profile``,
-respectively). Usage::
+``vim-profile`` handles environment variables before running whichever flavor of Vim/Neovim you wish
+to run.
+Usage::
 
-    vim-profile [comma-separated profile names] [...additional Vim args...]
+    vim-profile [...additional Vim args...]
 
 ``vim-profile`` requires either Python 2.7, or Python 3.3 and above.
-
-Creating a profile
-~~~~~~~~~~~~~~~~~~
-
-A profile folder is a vim folder where subfolders such as ``bundle`` and
-``after`` reside. Symlink everything that you want to include in the profile.
-
-Adding a bundle to an existing profile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``add_bundle.sh`` contains a shortcut for adding a bundle and adding it to one
-or more profiles in the same commit. Run ``add_bundle.sh`` as shown above,
-but first make sure that the environment variable ``PROFILES`` is set to a
-space-separated list of existing profiles to which the bundle should be added.
 
 License
 -------

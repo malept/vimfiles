@@ -6,7 +6,6 @@ from contextlib import contextmanager
 from copy import deepcopy
 from distutils.spawn import find_executable
 from glob import glob
-from itertools import chain
 import os
 from subprocess import call, check_output
 import sys
@@ -14,18 +13,6 @@ from tempfile import NamedTemporaryFile
 from time import sleep
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-GLOB_PROFILE_MAP = {
-    'bower.json': 'frontend',
-    'package.json': 'frontend',
-    'app/assets': 'frontend', # Rails
-    'manage.py': 'python', # Django
-    'README.rst': 'python',
-    'requirements.txt': 'python',
-    'setup.py': 'python',
-    '*.gemspec': 'ruby',
-    'Gemfile': 'ruby',
-    'Cargo.toml': 'rust',
-}
 
 
 def vim_impl(vim):
