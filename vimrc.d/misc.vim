@@ -158,7 +158,7 @@ let g:is_bash = 1
 map <Leader>X !chmod +x %<CR>
 
 """ .env-*
-autocmd BufRead,BufNewFile .env-* setfiletype sh
+autocmd BufRead,BufNewFile .env-*,.env.* setfiletype sh
 
 "" Sieve
 autocmd BufRead,BufNewFile *.sieve setfiletype sieve
