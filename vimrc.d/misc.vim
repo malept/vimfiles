@@ -101,6 +101,7 @@ endif
 augroup javascript
   autocmd!
   autocmd FileType javascript,json,typescript setl tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufWritePre *.js,*.ts undojoin | Neoformat
 augroup END
 
 "" Python: jedi-vim
@@ -211,4 +212,22 @@ if executable($PWD . "/node_modules/.bin/tsc")
 endif
 if executable($PWD . "/node_modules/.bin/tslint")
   let g:neomake_typescript_tslint_exe = $PWD . "/node_modules/.bin/tslint"
+endif
+
+" Neoformat
+
+if executable($PWD . "/node_modules/.bin/prettier")
+  let g:neoformat_javascript_localprettier = {
+    \ 'exe': $PWD . "/node_modules/.bin/prettier",
+    \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
+    \ 'stdin': 1,
+  \ }
+  let g:neoformat_enabled_javascript = ['localprettier']
+
+  let g:neoformat_typescript_localprettier = {
+    \ 'exe': $PWD . "/node_modules/.bin/prettier",
+    \ 'args': ['--stdin', '--stdin-filepath', '"%:p"', '--parser', 'typescript'],
+    \ 'stdin': 1
+  \ }
+  let g:neoformat_enabled_typescript = ['localprettier']
 endif
