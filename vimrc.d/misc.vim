@@ -186,3 +186,29 @@ if executable('rg')
 elseif executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" Neomake
+
+"" From the Neomake README
+function! MyOnBattery()
+  return readfile('/sys/class/power_supply/AC/online') == ['0']
+endfunction
+
+if MyOnBattery()
+  call neomake#configure#automake('w')
+else
+  call neomake#configure#automake('nw', 1000)
+endif
+
+if executable($PWD . "/node_modules/.bin/eslint")
+  let g:neomake_javascript_eslint_exe = $PWD . "/node_modules/.bin/eslint"
+endif
+if executable($PWD . "/node_modules/.bin/standard")
+  let g:neomake_javascript_standard_exe = $PWD . "/node_modules/.bin/standard"
+endif
+if executable($PWD . "/node_modules/.bin/tsc")
+  let g:neomake_typescript_tsc_exe = $PWD . "/node_modules/.bin/tsc"
+endif
+if executable($PWD . "/node_modules/.bin/tslint")
+  let g:neomake_typescript_tslint_exe = $PWD . "/node_modules/.bin/tslint"
+endif

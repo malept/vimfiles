@@ -11,19 +11,6 @@ if has('nvim')
       set inccommand=nosplit
     endif
   endif
-
-  " Neomake
-  autocmd! BufWritePost * Neomake
-  if executable($PWD . "/node_modules/.bin/eslint")
-    let g:neomake_javascript_eslint_exe = $PWD . "/node_modules/.bin/eslint"
-  endif
-  if executable($PWD . "/node_modules/.bin/tsc")
-    let g:neomake_typescript_tsc_exe = $PWD . "/node_modules/.bin/tsc"
-  endif
-  if executable($PWD . "/node_modules/.bin/tslint")
-    let g:neomake_typescript_tslint_exe = $PWD . "/node_modules/.bin/tslint"
-  endif
-
   " Deoplete
   let g:deoplete#enable_at_startup = 1
   "" Close the preview window after completion is done
