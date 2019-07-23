@@ -190,12 +190,13 @@ endif
 
 " Neomake
 
-"" From the Neomake README
-function! MyOnBattery()
-  return readfile('/sys/class/power_supply/AC/online') == ['0']
+"" Based on the Neomake README
+function! NeomakeOnBattery()
+  let ac_file = '/sys/class/power_supply/AC/online'
+  return filereadable(ac_file) && readfile(ac_file) == ['0']
 endfunction
 
-if MyOnBattery()
+if NeomakeOnBattery()
   call neomake#configure#automake('w')
 else
   call neomake#configure#automake('nw', 1000)
