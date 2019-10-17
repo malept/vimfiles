@@ -151,7 +151,7 @@
 	url = https://github.com/tpope/vim-obsession
 [submodule "vim/bundle/gruvbox"]
 	path = vim/bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox
 [submodule "vim/bundle/vim-endwise"]
 	path = vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise
