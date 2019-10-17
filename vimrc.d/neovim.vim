@@ -59,7 +59,9 @@ if has('nvim')
   unlet _venv_python2 _venv_python3
 
   " neovim-fuzzy
-  nnoremap <C-p> :FuzzyOpen<CR>
+  if executable('fzy')
+    nnoremap <C-p> :FuzzyOpen<CR>
+  endif
 
   " Terminal
   "" Max out the terminal scrollback buffer
