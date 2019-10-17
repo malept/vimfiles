@@ -4,7 +4,7 @@ let s:bundledir = expand("<sfile>:p:h:h") . '/vim/bundle/'
 
 call plug#begin()
 
-function s:plugify(name, ...)
+function! s:plugify(name, ...)
   let s:pluginpath = s:bundledir . a:name
   if len(a:000) > 0
     call plug#(s:pluginpath, a:000[0])

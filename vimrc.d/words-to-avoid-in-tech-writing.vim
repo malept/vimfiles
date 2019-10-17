@@ -10,7 +10,7 @@
 " (License: unknown)
 " Source URL: https://github.com/pengwynn/dotfiles/commit/12159ea2
 
-function MatchTechWordsToAvoid()
+function! MatchTechWordsToAvoid()
   highlight TechWordsToAvoid ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
   2match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
 endfunction
