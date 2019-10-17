@@ -187,8 +187,14 @@ endif
 
 "" Based on the Neomake README
 function! NeomakeOnBattery()
-  let ac_file = '/sys/class/power_supply/AC/online'
-  return filereadable(ac_file) && readfile(ac_file) == ['0']
+  if has('macunix')
+    return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
+  elsif has('unix')
+    let ac_file = '/sys/class/power_supply/AC/online'
+    return filereadable(ac_file) && readfile(ac_file) == ['0']
+  endif
+
+  return 0
 endfunction
 
 if NeomakeOnBattery()
