@@ -58,6 +58,10 @@ if has('nvim')
   endif
   unlet _venv_python2 _venv_python3
 
+  if has('nvim-0.4.0')
+    lua require'colorizer'.setup()
+  endif
+
   " neovim-fuzzy
   if executable('fzy')
     nnoremap <C-p> :FuzzyOpen<CR>

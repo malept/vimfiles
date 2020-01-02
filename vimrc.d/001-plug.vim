@@ -37,7 +37,6 @@ call s:plugify('vim-bundler')
 call s:plugify('vim-coffee-script')
 call s:plugify('vim-commentary')
 call s:plugify('vim-css3-syntax')
-call s:plugify('vim-css-color')
 call s:plugify('vim-dispatch')
 call s:plugify('vim-endwise')
 call s:plugify('vim-fugitive')
@@ -86,6 +85,12 @@ else
   call s:plugify('jedi-vim')
   call s:plugify('vim-sensible')
 end
+
+if has('nvim-0.4.0')
+  call s:plugify('nvim-colorizer.lua')
+else
+  call s:plugify('vim-css-color')
+endif
 
 call plug#end()
 
