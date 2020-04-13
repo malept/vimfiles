@@ -14,6 +14,9 @@ set backupdir=~/.local/share/vim/backup/
 "" swap files
 set directory=~/.local/share/vim/swap/
 
+"" session dir for vim-prosession
+let g:prosession_dir = '~/.local/share/vim/session/'
+
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")

@@ -192,3 +192,6 @@
 [submodule "vim/bundle/nvim-colorizer.lua"]
 	path = vim/bundle/nvim-colorizer.lua
 	url = https://github.com/norcalli/nvim-colorizer.lua
+[submodule "vim/bundle/vim-prosession"]
+	path = vim/bundle/vim-prosession
+	url = https://github.com/dhruvasagar/vim-prosession
