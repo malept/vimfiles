@@ -195,3 +195,6 @@
 [submodule "vim/bundle/vim-prosession"]
 	path = vim/bundle/vim-prosession
 	url = https://github.com/dhruvasagar/vim-prosession
+[submodule "vim/bundle/vim-jsonnet"]
+	path = vim/bundle/vim-jsonnet
+	url = https://github.com/google/vim-jsonnet
