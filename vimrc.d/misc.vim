@@ -74,6 +74,12 @@ map <Leader>Y "+Y
 map <Leader>p "+p
 map <Leader>P "+P
 
+" WSL clipboard, see:
+" https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+if executable('win32yank.exe')
+  set clipboard=unnamedplus
+endif
+
 if !has('gui_running')
   set title
 endif
