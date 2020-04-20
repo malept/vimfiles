@@ -74,6 +74,10 @@ if executable('rvm')
   call s:plugify('vim-rvm')
 endif
 
+if executable('sk')
+  call s:plugify('skim')
+endif
+
 if has('nvim')
   call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
   call s:plugify('deoplete-jedi')

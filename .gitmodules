@@ -198,3 +198,6 @@
 [submodule "vim/bundle/vim-jsonnet"]
 	path = vim/bundle/vim-jsonnet
 	url = https://github.com/google/vim-jsonnet
+[submodule "vim/bundle/skim"]
+	path = vim/bundle/skim
+	url = https://github.com/lotabout/skim
