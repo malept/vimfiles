@@ -242,3 +242,8 @@ if executable($PWD . "/node_modules/.bin/prettier")
   \ }
   let g:neoformat_enabled_typescript = ['localprettier']
 endif
+
+" Skim
+if executable('sk')
+  nnoremap <C-p> :Files<CR>
+endif
