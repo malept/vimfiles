@@ -76,6 +76,7 @@ endif
 
 if executable('sk')
   call s:plugify('skim')
+  call s:plugify('skim.vim')
 endif
 
 if has('nvim')

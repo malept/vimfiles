@@ -201,3 +201,6 @@
 [submodule "vim/bundle/skim"]
 	path = vim/bundle/skim
 	url = https://github.com/lotabout/skim
+[submodule "vim/bundle/skim.vim"]
+	path = vim/bundle/skim.vim
+	url = https://github.com/lotabout/skim.vim
