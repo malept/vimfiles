@@ -42,6 +42,12 @@ if has('nvim')
   nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
+  if executable('gopls')
+    let g:LanguageClient_serverCommands.go = ['gopls']
+    " Disable gopls with vim-go
+    let g:go_gopls_enabled = 0
+  endif
+
   " neovim-remote
   if executable('nvr')
     let $EDITOR = 'nvr -cc split --remote-wait'
