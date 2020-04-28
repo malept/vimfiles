@@ -34,7 +34,7 @@ if has('nvim')
     let g:LanguageClient_serverCommands.json = ['tcp://localhost:2092']
   endif
   if executable('solargraph')
-    let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
+    let g:LanguageClient_serverCommands.ruby = ['solargraph', 'stdio']
   endif
   let g:LanguageClient_autoStart = 1
   let g:LanguageClient_signColumnAlwaysOn = 0
