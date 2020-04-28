@@ -4,7 +4,6 @@ from __future__ import print_function
 
 from contextlib import contextmanager
 from copy import deepcopy
-from distutils.spawn import find_executable
 from glob import glob
 import os
 from subprocess import call, check_output
@@ -49,13 +48,6 @@ def get_rust_src():
     sysroot = run_cmd('rustc --print sysroot')
     return os.path.join(sysroot, 'lib', 'rustlib', 'src', 'rust', 'src')
 
-def set_rvm_libdir(environ):
-    rvm_libdir = run_cmd('rvm config-get libdir')
-    if 'LD_LIBRARY_PATH' in environ:
-        environ['LD_LIBRARY_PATH'] += os.pathsep + rvm_libdir
-    else:
-        environ['LD_LIBRARY_PATH'] = rvm_libdir
-
 
 def set_rust_src_path(environ):
     default_rust_src_path = get_rust_src()
@@ -94,8 +86,6 @@ def call_vim(vim, vimrc, vim_args, environ):
 def run_vim(prog_name, vim_args):
     vim = prog_name[:prog_name.index('-')]
     environ = deepcopy(os.environ)
-    if find_executable('rvm'):
-        set_rvm_libdir(environ)
     if 'RUST_SRC_PATH' not in environ:
         set_rust_src_path(environ)
     if vim == 'nvim':
@@ -119,6 +109,7 @@ Usage: {} [Vim args...]
         return 1
     prog_name = os.path.basename(prog_name)
     return run_vim(prog_name, args[1:])
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
