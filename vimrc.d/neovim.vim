@@ -51,6 +51,8 @@ if has('nvim')
   " neovim-remote
   if executable('nvr')
     let $EDITOR = 'nvr -cc split --remote-wait'
+  else
+    let $EDITOR = 'nvim'
   endif
 
   " python-neovim

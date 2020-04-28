@@ -45,7 +45,6 @@ def run_cmd(cmd):
 
 
 def set_nvim_environment(environ):
-    environ['EDITOR'] = 'nvim'
     # Needed for truecolor support
     if 'TMUX' in environ:
         ncurses_version = run_cmd('reset -V').split(' ', 2)[1]
