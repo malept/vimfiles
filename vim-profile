@@ -15,22 +15,6 @@ from time import sleep
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-def vim_impl(vim):
-    if vim == 'nvim':
-        return 'nvim'
-    else:
-        return 'vim'
-
-
-def home_vimdir(vim):
-    vim_folder = vim_impl(vim)
-    cfg = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
-    vimdir = os.path.join(cfg, vim_folder)
-    if not os.path.exists(vimdir):
-        os.makedirs(vimdir)
-    return vimdir
-
-
 def generate_runtimepath(vim):
     common_vimdirs = [
         '$VIM/vimfiles',
