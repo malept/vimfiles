@@ -44,17 +44,6 @@ def run_cmd(cmd):
     return str(check_output(cmd, shell=True).strip())
 
 
-def get_rust_src():
-    sysroot = run_cmd('rustc --print sysroot')
-    return os.path.join(sysroot, 'lib', 'rustlib', 'src', 'rust', 'src')
-
-
-def set_rust_src_path(environ):
-    default_rust_src_path = get_rust_src()
-    if os.path.isdir(default_rust_src_path):
-        environ['RUST_SRC_PATH'] = default_rust_src_path
-
-
 def set_nvim_environment(environ):
     environ['EDITOR'] = 'nvim'
     # Needed for truecolor support
@@ -86,8 +75,6 @@ def call_vim(vim, vimrc, vim_args, environ):
 def run_vim(prog_name, vim_args):
     vim = prog_name[:prog_name.index('-')]
     environ = deepcopy(os.environ)
-    if 'RUST_SRC_PATH' not in environ:
-        set_rust_src_path(environ)
     if vim == 'nvim':
         set_nvim_environment(environ)
     with generated_vimrc(vim) as vimrc:
