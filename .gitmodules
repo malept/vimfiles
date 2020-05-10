@@ -207,3 +207,6 @@
 [submodule "vim/bundle/vim-slim"]
 	path = vim/bundle/vim-slim
 	url = https://github.com/slim-template/vim-slim
+[submodule "vim/bundle/nvim-lsp"]
+	path = vim/bundle/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp
