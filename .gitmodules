@@ -210,3 +210,6 @@
 [submodule "vim/bundle/nvim-lsp"]
 	path = vim/bundle/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
+[submodule "vim/bundle/completion-nvim"]
+	path = vim/bundle/completion-nvim
+	url = https://github.com/haorenW1025/completion-nvim
