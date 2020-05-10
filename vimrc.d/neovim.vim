@@ -13,33 +13,34 @@ if has('nvim')
   endif
 
   if has('nvim-0.5')
-    lua <<
-      local lsp = require'nvim_lsp'
-      lsp.cssls.setup{}
-      lsp.gopls.setup{}
-      lsp.html.setup{}
-      lsp.jsonls.setup{}
-      lsp.rust_analyzer.setup{}
-      lsp.solargraph.setup{}
-      lsp.tsserver.setup{}
-      lsp.vimls.setup{}
-.
-    " Use completion-nvim in every buffer if built with Lua 5.2+
     lua << EOF
-      local lua_version = tonumber(string.match(_VERSION, "%d+%.%d+"))
-      if lua_version < 5.2 then
-        print("completion-nvim needs Lua 5.2+, skipping")
-      else
-        vim.cmd("BufEnter * lua require'completion'.on_attach()")
-        -- Recommended completion-nvim settings
-        -- * Use <Tab> and <S-Tab> to navigate through popup menu
-        vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
-        vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
-        -- * Set completeopt to have a better completion experience
-        vim.cmd('set completeopt=menuone,noinsert,noselect')
+      -- Use completion-nvim if built with Lua 5.2+
+      local on_attach = function()
+        local lua_version = tonumber(string.match(_VERSION, "%d+%.%d+"))
+        if lua_version < 5.2 then
+          print("completion-nvim needs Lua 5.2+, skipping")
+        else
+          require'completion'.on_attach()
+          -- Recommended completion-nvim settings
+          -- * Use <Tab> and <S-Tab> to navigate through popup menu
+          vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
+          vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
+          -- * Set completeopt to have a better completion experience
+          vim.cmd('set completeopt=menuone,noinsert,noselect')
 
-        -- * Avoid showing message extra message when using completion
-        vim.cmd('set shortmess+=c')
+          -- * Avoid showing message extra message when using completion
+          vim.cmd('set shortmess+=c')
+        end
+
+        require'diagnostic'.on_attach()
+      end
+
+      local lsp = require'nvim_lsp'
+      local lang_servers = {'cssls', 'gopls', 'html', 'jsonls', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
+      for _, ls in ipairs(lang_servers) do
+        lsp[ls].setup {
+          on_attach = on_attach,
+        }
       end
 EOF
 
