@@ -22,7 +22,6 @@ call s:plugify('html5.vim')
 call s:plugify('javascript-libraries-syntax.vim')
 call s:plugify('muzzl.vim')
 call s:plugify('neoformat')
-call s:plugify('neomake')
 call s:plugify('nginx.vim')
 call s:plugify('phpfolding.vim', { 'for': 'php' })
 call s:plugify('Recover.vim')
@@ -80,15 +79,21 @@ if executable('sk')
   call s:plugify('skim.vim')
 endif
 
-if has('nvim')
-  if has('nvim-0.5')
-    call s:plugify('completion-nvim')
-    call s:plugify('nvim-lsp')
-  else
+if has('nvim-0.5')
+  call s:plugify('completion-nvim')
+  call s:plugify('diagnostic-nvim')
+  call s:plugify('nvim-lsp')
+else
+  call s:plugify('neomake')
+
+  if has('nvim')
     call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
     call s:plugify('deoplete-jedi')
     call s:plugify('LanguageClient-neovim', { 'do': 'bash install.sh' })
   endif
+endif
+
+if has('nvim')
   call s:plugify('vim-dispatch-neovim')
 
   if executable('fzy')

@@ -42,6 +42,9 @@ if has('nvim')
         vim.cmd('set shortmess+=c')
       end
 EOF
+
+    " diagnostic-nvim
+    let g:diagnostic_enable_virtual_text = 1
   else
     " Deoplete
     let g:deoplete#enable_at_startup = 1

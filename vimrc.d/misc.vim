@@ -192,37 +192,38 @@ elseif executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" Neomake
+if !has('nvim-0.5')
+  " Neomake
+  "" Based on the Neomake README
+  function! NeomakeOnBattery()
+    if has('macunix')
+      return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
+    elseif has('unix')
+      let ac_file = '/sys/class/power_supply/AC/online'
+      return filereadable(ac_file) && readfile(ac_file) == ['0']
+    endif
 
-"" Based on the Neomake README
-function! NeomakeOnBattery()
-  if has('macunix')
-    return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
-  elsif has('unix')
-    let ac_file = '/sys/class/power_supply/AC/online'
-    return filereadable(ac_file) && readfile(ac_file) == ['0']
+    return 0
+  endfunction
+
+  if NeomakeOnBattery()
+    call neomake#configure#automake('w')
+  else
+    call neomake#configure#automake('nw', 1000)
   endif
 
-  return 0
-endfunction
-
-if NeomakeOnBattery()
-  call neomake#configure#automake('w')
-else
-  call neomake#configure#automake('nw', 1000)
-endif
-
-if executable($PWD . "/node_modules/.bin/eslint")
-  let g:neomake_javascript_eslint_exe = $PWD . "/node_modules/.bin/eslint"
-endif
-if executable($PWD . "/node_modules/.bin/standard")
-  let g:neomake_javascript_standard_exe = $PWD . "/node_modules/.bin/standard"
-endif
-if executable($PWD . "/node_modules/.bin/tsc")
-  let g:neomake_typescript_tsc_exe = $PWD . "/node_modules/.bin/tsc"
-endif
-if executable($PWD . "/node_modules/.bin/tslint")
-  let g:neomake_typescript_tslint_exe = $PWD . "/node_modules/.bin/tslint"
+  if executable($PWD . "/node_modules/.bin/eslint")
+    let g:neomake_javascript_eslint_exe = $PWD . "/node_modules/.bin/eslint"
+  endif
+  if executable($PWD . "/node_modules/.bin/standard")
+    let g:neomake_javascript_standard_exe = $PWD . "/node_modules/.bin/standard"
+  endif
+  if executable($PWD . "/node_modules/.bin/tsc")
+    let g:neomake_typescript_tsc_exe = $PWD . "/node_modules/.bin/tsc"
+  endif
+  if executable($PWD . "/node_modules/.bin/tslint")
+    let g:neomake_typescript_tslint_exe = $PWD . "/node_modules/.bin/tslint"
+  endif
 endif
 
 " Neoformat

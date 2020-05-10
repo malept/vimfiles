@@ -213,3 +213,6 @@
 [submodule "vim/bundle/completion-nvim"]
 	path = vim/bundle/completion-nvim
 	url = https://github.com/haorenW1025/completion-nvim
+[submodule "vim/bundle/diagnostic-nvim"]
+	path = vim/bundle/diagnostic-nvim
+	url = https://github.com/haorenW1025/diagnostic-nvim
