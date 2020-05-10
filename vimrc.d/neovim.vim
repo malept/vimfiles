@@ -67,7 +67,12 @@ if has('nvim')
   unlet _venv_python2 _venv_python3
 
   if has('nvim-0.4.0')
-    lua require'colorizer'.setup()
+    " https://github.com/norcalli/nvim-colorizer.lua/issues/30#issuecomment-619939313
+    lua <<
+      if jit ~= nil then
+        require'colorizer'.setup()
+      end
+.
   endif
 
   " neovim-fuzzy
