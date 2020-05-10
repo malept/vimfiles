@@ -24,19 +24,24 @@ if has('nvim')
       lsp.tsserver.setup{}
       lsp.vimls.setup{}
 .
-    " Use completion-nvim in every buffer
-    autocmd BufEnter * lua require'completion'.on_attach()
+    " Use completion-nvim in every buffer if built with Lua 5.2+
+    lua << EOF
+      local lua_version = tonumber(string.match(_VERSION, "%d+%.%d+"))
+      if lua_version < 5.2 then
+        print("completion-nvim needs Lua 5.2+, skipping")
+      else
+        vim.cmd("BufEnter * lua require'completion'.on_attach()")
+        -- Recommended completion-nvim settings
+        -- * Use <Tab> and <S-Tab> to navigate through popup menu
+        vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
+        vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
+        -- * Set completeopt to have a better completion experience
+        vim.cmd('set completeopt=menuone,noinsert,noselect')
 
-    " Recommended completion-nvim settings
-    " Use <Tab> and <S-Tab> to navigate through popup menu
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-    " Set completeopt to have a better completion experience
-    set completeopt=menuone,noinsert,noselect
-
-    " Avoid showing message extra message when using completion
-    set shortmess+=c
+        -- * Avoid showing message extra message when using completion
+        vim.cmd('set shortmess+=c')
+      end
+EOF
   else
     " Deoplete
     let g:deoplete#enable_at_startup = 1
