@@ -1,8 +1,3 @@
-augroup ruby
-  autocmd!
-  autocmd FileType ruby,eruby setl tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
-
 let g:ruby_debugger_fast_sender = 1
 let g:ruby_indent_access_modifier_style = 'indent'
 let g:ruby_indent_assignment_style = 'variable'

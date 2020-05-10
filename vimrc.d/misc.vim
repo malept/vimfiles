@@ -1,8 +1,8 @@
 " code style
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set number " line numbers
 set smartindent
 set formatoptions=tcroqn " see :help fo-table for option explanations
@@ -93,7 +93,7 @@ set listchars=tab:»\ ,nbsp:⎵
 "" CoffeeScript
 augroup coffeescript
   autocmd!
-  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 augroup END
 
 "" HTML
@@ -104,7 +104,6 @@ endif
 "" JavaScript/JSON/TypeScript
 augroup javascript
   autocmd!
-  autocmd FileType javascript,json,typescript setl tabstop=2 softtabstop=2 shiftwidth=2
   autocmd BufWritePre *.js,*.ts undojoin | Neoformat
 augroup END
 
@@ -116,14 +115,12 @@ let g:jedi#autocompletion_command = "<C-J>"
 
 "" Rust: see vimrc.d/rust.vim
 
-"" SCSS
-augroup scss
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.scss setl tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
-
 "" JSON
 
+augroup python
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.py setl tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 " Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 map <Leader>j !python -m json.tool<CR>
 
@@ -133,23 +130,10 @@ augroup text
   autocmd BufNewFile,BufReadPost *.md,*.rst,*.txt setl spell colorcolumn=100 textwidth=100 linebreak
 augroup END
 
-"" VimScript
-
-augroup vimscript
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.vim setl tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
-
 "" XML
 if executable('xmllint')
   map <Leader>x !xmllint --format -<CR>
 endif
-
-"" YAML
-augroup yaml
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.yml setl tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
 
 "" SQL
 
