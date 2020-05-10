@@ -12,11 +12,6 @@ if has('nvim')
     endif
   endif
 
-  " Deoplete
-  let g:deoplete#enable_at_startup = 1
-  "" Close the preview window after completion is done
-  autocmd CompleteDone * pclose!
-
   if has('nvim-0.5')
     lua <<
       local lsp = require'nvim_lsp'
@@ -43,6 +38,11 @@ if has('nvim')
     " Avoid showing message extra message when using completion
     set shortmess+=c
   else
+    " Deoplete
+    let g:deoplete#enable_at_startup = 1
+    "" Close the preview window after completion is done
+    autocmd CompleteDone * pclose!
+
     " LanguageServer
     let g:LanguageClient_serverCommands = {
       \ 'rust': ['rls'],
