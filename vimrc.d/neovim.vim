@@ -16,21 +16,16 @@ if has('nvim')
     lua << EOF
       -- Use completion-nvim if built with Lua 5.2+
       local on_attach = function()
-        local lua_version = tonumber(string.match(_VERSION, "%d+%.%d+"))
-        if lua_version < 5.2 then
-          print("completion-nvim needs Lua 5.2+, skipping")
-        else
-          require'completion'.on_attach()
-          -- Recommended completion-nvim settings
-          -- * Use <Tab> and <S-Tab> to navigate through popup menu
-          vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
-          vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
-          -- * Set completeopt to have a better completion experience
-          vim.cmd('set completeopt=menuone,noinsert,noselect')
+        require'completion'.on_attach()
+        -- Recommended completion-nvim settings
+        -- * Use <Tab> and <S-Tab> to navigate through popup menu
+        vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
+        vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
+        -- * Set completeopt to have a better completion experience
+        vim.cmd('set completeopt=menuone,noinsert,noselect')
 
-          -- * Avoid showing message extra message when using completion
-          vim.cmd('set shortmess+=c')
-        end
+        -- * Avoid showing message extra message when using completion
+        vim.cmd('set shortmess+=c')
 
         require'diagnostic'.on_attach()
       end
