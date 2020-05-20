@@ -18,9 +18,11 @@ To install everything, run the following commands::
 
     git clone --recursive https://github.com/malept/vimfiles
     cd vimfiles
-    for f in vim vimrc gvimrc; do
+    for f in vimrc gvimrc; do
         ln -s `pwd`/${f} ~/.${f}
     done
+    mkdir -p ~/.config/nvim
+    ln -s `pwd`/vimrc ~/.config/nvim/init.vim
 
 Partial installation is left as an exercise to the reader.
 
@@ -42,17 +44,6 @@ Updating bundles
 You can update all of the bundles with ``update_bundles.sh``. Usage::
 
     ./update_bundles.sh
-
-``vim-profile``
----------------
-
-``vim-profile`` handles environment variables before running whichever flavor of Vim/Neovim you wish
-to run.
-Usage::
-
-    vim-profile [...additional Vim args...]
-
-``vim-profile`` requires either Python 2.7, or Python 3.3 and above.
 
 License
 -------
