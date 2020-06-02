@@ -17,16 +17,6 @@ if has('nvim')
       -- Use completion-nvim if built with Lua 5.2+
       local on_attach = function()
         require'completion'.on_attach()
-        -- Recommended completion-nvim settings
-        -- * Use <Tab> and <S-Tab> to navigate through popup menu
-        vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"')
-        vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"')
-        -- * Set completeopt to have a better completion experience
-        vim.cmd('set completeopt=menuone,noinsert,noselect')
-
-        -- * Avoid showing message extra message when using completion
-        vim.cmd('set shortmess+=c')
-
         require'diagnostic'.on_attach()
       end
 
@@ -38,6 +28,15 @@ if has('nvim')
         }
       end
 EOF
+    " Recommended completion-nvim settings
+    " * Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " * Set completeopt to have a better completion experience
+    set completeopt=menuone,noinsert,noselect
+
+    " * Avoid showing message extra message when using completion
+    set shortmess+=c
 
     " diagnostic-nvim
     let g:diagnostic_enable_virtual_text = 1
