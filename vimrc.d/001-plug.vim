@@ -36,13 +36,10 @@ call s:plugify('vim-bundler')
 call s:plugify('vim-coffee-script')
 call s:plugify('vim-commentary')
 call s:plugify('vim-css3-syntax')
-call s:plugify('vim-dispatch')
 call s:plugify('vim-endwise')
-call s:plugify('vim-fugitive')
 call s:plugify('vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' })
 call s:plugify('vim-gnupg')
 call s:plugify('vim-haml')
-call s:plugify('vim-indent-guides')
 call s:plugify('vim-javascript')
 call s:plugify('Vim-Jinja2-Syntax')
 call s:plugify('vim-json')
@@ -58,7 +55,6 @@ call s:plugify('vim-ruby')
 call s:plugify('vim-ruby-refactoring', { 'for': 'ruby' })
 call s:plugify('vim-slim')
 call s:plugify('vim-surround')
-call s:plugify('vim-test')
 call s:plugify('vim-toml')
 call s:plugify('vim-trailing-whitespace')
 call s:plugify('vim-vala')
@@ -74,35 +70,46 @@ if executable('rvm')
   call s:plugify('vim-rvm')
 endif
 
-if executable('sk')
-  call s:plugify('skim')
-  call s:plugify('skim.vim')
-endif
+if !exists('g:vscode')
+  call s:plugify('editorconfig-vim')
+  call s:plugify('vim-dispatch')
+  call s:plugify('vim-fugitive')
+  call s:plugify('vim-indent-guides')
+  call s:plugify('vim-test')
 
-if has('nvim-0.5')
-  call s:plugify('completion-nvim')
-  call s:plugify('diagnostic-nvim')
-  call s:plugify('nvim-lsp')
-else
-  call s:plugify('neomake')
+  if executable('sk')
+    call s:plugify('skim')
+    call s:plugify('skim.vim')
+  endif
+
+  if has('nvim-0.5')
+    call s:plugify('completion-nvim')
+    call s:plugify('diagnostic-nvim')
+    call s:plugify('nvim-lsp')
+  else
+    call s:plugify('neomake')
+
+    if has('nvim')
+      call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
+      call s:plugify('deoplete-jedi')
+      call s:plugify('LanguageClient-neovim', { 'do': 'bash install.sh' })
+    endif
+  endif
 
   if has('nvim')
-    call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
-    call s:plugify('deoplete-jedi')
-    call s:plugify('LanguageClient-neovim', { 'do': 'bash install.sh' })
-  endif
+    call s:plugify('vim-dispatch-neovim')
+
+    if executable('fzy')
+      call s:plugify('neovim-fuzzy')
+    endif
+  else
+    call s:plugify('jedi-vim')
+  end
 endif
 
-if has('nvim')
-  call s:plugify('vim-dispatch-neovim')
-
-  if executable('fzy')
-    call s:plugify('neovim-fuzzy')
-  endif
-else
-  call s:plugify('jedi-vim')
+if !has('nvim')
   call s:plugify('vim-sensible')
-end
+endif
 
 if has('nvim-0.4.0')
   call s:plugify('nvim-colorizer.lua')
