@@ -228,6 +228,18 @@ if executable($PWD . "/node_modules/.bin/prettier")
   let g:neoformat_enabled_typescript = ['localprettier']
 endif
 
+"" shfmt
+if executable($PWD . "")
+  let g:neoformat_shell_localshfmt = {
+    \ 'exe': $PWD . "/scripts/shfmt.sh",
+    \ 'args': [],
+    \ 'stdin': 1
+  \ }
+  let g:neoformat_enabled_sh = ['localshfmt']
+else
+  let g:shfmt_opt = "-i 2"
+endif
+
 " Skim
 if executable('sk')
   nnoremap <C-p> :Files<CR>
