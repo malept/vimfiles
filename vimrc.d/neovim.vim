@@ -14,21 +14,7 @@ if has('nvim')
 
   if !exists('g:vscode')
     if has('nvim-0.5')
-      lua << EOF
-        -- Use completion-nvim if built with Lua 5.2+
-        local on_attach = function()
-          require'completion'.on_attach()
-          require'diagnostic'.on_attach()
-        end
-
-        local lsp = require'nvim_lsp'
-        local lang_servers = {'cssls', 'gopls', 'html', 'jsonls', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
-        for _, ls in ipairs(lang_servers) do
-          lsp[ls].setup {
-            on_attach = on_attach,
-          }
-        end
-EOF
+      lua require('lspcompletion')
       " Recommended completion-nvim settings
       " * Use <Tab> and <S-Tab> to navigate through popup menu
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -104,11 +90,7 @@ EOF
 
   if has('nvim-0.4.0')
     " https://github.com/norcalli/nvim-colorizer.lua/issues/30#issuecomment-619939313
-    lua <<
-      if jit ~= nil then
-        require'colorizer'.setup()
-      end
-.
+    lua require('setupcolorizer')
   endif
 
   " neovim-fuzzy
