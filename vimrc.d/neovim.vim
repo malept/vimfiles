@@ -25,8 +25,6 @@ if has('nvim')
       " * Avoid showing message extra message when using completion
       set shortmess+=c
 
-      " diagnostic-nvim
-      let g:diagnostic_enable_virtual_text = 1
     else
       " Deoplete
       let g:deoplete#enable_at_startup = 1

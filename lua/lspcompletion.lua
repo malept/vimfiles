@@ -1,7 +1,6 @@
 -- Use completion-nvim if built with Lua 5.2+
 local on_attach = function()
   require'completion'.on_attach()
-  require'diagnostic'.on_attach()
 end
 
 local lsp = require'nvim_lsp'

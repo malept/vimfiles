@@ -84,7 +84,6 @@ if !exists('g:vscode')
 
   if has('nvim-0.5')
     call s:plugify('completion-nvim')
-    call s:plugify('diagnostic-nvim')
     call s:plugify('nvim-lsp')
   else
     call s:plugify('neomake')
