@@ -229,7 +229,7 @@ if executable($PWD . "/node_modules/.bin/prettier")
 endif
 
 "" shfmt
-if executable($PWD . "")
+if executable($PWD . "/scripts/shfmt.sh")
   let g:neoformat_shell_localshfmt = {
     \ 'exe': $PWD . "/scripts/shfmt.sh",
     \ 'args': [],
