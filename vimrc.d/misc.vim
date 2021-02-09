@@ -50,15 +50,17 @@ set wildmode=longest,list,full
 
 " theme
 set background=dark
-if has("termguicolors")
-  set termguicolors
-  let g:gruvbox_italic = 1
-  let g:gruvbox_contrast_dark = 'hard'
-  colorscheme gruvbox
-elseif findfile("colors/muzzl.vim", &rtp) == ""
-  colorscheme darkblue
-else
-  colorscheme muzzl
+if !exists("g:vscode")
+  if has("termguicolors")
+    set termguicolors
+    let g:gruvbox_italic = 1
+    let g:gruvbox_contrast_dark = 'hard'
+    colorscheme gruvbox
+  elseif findfile("colors/muzzl.vim", &rtp) == ""
+    colorscheme darkblue
+  else
+    colorscheme muzzl
+  endif
 endif
 
 " From: https://bitbucket.org/sjl/dotfiles/src/e6f6389/vim/vimrc#cl-233

@@ -86,7 +86,7 @@ if has('nvim')
   endif
   unlet _venv_python2 _venv_python3
 
-  if has('nvim-0.4.0')
+  if has('nvim-0.4.0') && !exists("g:vscode")
     " https://github.com/norcalli/nvim-colorizer.lua/issues/30#issuecomment-619939313
     lua require('setupcolorizer')
   endif
