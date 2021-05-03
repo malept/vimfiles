@@ -76,16 +76,19 @@ if !exists('g:vscode')
     call s:plugify('vim-rvm')
   endif
 
-  if executable('sk')
-    call s:plugify('skim')
-    call s:plugify('skim.vim')
-  endif
-
   if has('nvim-0.5')
     call s:plugify('completion-nvim')
     call s:plugify('nvim-lsp')
+    call s:plugify('popup.nvim')
+    call s:plugify('plenary.nvim')
+    call s:plugify('telescope.nvim')
   else
     call s:plugify('neomake')
+
+    if executable('sk')
+      call s:plugify('skim')
+      call s:plugify('skim.vim')
+    endif
 
     if has('nvim')
       call s:plugify('deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
