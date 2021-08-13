@@ -48,7 +48,6 @@ if !exists('g:vscode')
   call s:plugify('vim-endwise')
   call s:plugify('vim-fugitive')
   call s:plugify('vim-gnupg')
-  call s:plugify('vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' })
   call s:plugify('vim-haml')
   call s:plugify('vim-indent-guides')
   call s:plugify('vim-javascript')
@@ -95,6 +94,8 @@ if !exists('g:vscode')
       call s:plugify('deoplete-jedi')
       call s:plugify('LanguageClient-neovim', { 'do': 'bash install.sh' })
     endif
+
+    call s:plugify('vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' })
   endif
 
   if has('nvim-0.4.0')
