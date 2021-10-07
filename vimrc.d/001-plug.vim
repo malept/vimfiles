@@ -70,6 +70,8 @@ if !exists('g:vscode')
   endif
 
   if has('nvim-0.5')
+    call s:plugify('cmp-nvim-lsp')
+    call s:plugify('nvim-cmp')
     call s:plugify('nvim-lsp')
     call s:plugify('popup.nvim')
     call s:plugify('plenary.nvim')

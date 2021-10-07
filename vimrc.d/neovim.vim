@@ -18,16 +18,9 @@ if has('nvim')
       if has('nvim-0.6') && $NVIM_TREESITTER == 'yes'
         lua require('treesitter')
       endif
-      " Recommended completion-nvim settings
-      " * Use <Tab> and <S-Tab> to navigate through popup menu
-      inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-      inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-      " * Set completeopt to have a better completion experience
-      set completeopt=menuone,noinsert,noselect
 
-      " * Avoid showing message extra message when using completion
-      set shortmess+=c
-
+      " Recommended by nvim-cmp
+      set completeopt=menu,menuone,noselect
     else
       " Deoplete
       let g:deoplete#enable_at_startup = 1
