@@ -228,3 +228,6 @@
 [submodule "vim/bundle/nvim-ts-context-commentstring"]
 	path = vim/bundle/nvim-ts-context-commentstring
 	url = https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+[submodule "vim/bundle/go.nvim"]
+	path = vim/bundle/go.nvim
+	url = https://github.com/ray-x/go.nvim
