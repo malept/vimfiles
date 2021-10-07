@@ -222,3 +222,9 @@
 [submodule "vim/bundle/telescope.nvim"]
 	path = vim/bundle/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "vim/bundle/nvim-treesitter"]
+	path = vim/bundle/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "vim/bundle/nvim-ts-context-commentstring"]
+	path = vim/bundle/nvim-ts-context-commentstring
+	url = https://github.com/JoosepAlviste/nvim-ts-context-commentstring

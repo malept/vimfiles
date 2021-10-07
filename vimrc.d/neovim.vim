@@ -15,6 +15,9 @@ if has('nvim')
   if !exists('g:vscode')
     if has('nvim-0.5')
       lua require('lspcompletion')
+      if has('nvim-0.6') && $NVIM_TREESITTER == 'yes'
+        lua require('treesitter')
+      endif
       " Recommended completion-nvim settings
       " * Use <Tab> and <S-Tab> to navigate through popup menu
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
