@@ -24,3 +24,9 @@ require('go').setup({
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
 -- Import on save
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+
+-- indent-blankline.nvim
+require('indent_blankline').setup {
+    space_char_blankline = ' ',
+    show_current_context = true,
+}

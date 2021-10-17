@@ -237,3 +237,6 @@
 [submodule "vim/bundle/telescope-fzy-native.nvim"]
 	path = vim/bundle/telescope-fzy-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim
+[submodule "vim/bundle/indent-blankline.nvim"]
+	path = vim/bundle/indent-blankline.nvim
+	url = https://github.com/lukas-reineke/indent-blankline.nvim
