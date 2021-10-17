@@ -104,10 +104,12 @@ if executable('xmllint')
 endif
 
 "" JavaScript/JSON/TypeScript
-augroup javascript
-  autocmd!
-  autocmd BufWritePre *.js,*.ts undojoin | Neoformat
-augroup END
+if !exists('g:vscode') && (!has('nvim-0.6') || $NVIM_TREESITTER != 'yes')
+  augroup javascript
+    autocmd!
+    autocmd BufWritePre *.js,*.ts undojoin | Neoformat
+  augroup END
+end
 
 "" Python: jedi-vim
 let g:jedi#popup_on_dot = 0
