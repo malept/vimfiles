@@ -15,6 +15,7 @@ if has('nvim')
   if !exists('g:vscode')
     if has('nvim-0.5')
       lua require('lspcompletion')
+      lua require('telescope-config')
       if has('nvim-0.6') && $NVIM_TREESITTER == 'yes'
         lua require('treesitter')
       endif

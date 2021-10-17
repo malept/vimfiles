@@ -76,6 +76,7 @@ if !exists('g:vscode')
     call s:plugify('popup.nvim')
     call s:plugify('plenary.nvim')
     call s:plugify('telescope.nvim')
+    call s:plugify('telescope-fzy-native.nvim')
   else
     call s:plugify('neomake')
 

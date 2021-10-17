@@ -234,3 +234,6 @@
 [submodule "vim/bundle/nvim-cmp"]
 	path = vim/bundle/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "vim/bundle/telescope-fzy-native.nvim"]
+	path = vim/bundle/telescope-fzy-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim
