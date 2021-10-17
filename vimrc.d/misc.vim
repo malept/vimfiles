@@ -242,9 +242,6 @@ else
   let g:shfmt_opt = "-i 2"
 endif
 
-if has('nvim-0.5')
-  nnoremap <C-p> <cmd>Telescope find_files<CR>
-  nnoremap <Leader>Gs <cmd>lua require'telescope.builtin'.git_branches{}<CR>
-elseif executable('sk') " Skim
+if !has('nvim-0.5') && executable('sk') " Skim
   nnoremap <C-p> :Files<CR>
 endif
