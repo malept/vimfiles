@@ -37,10 +37,14 @@ set hlsearch
 " omnicompletion
 " From: http://www.vim.org/scripts/script.php?script_id=3172
 if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-  \ if &omnifunc == "" |
-  \   setlocal omnifunc=syntaxcomplete#Complete |
-  \ endif
+  if has('nvim-0.5')
+    autocmd Filetype * setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  else
+    autocmd Filetype *
+          \ if &omnifunc == "" |
+          \   setlocal omnifunc=syntaxcomplete#Complete |
+          \ endif
+  endif
 endif
 
 set completeopt+=longest
