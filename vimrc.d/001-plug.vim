@@ -97,6 +97,7 @@ if !exists('g:vscode')
 
   if has('nvim-0.6.0') && $NVIM_TREESITTER == 'yes'
     call s:plugify('go.nvim')
+    call s:plugify('nvim-autopairs')
     call s:plugify('nvim-treesitter', { 'do': ':TSUpdate' })
     call s:plugify('nvim-ts-context-commentstring')
   else
