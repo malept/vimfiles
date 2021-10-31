@@ -18,8 +18,8 @@ if has('nvim')
       lua require('telescope-config')
       if has('nvim-0.6') && $NVIM_TREESITTER == 'yes'
         lua require('treesitter')
+        lua require('autopairs-config')
       endif
-      lua require('autopairs-config')
 
       " Recommended by nvim-cmp
       set completeopt=menu,menuone,noselect
