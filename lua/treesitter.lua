@@ -29,4 +29,5 @@ vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').
 require('indent_blankline').setup {
     space_char_blankline = ' ',
     show_current_context = true,
+    buftype_exclude = {"terminal"},
 }
