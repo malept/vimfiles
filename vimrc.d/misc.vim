@@ -135,7 +135,7 @@ let g:poetv_executables = ['poetry']
 
 "" JSON
 """ Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
-map <Leader>j !python -m json.tool<CR>
+map <Leader>j !python3 -m json.tool<CR>
 
 "" Markdown/RsT/plaintext
 augroup text
