@@ -52,7 +52,6 @@ if !exists('g:vscode')
   call s:plugify('vim-test')
   call s:plugify('vim-vala', { 'for': 'vala' })
   call s:plugify('vim-vinegar')
-  call s:plugify('vim-virtualenv')
 
   if executable('dasht')
     call s:plugify('vim-dasht')

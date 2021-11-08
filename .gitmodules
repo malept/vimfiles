@@ -40,9 +40,6 @@
 [submodule "vim/bundle/vim-trailing-whitespace"]
 	path = vim/bundle/vim-trailing-whitespace
 	url = git://github.com/bronson/vim-trailing-whitespace.git
-[submodule "vim/bundle/vim-virtualenv"]
-	path = vim/bundle/vim-virtualenv
-	url = git://github.com/jmcantrell/vim-virtualenv.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
