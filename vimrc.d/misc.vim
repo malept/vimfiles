@@ -115,21 +115,26 @@ if !exists('g:vscode') && (!has('nvim-0.6') || $NVIM_TREESITTER != 'yes')
   augroup END
 end
 
-"" Python: jedi-vim
+"" Python:
+
+augroup python
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.py setl tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+""" jedi-vim
 let g:jedi#popup_on_dot = 0
 let g:jedi#autocompletion_command = "<C-J>"
+
+""" poet-v
+let g:poetv_executables = ['poetry']
 
 "" Ruby: see vimrc.d/ruby.vim
 
 "" Rust: see vimrc.d/rust.vim
 
 "" JSON
-
-augroup python
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.py setl tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-" Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
+""" Used in visual mode - from http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 map <Leader>j !python -m json.tool<CR>
 
 "" Markdown/RsT/plaintext

@@ -240,3 +240,6 @@
 [submodule "vim/bundle/nvim-autopairs"]
 	path = vim/bundle/nvim-autopairs
 	url = https://github.com/windwp/nvim-autopairs
+[submodule "vim/bundle/poet-v"]
+	path = vim/bundle/poet-v
+	url = https://github.com/petobens/poet-v
