@@ -22,7 +22,6 @@ call s:plugify('vim-trailing-whitespace')
 call s:plugify('vim-wordy')
 
 if !exists('g:vscode')
-
   call s:plugify('Recover.vim')
   call s:plugify('Vim-Jinja2-Syntax')
   call s:plugify('ack.vim')
