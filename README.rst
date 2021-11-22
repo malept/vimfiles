@@ -16,38 +16,15 @@ Installation
 
 To install everything, run the following commands::
 
-    git clone --recursive https://github.com/malept/vimfiles
+    git clone https://github.com/malept/vimfiles
     cd vimfiles
-    for f in vimrc gvimrc; do
-        ln -s `pwd`/${f} ~/.${f}
-    done
     mkdir -p ~/.config/nvim
-    ln -s `pwd`/vimrc ~/.config/nvim/init.vim
+    ln -s `pwd`/init.lua ~/.config/nvim/
 
 Partial installation is left as an exercise to the reader.
-
-Bundles
--------
-
-To see a comprehensive list of bundles, check out the ``vim/bundle`` directory.
-
-Adding a new bundle
-~~~~~~~~~~~~~~~~~~~
-
-Use the ``add_bundle.sh`` script. Usage::
-
-    ./add_bundle.sh [git URL]
-
-Updating bundles
-~~~~~~~~~~~~~~~~
-
-You can update all of the bundles with ``update_bundles.sh``. Usage::
-
-    ./update_bundles.sh
 
 License
 -------
 
-Everything not in ``vim/bundle`` and ``special`` is licensed under the terms of
-the LGPL 3 or later, unless otherwise noted. Please see ``LICENSE`` for details.
-Alternative suggestions for a license are welcome.
+This repository is licensed under the terms of the LGPL 3 or later, unless otherwise noted. Please
+see ``LICENSE`` for details. Alternative suggestions for a license are welcome.
