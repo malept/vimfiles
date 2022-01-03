@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     use {'hrsh7th/nvim-cmp', requires = {'neovim/nvim-lspconfig', 'hrsh7th/cmp-nvim-lsp'}}
     use 'jamessan/vim-gnupg'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'mfussenegger/nvim-dap'
     use 'neovim/nvim-lspconfig'
     use 'norcalli/nvim-colorizer.lua'
     use 'nvim-lua/plenary.nvim'
@@ -45,6 +46,13 @@ return require('packer').startup(function(use)
     use 'ray-x/go.nvim'
     use 'sainnhe/gruvbox-material'
     use {'saltstack/salt-vim', requires = 'Glench/Vim-Jinja2-Syntax'}
+    use {'simrat39/rust-tools.nvim', requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'mfussenegger/nvim-dap'
+    }, config = function()
+      require('rust-tools').setup({})
+    end}
     use 'slim-template/vim-slim'
     use 'tmux-plugins/vim-tmux'
     use 'tpope/vim-bundler'
