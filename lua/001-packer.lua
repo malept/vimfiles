@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
   if not using_vscode then
     use 'Glench/Vim-Jinja2-Syntax'
     use {'JoosepAlviste/nvim-ts-context-commentstring',
-      requires = 'nvim-treesitter/nvim-treesitter',
+      after = 'nvim-treesitter',
       config = function() require('plugins.treesitter') end
     }
     use 'chr4/nginx.vim'
