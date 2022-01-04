@@ -24,8 +24,13 @@ vim.opt.directory = vim.fn.expand('~/.local/share/vim/swap/')
 vim.api.nvim_set_var('prosession_dir', vim.fn.expand('~/.local/share/vim/session/'))
 
 -- ## Make the folders automatically if they don't already exist.
-dirs = { vim.opt.undodir, vim.opt.backupdir, vim.opt.directory, vim.api.nvim_get_var('prosession_dir') }
-for dir in pairs(dirs) do
+dirs = {
+  vim.opt.undodir:get()[1],
+  vim.opt.backupdir:get()[1],
+  vim.opt.directory:get()[1],
+  vim.api.nvim_get_var('prosession_dir')
+}
+for _i, dir in ipairs(dirs) do
   if vim.fn.isdirectory(dir) == 0 then
     vim.fn.mkdir(dir, 'p')
   end
