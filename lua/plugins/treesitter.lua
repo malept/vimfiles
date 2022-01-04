@@ -14,21 +14,3 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   },
 }
-
--- go.nvim
-require('go').setup({
-  goimport = 'gopls', -- if set to 'gopls' will use golsp format
-  gofmt = 'gopls', -- if set to gopls will use golsp format
-})
--- Format on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
--- Import on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-
--- indent-blankline.nvim
-require('indent_blankline').setup {
-    space_char_blankline = ' ',
-    show_current_context = true,
-    show_current_context_start = true,
-    buftype_exclude = {"terminal"},
-}
