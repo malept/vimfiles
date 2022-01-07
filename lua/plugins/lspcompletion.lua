@@ -20,3 +20,4 @@ for _, ls in ipairs(lang_servers) do
   }
 end
 
+vim.api.nvim_exec([[ autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500) ]], false)
