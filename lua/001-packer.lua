@@ -31,13 +31,17 @@ return require('packer').startup(function(use)
     use 'editorconfig/editorconfig-vim'
     use 'google/vim-jsonnet'
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-vsnip'
     use {'hrsh7th/nvim-cmp',
       after = {
         'nvim-lspconfig',
-        'cmp-nvim-lsp'
+        'cmp-nvim-lsp',
+        'cmp-vsnip',
+        'vim-vsnip',
       },
       config = function() require('plugins.lspcompletion') end
     }
+    use 'hrsh7th/vim-vsnip'
     use 'jamessan/vim-gnupg'
     use {'lukas-reineke/indent-blankline.nvim',
       config = function() require('plugins.indent_blankline') end
