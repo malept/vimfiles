@@ -18,17 +18,17 @@ for _, ls in ipairs(lang_servers) do
   lsp[ls].setup {
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     on_attach = function(client, bufnum)
-      local function buf_set_keymap(binding, cmd)
+      local function buf_set_keymap(binding, lua_cmd)
         local opts = { noremap=true, silent=true }
-        vim.api.nvim_buf_set_keymap(bufnum, 'n', binding, cmd, opts)
+        vim.api.nvim_buf_set_keymap(bufnum, 'n', binding, string.format('<cmd>lua %s<CR>', lua_cmd), opts)
       end
-      buf_set_keymap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-      buf_set_keymap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-      buf_set_keymap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+      buf_set_keymap('gD', 'vim.lsp.buf.declaration()')
+      buf_set_keymap('K', 'vim.lsp.buf.hover()')
+      buf_set_keymap('<C-k>', 'vim.lsp.buf.signature_help()')
       -- Telescope based
-      buf_set_keymap('gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
-      buf_set_keymap('gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
-      buf_set_keymap('gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
+      buf_set_keymap('gd', 'require("telescope.builtin").lsp_definitions()')
+      buf_set_keymap('gi', 'require("telescope.builtin").lsp_implementations()')
+      buf_set_keymap('gr', 'require("telescope.builtin").lsp_references()')
     end
   }
 end
