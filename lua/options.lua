@@ -45,10 +45,6 @@ vim.opt.wildmode = { 'longest', 'list', 'full' }
 -- Theme
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
-vim.api.nvim_set_var('gruvbox_material_background', 'hard')
-vim.api.nvim_set_var('gruvbox_material_enable_italic', 1)
-vim.api.nvim_set_var('gruvbox_material_palette', 'original')
-vim.api.nvim_exec([[ colorscheme gruvbox-material ]], false)
 
 -- Redraw via keyboard shortcut
 vim.api.nvim_set_keymap('', '<Leader>r', [[ :redraw!<CR> ]], {})

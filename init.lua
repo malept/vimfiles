@@ -4,12 +4,10 @@ local base_path = string.match(this_file, '^(.-)[^/\\]*$')
 vim.opt.runtimepath:append(base_path)
 package.path = ';' .. base_path .. 'lua/' .. package.path
 
-using_vscode = vim.fn.exists('g:vscode') == 1
-
 require('001-packer')
 require('clipboard')
 require('reformatter')
-if using_vscode then
+if vim.fn.exists('g:vscode') == 1 then
   require('vscode')
 else
   require('options')
