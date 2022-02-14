@@ -19,7 +19,8 @@ cmp.setup({
 })
 
 local lsp = require'lspconfig'
-local lang_servers = {'cssls', 'eslint', 'gopls', 'html', 'jsonls', 'pyright', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
+-- gopls is not included here because go.nvim handles it, see lua/plugins/go.lua
+local lang_servers = {'cssls', 'eslint', 'html', 'jsonls', 'pyright', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
 for _, ls in ipairs(lang_servers) do
   lsp[ls].setup {
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
