@@ -36,6 +36,8 @@ for _, ls in ipairs(lang_servers) do
       buf_set_keymap('gd', 'require("telescope.builtin").lsp_definitions()')
       buf_set_keymap('gi', 'require("telescope.builtin").lsp_implementations()')
       buf_set_keymap('gr', 'require("telescope.builtin").lsp_references()')
+      -- vsnip
+      require('plugins.vsnip').buf_config(bufnum)
     end
   }
 end
