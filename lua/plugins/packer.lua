@@ -29,6 +29,7 @@ M.sans_vscode = function(use)
     after = 'nvim-treesitter',
     config = function() require('plugins.treesitter') end
   }
+  use 'b0o/schemastore.nvim'
   use 'chr4/nginx.vim'
   use 'chrisbra/Recover.vim'
   use {'dhruvasagar/vim-prosession', requires = 'tpope/vim-obsession'}
@@ -49,7 +50,9 @@ M.sans_vscode = function(use)
     config = function() require('plugins.indent_blankline') end
   }
   use 'mfussenegger/nvim-dap'
-  use 'neovim/nvim-lspconfig'
+  use {'neovim/nvim-lspconfig',
+    after = 'b0o/schemastore.nvim'
+  }
   use {'norcalli/nvim-colorizer.lua',
     config = function() require('plugins.colorizer') end
   }
