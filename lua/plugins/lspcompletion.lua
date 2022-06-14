@@ -33,6 +33,8 @@ local lsp_on_attach = function(client, bufnum)
   buf_set_keymap('gr', 'require("telescope.builtin").lsp_references()')
   -- vsnip
   require('plugins.vsnip').buf_config(bufnum)
+  -- lsp-format
+  require('lsp-format').on_attach(client)
 end
 -- gopls is not included here because go.nvim handles it, see lua/plugins/go.lua
 local lang_servers = {'cssls', 'eslint', 'html', 'pyright', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
@@ -53,5 +55,3 @@ lsp.jsonls.setup {
       },
     },
 }
-
-vim.api.nvim_exec([[ autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500) ]], false)

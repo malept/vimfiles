@@ -49,9 +49,15 @@ M.sans_vscode = function(use)
   use {'lukas-reineke/indent-blankline.nvim',
     config = function() require('plugins.indent_blankline') end
   }
+  use {'lukas-reineke/lsp-format.nvim',
+    config = function() require('lsp-format').setup {} end
+  }
   use 'mfussenegger/nvim-dap'
   use {'neovim/nvim-lspconfig',
-    after = 'b0o/schemastore.nvim'
+    after = {
+      'lukas-reineke/lsp-format.nvim',
+      'b0o/schemastore.nvim',
+    }
   }
   use {'norcalli/nvim-colorizer.lua',
     config = function() require('plugins.colorizer') end
