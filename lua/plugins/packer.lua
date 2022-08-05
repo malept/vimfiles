@@ -67,7 +67,7 @@ M.sans_vscode = function(use)
   }
   use {'nvim-neotest/neotest-vim-test', requires = 'vim-test/vim-test'}
   use {'neovim/nvim-lspconfig',
-    after = {
+    requires = {
       'lukas-reineke/lsp-format.nvim',
       'b0o/schemastore.nvim',
     }
