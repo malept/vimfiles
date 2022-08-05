@@ -53,6 +53,19 @@ M.sans_vscode = function(use)
     config = function() require('lsp-format').setup {} end
   }
   use 'mfussenegger/nvim-dap'
+  use {'nvim-neotest/neotest',
+    requires = {
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-neotest/neotest-go',
+      'nvim-neotest/neotest-vim-test',
+      'nvim-treesitter/nvim-treesitter',
+      'olimorris/neotest-rspec',
+      'rouge8/neotest-rust',
+    },
+    config = function() require('plugins.neotest') end
+  }
+  use {'nvim-neotest/neotest-vim-test', requires = 'vim-test/vim-test'}
   use {'neovim/nvim-lspconfig',
     after = {
       'lukas-reineke/lsp-format.nvim',
