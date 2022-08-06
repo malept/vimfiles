@@ -52,7 +52,9 @@ M.sans_vscode = function(use)
   use {'lukas-reineke/lsp-format.nvim',
     config = function() require('lsp-format').setup {} end
   }
-  use 'mfussenegger/nvim-dap'
+  use {'mfussenegger/nvim-dap',
+    config = function() require('plugins.dap') end
+  }
   use {'nvim-neotest/neotest',
     requires = {
       'antoinemadec/FixCursorHold.nvim',
