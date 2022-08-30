@@ -19,11 +19,13 @@ M.common = function(use)
     config = function() require('plugins.mini') end
   }
   use 'godlygeek/tabular'
+  use {'kylechui/nvim-surround',
+    tag = "*",
+    config = function() require('nvim-surround').setup() end
+  }
   use 'preservim/vim-wordy'
   use 'takac/vim-hardtime'
   use 'tpope/vim-projectionist'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
 end
 
 M.sans_vscode = function(use)
