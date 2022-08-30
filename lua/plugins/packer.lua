@@ -14,8 +14,11 @@ M.common = function(use)
   use 'wbthomason/packer.nvim'
   use 'dstein64/vim-startuptime'
 
+  use {'echasnovski/mini.nvim',
+    branch = 'stable',
+    config = function() require('plugins.mini') end
+  }
   use 'godlygeek/tabular'
-  use 'ntpeters/vim-better-whitespace'
   use 'preservim/vim-wordy'
   use 'takac/vim-hardtime'
   use 'tpope/vim-projectionist'
