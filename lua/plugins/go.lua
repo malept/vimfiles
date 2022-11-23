@@ -4,7 +4,7 @@ if vim.fn.executable('gopls') == 1 then
     goimport = 'gopls', -- if set to 'gopls' will use golsp format
     gofmt = 'gopls', -- if set to gopls will use golsp format
     lsp_cfg = {
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
     },
   })
   -- Format + Import on save

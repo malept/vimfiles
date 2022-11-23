@@ -40,13 +40,13 @@ end
 local lang_servers = {'cssls', 'eslint', 'html', 'pyright', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
 for _, ls in ipairs(lang_servers) do
   lsp[ls].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = lsp_on_attach
   }
 end
 
 lsp.jsonls.setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = lsp_on_attach,
     settings = {
       json = {
