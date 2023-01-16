@@ -44,6 +44,7 @@ M.sans_vscode = function(use)
     after = {
       'cmp-nvim-lsp',
       'nvim-lspconfig',
+      'rust-tools',
     },
     config = "require('plugins.lspcompletion')"
   }
@@ -115,7 +116,6 @@ M.sans_vscode = function(use)
       'nvim-lua/plenary.nvim',
       'mfussenegger/nvim-dap'
     },
-    config = function() require('rust-tools').setup({}) end
   }
   use 'slim-template/vim-slim'
   use 'tmux-plugins/vim-tmux'

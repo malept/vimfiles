@@ -37,7 +37,7 @@ local lsp_on_attach = function(client, bufnum)
   require('lsp-format').on_attach(client)
 end
 -- gopls is not included here because go.nvim handles it, see lua/plugins/go.lua
-local lang_servers = {'cssls', 'eslint', 'html', 'pyright', 'rust_analyzer', 'solargraph', 'tsserver', 'vimls'}
+local lang_servers = {'cssls', 'eslint', 'html', 'pyright', 'solargraph', 'tsserver', 'vimls'}
 for _, ls in ipairs(lang_servers) do
   lsp[ls].setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -55,3 +55,9 @@ lsp.jsonls.setup {
       },
     },
 }
+require('rust-tools').setup({
+  server = {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    on_attach = lsp_on_attach
+  }
+})
