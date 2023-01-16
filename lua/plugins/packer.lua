@@ -44,9 +44,9 @@ M.sans_vscode = function(use)
     after = {
       'cmp-nvim-lsp',
       'nvim-lspconfig',
-      'rust-tools',
+      'rust-tools.nvim',
     },
-    config = "require('plugins.lspcompletion')"
+    config = function() require('plugins.lspcompletion') end
   }
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/cmp-nvim-lsp'
