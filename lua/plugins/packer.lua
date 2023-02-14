@@ -92,7 +92,7 @@ M.sans_vscode = function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'othree/javascript-libraries-syntax.vim'
   use 'othree/html5.vim'
-  use 'petobens/poet-v'
+  use {'petobens/poet-v', cond = vim.fn.executable 'poetry' == 1}
   use 'plasticboy/vim-markdown'
   use {'radenling/vim-dispatch-neovim', requires = 'tpope/vim-dispatch'}
   use 'rafamadriz/friendly-snippets'
