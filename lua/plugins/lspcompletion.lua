@@ -36,13 +36,20 @@ local lsp_on_attach = function(client, bufnum)
   -- lsp-format
   require('lsp-format').on_attach(client)
 end
+local lsp_setup = {
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  on_attach = lsp_on_attach
+}
 -- gopls is not included here because go.nvim handles it, see lua/plugins/go.lua
-local lang_servers = {'cssls', 'eslint', 'html', 'pyright', 'solargraph', 'tsserver', 'vimls'}
+local lang_servers = {'cssls', 'eslint', 'html', 'solargraph', 'tsserver', 'vimls'}
 for _, ls in ipairs(lang_servers) do
-  lsp[ls].setup {
-    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    on_attach = lsp_on_attach
-  }
+  lsp[ls].setup(lsp_setup)
+end
+
+if vim.fn.executable('pylsp') == 1 then
+  lsp.pylsp.setup(lsp_setup)
+elseif vim.fn.executable('pyright') == 1 then
+  lsp.pyright.setup(lsp_setup)
 end
 
 lsp.jsonls.setup {
