@@ -1,6 +1,7 @@
 require('neotest').setup({
   adapters = {
     require('neotest-go'),
+    require('neotest-jest'),
     require('neotest-rspec'),
     require('neotest-rust'),
     require('neotest-vim-test')({ ignore_filetypes = { "go", "ruby", "rust" } })

@@ -64,6 +64,7 @@ M.sans_vscode = function(use)
   use {'nvim-neotest/neotest',
     requires = {
       'antoinemadec/FixCursorHold.nvim',
+      'haydenmeade/neotest-jest',
       'nvim-lua/plenary.nvim',
       'nvim-neotest/neotest-go',
       'nvim-neotest/neotest-vim-test',
