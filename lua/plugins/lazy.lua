@@ -22,17 +22,26 @@ local poetry_exists = function()
   return (no_vscode() and vim.fn.executable 'poetry' == 1)
 end
 
+local not_vscode_plugin = function(plugin)
+  if type(plugin) == 'string' then
+    return {plugin, cond = no_vscode}
+  elseif type(plugin) == 'table' then
+    plugin.cond = no_vscode
+    return plugin
+  end
+end
+
 M.setup = function ()
   require('lazy').setup({
     -- Editor-agnostic
     'dstein64/vim-startuptime',
     {'echasnovski/mini.nvim',
-      branch = 'stable',
+      version = '*',
       config = function() require('plugins.mini') end
     },
     'godlygeek/tabular',
     {'kylechui/nvim-surround',
-      tag = "*",
+      version = '*',
       config = function() require('nvim-surround').setup() end
     },
     'preservim/vim-wordy',
@@ -40,51 +49,39 @@ M.setup = function ()
     'tpope/vim-projectionist',
 
     -- Non-vscode
-    {'Glench/Vim-Jinja2-Syntax', cond = no_vscode},
-    {'JoosepAlviste/nvim-ts-context-commentstring',
-      cond = no_vscode,
+    not_vscode_plugin('Glench/Vim-Jinja2-Syntax'),
+    not_vscode_plugin({'JoosepAlviste/nvim-ts-context-commentstring',
       dependencies = 'nvim-treesitter/nvim-treesitter',
       config = function() require('plugins.treesitter') end
-    },
-    {'b0o/schemastore.nvim', cond = no_vscode},
-    {'chr4/nginx.vim', cond = no_vscode},
-    {'chrisbra/Recover.vim', cond = no_vscode},
-    {'dhruvasagar/vim-prosession',
-      cond = no_vscode,
-      dependencies = 'tpope/vim-obsession'
-    },
-    {'editorconfig/editorconfig-vim', cond = no_vscode},
-    {'google/vim-jsonnet', cond = no_vscode},
-    {'hrsh7th/nvim-cmp',
-    cond = no_vscode,
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'neovim/nvim-lspconfig',
-      'simrat39/rust-tools.nvim',
-    },
-    config = function() require('plugins.lspcompletion') end
+    }),
+    not_vscode_plugin('b0o/schemastore.nvim'),
+    not_vscode_plugin('chr4/nginx.vim'),
+    not_vscode_plugin('chrisbra/Recover.vim'),
+    not_vscode_plugin({'dhruvasagar/vim-prosession', dependencies = 'tpope/vim-obsession'}),
+    not_vscode_plugin('editorconfig/editorconfig-vim'),
+    not_vscode_plugin('google/vim-jsonnet'),
+    not_vscode_plugin({'hrsh7th/nvim-cmp',
+      dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+        'neovim/nvim-lspconfig',
+        'simrat39/rust-tools.nvim',
       },
-      {'hrsh7th/vim-vsnip', cond = no_vscode},
-      {'hrsh7th/cmp-nvim-lsp', cond = no_vscode},
-      {'hrsh7th/cmp-vsnip',
-      cond = no_vscode,
-      dependencies = 'hrsh7th/nvim-cmp'
-    },
-    {'jamessan/vim-gnupg', cond = no_vscode},
-    {'lukas-reineke/indent-blankline.nvim',
-    cond = no_vscode,
-    config = function() require('plugins.indent_blankline') end
-      },
-      {'lukas-reineke/lsp-format.nvim',
-      cond = no_vscode,
+      config = function() require('plugins.lspcompletion') end
+    }),
+    not_vscode_plugin('hrsh7th/vim-vsnip'),
+    not_vscode_plugin('hrsh7th/cmp-nvim-lsp'),
+    not_vscode_plugin({'hrsh7th/cmp-vsnip', dependencies = 'hrsh7th/nvim-cmp'}),
+    not_vscode_plugin('jamessan/vim-gnupg'),
+    not_vscode_plugin({'lukas-reineke/indent-blankline.nvim',
+      config = function() require('plugins.indent_blankline') end
+    }),
+    not_vscode_plugin({'lukas-reineke/lsp-format.nvim',
       config = function() require('lsp-format').setup {} end
-    },
-    {'mfussenegger/nvim-dap',
-    cond = no_vscode,
-    config = function() require('plugins.dap') end
-      },
-      {'nvim-neotest/neotest',
-      cond = no_vscode,
+    }),
+    not_vscode_plugin({'mfussenegger/nvim-dap',
+      config = function() require('plugins.dap') end
+    }),
+    not_vscode_plugin({'nvim-neotest/neotest',
       dependencies = {
         'antoinemadec/FixCursorHold.nvim',
         'haydenmeade/neotest-jest',
@@ -96,91 +93,71 @@ M.setup = function ()
         'rouge8/neotest-rust',
       },
       config = function() require('plugins.neotest') end
-    },
-    {'nvim-neotest/neotest-vim-test',
-    cond = no_vscode,
-    requires = 'vim-test/vim-test'
-      },
-      {'neovim/nvim-lspconfig',
-      cond = no_vscode,
+    }),
+    not_vscode_plugin({'nvim-neotest/neotest-vim-test', requires = 'vim-test/vim-test'}),
+    not_vscode_plugin({'neovim/nvim-lspconfig',
       dependencies = {
         'lukas-reineke/lsp-format.nvim',
         'b0o/schemastore.nvim',
       }
-    },
-    {'norcalli/nvim-colorizer.lua',
-    cond = no_vscode,
-    config = function() require('plugins.colorizer') end
-      },
-      {'nvim-telescope/telescope.nvim',
-      cond = no_vscode,
+    }),
+    not_vscode_plugin({'norcalli/nvim-colorizer.lua',
+      config = function() require('plugins.colorizer') end
+    }),
+    not_vscode_plugin({'nvim-telescope/telescope.nvim',
       dependencies = {
         'nvim-lua/plenary.nvim',
         'telescope-fzy-native.nvim',
       },
       config = function() require('plugins.telescope') end
-    },
-    {'nvim-telescope/telescope-fzy-native.nvim', cond = no_vscode},
-    {'nvim-treesitter/nvim-treesitter',
-    cond = no_vscode,
-    build = ':TSUpdate',
+    }),
+    not_vscode_plugin('nvim-telescope/telescope-fzy-native.nvim'),
+    not_vscode_plugin({'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}),
+    not_vscode_plugin('othree/javascript-libraries-syntax.vim'),
+    not_vscode_plugin('othree/html5.vim'),
+    {'petobens/poet-v', cond = poetry_exists},
+    not_vscode_plugin('plasticboy/vim-markdown'),
+    not_vscode_plugin({'radenling/vim-dispatch-neovim', requires = 'tpope/vim-dispatch'}),
+    not_vscode_plugin('rafamadriz/friendly-snippets'),
+    not_vscode_plugin({'ray-x/go.nvim',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+        'ray-x/guihua.lua',
       },
-      {'othree/javascript-libraries-syntax.vim', cond = no_vscode},
-      {'othree/html5.vim', cond = no_vscode},
-      {'petobens/poet-v', cond = poetry_exists},
-      {'plasticboy/vim-markdown', cond = no_vscode},
-      {'radenling/vim-dispatch-neovim',
-      cond = no_vscode,
-      requires = 'tpope/vim-dispatch',
-    },
-    {'rafamadriz/friendly-snippets', cond = no_vscode},
-    {'ray-x/go.nvim',
-    cond = no_vscode,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'ray-x/guihua.lua',
-    },
-    config = function() require('plugins.go') end,
-      },
-      {'sainnhe/gruvbox-material',
-      cond = no_vscode,
+      config = function() require('plugins.go') end,
+    }),
+    not_vscode_plugin({'sainnhe/gruvbox-material',
       config = function()
         vim.api.nvim_set_var('gruvbox_material_background', 'hard')
         vim.api.nvim_set_var('gruvbox_material_enable_italic', 1)
         vim.api.nvim_set_var('gruvbox_material_palette', 'original')
         vim.api.nvim_exec([[ colorscheme gruvbox-material ]], false)
       end,
-    },
-    {'saltstack/salt-vim',
-    cond = no_vscode,
-    dependencies = 'Glench/Vim-Jinja2-Syntax',
-      },
-      {'simrat39/rust-tools.nvim',
-      cond = no_vscode,
+    }),
+    not_vscode_plugin({'saltstack/salt-vim', dependencies = 'Glench/Vim-Jinja2-Syntax'}),
+    not_vscode_plugin({'simrat39/rust-tools.nvim',
       dependencies = {
         'neovim/nvim-lspconfig',
         'nvim-lua/plenary.nvim',
         'mfussenegger/nvim-dap',
       },
-    },
-    {'slim-template/vim-slim', cond = no_vscode},
-    {'tmux-plugins/vim-tmux', cond = no_vscode},
-    {'tpope/vim-bundler', cond = no_vscode},
-    {'tpope/vim-commentary', cond = no_vscode},
-    {'tpope/vim-dispatch', cond = no_vscode},
-    {'tpope/vim-fugitive', cond = no_vscode},
-    {'tpope/vim-obsession', cond = no_vscode},
-    {'tpope/vim-rails', cond = no_vscode},
-    {'tpope/vim-vinegar', cond = no_vscode},
-    {'vim-test/vim-test',
-    cond = no_vscode,
-    config = function() require('plugins.vim-test') end
-      },
-      {'windwp/nvim-autopairs',
-      cond = no_vscode,
+    }),
+    not_vscode_plugin('slim-template/vim-slim'),
+    not_vscode_plugin('tmux-plugins/vim-tmux'),
+    not_vscode_plugin('tpope/vim-bundler'),
+    not_vscode_plugin('tpope/vim-commentary'),
+    not_vscode_plugin('tpope/vim-dispatch'),
+    not_vscode_plugin('tpope/vim-fugitive'),
+    not_vscode_plugin('tpope/vim-obsession'),
+    not_vscode_plugin('tpope/vim-rails'),
+    not_vscode_plugin('tpope/vim-vinegar'),
+    not_vscode_plugin({'vim-test/vim-test',
+      config = function() require('plugins.vim-test') end
+    }),
+    not_vscode_plugin({'windwp/nvim-autopairs',
       dependencies = 'hrsh7th/nvim-cmp',
       config = function() require('plugins.autopairs') end
-    },
+    }),
   })
 end
 
