@@ -1,4 +1,8 @@
-local lazy_plugin = require('plugins.lazy')
-lazy_plugin.ensure_installed()
-
-lazy_plugin.setup()
+local plugin = require('plugin_util')
+plugin.ensure_lazy_installed()
+require('lazy').setup('plugins', {
+  defaults = {
+    -- Use versioned plugins when possible
+    version = '*',
+  }
+})
