@@ -2,22 +2,30 @@ local plugin = require('plugin_util')
 
 local setup = function()
   if vim.fn.executable('gopls') == 1 then
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     require('go').setup({
       goimport = 'gopls', -- if set to 'gopls' will use golsp format
       gofmt = 'gopls', -- if set to gopls will use golsp format
       lsp_cfg = {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = capabilities,
       },
     })
     -- Format + Import on save
-    vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+    local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function() require('go.format').goimport() end,
+      group = format_sync_grp,
+    })
   end
 end
 
 return {
   plugin.not_vscode_plugin({'ray-x/go.nvim',
-    ft = 'go',
+    event = 'CmdlineEnter',
+    ft = {'go', 'gomod'},
     dependencies = {
+      'neovim/nvim-lspconfig',
       'nvim-treesitter/nvim-treesitter',
       'ray-x/guihua.lua',
     },
