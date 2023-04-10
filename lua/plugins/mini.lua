@@ -1,4 +1,5 @@
 local setup = function()
+  require('mini.align').setup()
   require('mini.trailspace').setup()
 end
 
