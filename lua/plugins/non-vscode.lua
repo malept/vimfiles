@@ -45,7 +45,6 @@ return {
   plugin.not_vscode_plugin('slim-template/vim-slim'),
   plugin.not_vscode_plugin('tmux-plugins/vim-tmux'),
   plugin.not_vscode_plugin('tpope/vim-bundler'),
-  plugin.not_vscode_plugin('tpope/vim-commentary'),
   plugin.not_vscode_plugin('tpope/vim-fugitive'),
   plugin.not_vscode_plugin('tpope/vim-rails'),
   plugin.not_vscode_plugin('tpope/vim-vinegar'),
