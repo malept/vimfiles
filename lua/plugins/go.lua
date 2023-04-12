@@ -2,7 +2,7 @@ local plugin = require('plugin_util')
 
 local setup = function()
   if vim.fn.executable('gopls') == 1 then
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     require('go').setup({
       goimport = 'gopls', -- if set to 'gopls' will use golsp format
       gofmt = 'gopls', -- if set to gopls will use golsp format
