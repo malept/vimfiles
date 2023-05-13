@@ -75,6 +75,8 @@ end
 
 return {
   plugin.not_vscode_plugin({'hrsh7th/nvim-cmp',
+    version = nil, -- this plugin does not make releases
+    branch = 'main',
     event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
