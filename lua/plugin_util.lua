@@ -29,7 +29,7 @@ M.not_vscode_plugin = function(plugin)
   if type(plugin) == 'string' then
     return {plugin, cond = no_vscode}
   elseif type(plugin) == 'table' then
-    plugin.cond = no_vscode
+    plugin.cond = M.no_vscode
     return plugin
   end
 end
