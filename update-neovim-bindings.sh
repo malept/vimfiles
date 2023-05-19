@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-(source ~/.local/share/virtualenv/neovim/bin/activate && pip install -U pynvim)
-(source ~/.local/share/virtualenv/neovim3/bin/activate && pip install -U pynvim)
+set -e -o -u pipefail
+
+# shellcheck source=/dev/null
+source ~/.local/share/virtualenv/neovim/bin/activate
+pip install -U pynvim
