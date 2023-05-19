@@ -28,7 +28,7 @@ local dirs = {
   vim.opt.undodir:get()[1],
   vim.opt.backupdir:get()[1],
   vim.opt.directory:get()[1],
-  vim.api.nvim_get_var('prosession_dir')
+  vim.g.prosession_dir
 }
 for _, dir in ipairs(dirs) do
   if vim.fn.isdirectory(dir) == 0 then
