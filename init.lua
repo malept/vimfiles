@@ -13,5 +13,4 @@ end
 require('load_lazy')
 require('clipboard')
 require('reformatter')
-
-vim.api.nvim_exec('runtime! vimrc.d/digraphs.vim', false)
+require('digraphs')
