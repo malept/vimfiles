@@ -30,7 +30,7 @@ return {
       vim.g.gruvbox_material_background = 'hard'
       vim.g.gruvbox_material_enable_italic = 1
       vim.g.gruvbox_material_palette = 'original'
-      vim.api.nvim_exec([[ colorscheme gruvbox-material ]], false)
+      vim.cmd.colorscheme('gruvbox-material')
     end,
   }),
   plugin.not_vscode_plugin({'saltstack/salt-vim', dependencies = 'Glench/Vim-Jinja2-Syntax'}),
