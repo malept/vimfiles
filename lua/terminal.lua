@@ -1,5 +1,5 @@
 -- Max out the terminal scrollback buffer
-vim.api.nvim_set_var('terminal_scrollback_buffer_size', 100000)
+vim.g.terminal_scrollback_buffer_size = 100000
 
 -- <ESC> in a term goes back to the previous window
 -- From: https://www.reddit.com/r/neovim/comments/3wqo0i/nvim_terminal/cxyca7m

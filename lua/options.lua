@@ -21,7 +21,7 @@ vim.opt.backupdir = vim.fn.expand('~/.local/share/vim/backup/')
 vim.opt.directory = vim.fn.expand('~/.local/share/vim/swap/')
 
 -- ## Session directory for vim-prosession
-vim.api.nvim_set_var('prosession_dir', vim.fn.expand('~/.local/share/vim/session/'))
+vim.g.prosession_dir = vim.fn.expand('~/.local/share/vim/session/')
 
 -- ## Make the folders automatically if they don't already exist.
 local dirs = {
@@ -72,7 +72,7 @@ vim.opt.listchars = { tab = '» ', nbsp = '⎵' }
 vim.api.nvim_exec([[ autocmd BufRead,BufNewFile .env-*,.env.* setfiletype sh ]], false)
 
 -- editorconfig
-vim.api.nvim_set_var('EditorConfig_exclude_patterns', { 'fugitive://.*', 'scp://.*' })
+vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', 'scp://.*' }
 
 -- Python
 vim.api.nvim_exec([[
@@ -81,13 +81,13 @@ augroup python
   autocmd BufNewFile,BufReadPost *.py setl tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 ]], false)
-vim.api.nvim_set_var('poetv_executables', {'poetry'})
+vim.g.poetv_executables = {'poetry'}
 
 -- SQL
-vim.api.nvim_set_var('sql_type_default', 'postgresql')
+vim.g.sql_type_default = 'postgresql'
 
 -- Shell
-vim.api.nvim_set_var('is_bash', 1)
+vim.g.is_bash = 1
 
 -- Make current file executable
 vim.keymap.set('', '<Leader>X', [[ !chmod +x %<CR> ]])
@@ -108,7 +108,7 @@ end
 -- python-neovim
 local function setup_pynvim(python_bin, venv_dir)
   if vim.fn.isdirectory(venv_dir) == 1 then
-    vim.api.nvim_set_var(string.format('%s_host_prog', python_bin), string.format('%s/bin/%s', venv_dir, python_bin))
+    vim.g[string.format('%s_host_prog', python_bin)] = string.format('%s/bin/%s', venv_dir, python_bin)
   end
 end
 setup_pynvim('python', vim.fn.expand('~/.local/share/virtualenv/neovim'))

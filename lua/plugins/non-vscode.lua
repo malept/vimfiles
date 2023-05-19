@@ -27,9 +27,9 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.api.nvim_set_var('gruvbox_material_background', 'hard')
-      vim.api.nvim_set_var('gruvbox_material_enable_italic', 1)
-      vim.api.nvim_set_var('gruvbox_material_palette', 'original')
+      vim.g.gruvbox_material_background = 'hard'
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.g.gruvbox_material_palette = 'original'
       vim.api.nvim_exec([[ colorscheme gruvbox-material ]], false)
     end,
   }),
