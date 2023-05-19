@@ -12,3 +12,5 @@ jobs:
         uses: actions/checkout@v3
       - name: luacheck
         uses: lunarmodules/luacheck@fcbdeacad00e643e0d78c56b9ba6d8b3c7fa584f # v1.1.0
+      - name: shellcheck
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # v2.0.0
