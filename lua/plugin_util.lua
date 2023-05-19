@@ -16,7 +16,7 @@ M.ensure_lazy_installed = function ()
 end
 
 M.no_vscode = function()
-  return vim.fn.exists('g:vscode') == 0
+  return vim.g.vscode == nil
 end
 M.poetry_exists = function()
   return (M.no_vscode() and vim.fn.executable 'poetry' == 1)
