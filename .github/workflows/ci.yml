@@ -1,23 +1,14 @@
-name: Lint
+name: CI
 on:
   push:
   pull_request:
 
 jobs:
   lint:
-    name: Lint via Super Linter
+    name: Lint
     runs-on: ubuntu-latest
-    ############################################
-    # Grant status permission for MULTI_STATUS #
-    ############################################
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: luacheck
+        uses: lunarmodules/luacheck@fcbdeacad00e643e0d78c56b9ba6d8b3c7fa584f # v1.1.0
