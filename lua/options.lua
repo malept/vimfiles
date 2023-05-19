@@ -54,16 +54,6 @@ vim.opt.title = true
 -- Console mouse support
 vim.opt.mouse = 'a'
 
--- From vim-sensible (left out of neovim defaults, see
--- https://github.com/neovim/neovim/issues/2676)
-vim.opt.ruler = true
--- Use <C-L> to clear the highlighting of :set hlsearch.
-vim.api.nvim_exec([[
-  if maparg('<C-L>', 'n') ==# ''
-    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-  endif
-]], false)
-
 -- Character indicators
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', nbsp = '⎵' }
