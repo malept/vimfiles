@@ -1,4 +1,6 @@
+-- luacheck: push ignore
 -- From https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#falling-back-to-find_files-if-git_files-cant-find-a-git-directory
+-- luacheck: pop
 
 local M = {}
 

@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.ensure_lazy_installed = function ()
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -27,7 +27,7 @@ end
 
 M.not_vscode_plugin = function(plugin)
   if type(plugin) == 'string' then
-    return {plugin, cond = no_vscode}
+    return {plugin, cond = M.no_vscode}
   elseif type(plugin) == 'table' then
     plugin.cond = M.no_vscode
     return plugin

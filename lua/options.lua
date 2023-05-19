@@ -24,13 +24,13 @@ vim.opt.directory = vim.fn.expand('~/.local/share/vim/swap/')
 vim.api.nvim_set_var('prosession_dir', vim.fn.expand('~/.local/share/vim/session/'))
 
 -- ## Make the folders automatically if they don't already exist.
-dirs = {
+local dirs = {
   vim.opt.undodir:get()[1],
   vim.opt.backupdir:get()[1],
   vim.opt.directory:get()[1],
   vim.api.nvim_get_var('prosession_dir')
 }
-for _i, dir in ipairs(dirs) do
+for _, dir in ipairs(dirs) do
   if vim.fn.isdirectory(dir) == 0 then
     vim.fn.mkdir(dir, 'p')
   end
@@ -106,7 +106,7 @@ else
 end
 
 -- python-neovim
-function setup_pynvim(python_bin, venv_dir)
+local function setup_pynvim(python_bin, venv_dir)
   if vim.fn.isdirectory(venv_dir) == 1 then
     vim.api.nvim_set_var(string.format('%s_host_prog', python_bin), string.format('%s/bin/%s', venv_dir, python_bin))
   end

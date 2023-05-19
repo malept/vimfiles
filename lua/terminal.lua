@@ -5,8 +5,13 @@ vim.api.nvim_set_var('terminal_scrollback_buffer_size', 100000)
 -- From: https://www.reddit.com/r/neovim/comments/3wqo0i/nvim_terminal/cxyca7m
 vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n><C-w><C-p>', {})
 
-function term_shortcut(mapping, cmd_prefix)
-  vim.api.nvim_set_keymap('', string.format('<Leader>%st', mapping), string.format(':%s | terminal<CR>', cmd_prefix), {})
+local function term_shortcut(mapping, cmd_prefix)
+  vim.api.nvim_set_keymap(
+    '',
+    string.format('<Leader>%st', mapping),
+    string.format(':%s | terminal<CR>', cmd_prefix),
+    {}
+  )
 end
 term_shortcut('s', 'split')
 term_shortcut('v', 'vertical split')
