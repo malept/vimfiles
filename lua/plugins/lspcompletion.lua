@@ -21,19 +21,19 @@ local setup = function()
     },
   })
 
-  local lsp = require'lspconfig'
+  local lsp = require('lspconfig')
   local lsp_on_attach = function(client, bufnum)
-    local function buf_set_keymap(binding, lua_cmd)
-      local opts = { noremap=true, silent=true }
-      vim.api.nvim_buf_set_keymap(bufnum, 'n', binding, string.format('<cmd>lua %s<CR>', lua_cmd), opts)
+    local function buf_set_keymap(binding, lua_fn, desc)
+      local opts = { buffer = bufnum, desc = desc }
+      vim.keymap.set(bufnum, 'n', binding, lua_fn, opts)
     end
-    buf_set_keymap('gD', 'vim.lsp.buf.declaration()')
-    buf_set_keymap('K', 'vim.lsp.buf.hover()')
-    buf_set_keymap('<C-k>', 'vim.lsp.buf.signature_help()')
+    buf_set_keymap('gD', function() vim.lsp.buf.declaration() end, '[G]o to [Definition]')
+    buf_set_keymap('K', function() vim.lsp.buf.hover() end, 'Hover documentation')
+    buf_set_keymap('<C-k>', function() vim.lsp.buf.signature_help() end, 'Signature documentation')
     -- Telescope based
-    buf_set_keymap('gd', 'require("telescope.builtin").lsp_definitions()')
-    buf_set_keymap('gi', 'require("telescope.builtin").lsp_implementations()')
-    buf_set_keymap('gr', 'require("telescope.builtin").lsp_references()')
+    buf_set_keymap('gd', function() require('telescope.builtin').lsp_definitions() end, 'Select definition')
+    buf_set_keymap('gi', function() require('telescope.builtin').lsp_implementations() end, 'Select implementation')
+    buf_set_keymap('gr', function() require('telescope.builtin').lsp_references() end, 'Select reference')
     -- vsnip
     require('vsnip_config').buf_config(bufnum)
     -- lsp-format

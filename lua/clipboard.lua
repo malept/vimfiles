@@ -1,6 +1,6 @@
 -- Copy/paste shortcuts
 for k in pairs({'y', 'Y', 'p', 'P'}) do
-  vim.api.nvim_set_keymap('', string.format('<Leader>%s', k), string.format([["+%s]], k), {})
+  vim.keymap.set('', string.format('<Leader>%s', k), string.format([["+%s]], k))
 end
 
 -- WSL clipboard, see:

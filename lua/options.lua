@@ -47,7 +47,7 @@ vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
 -- Redraw via keyboard shortcut
-vim.api.nvim_set_keymap('', '<Leader>r', [[ :redraw!<CR> ]], {})
+vim.keymap.set('', '<Leader>r', [[ :redraw!<CR> ]])
 
 vim.opt.title = true
 
@@ -90,7 +90,7 @@ vim.api.nvim_set_var('sql_type_default', 'postgresql')
 vim.api.nvim_set_var('is_bash', 1)
 
 -- Make current file executable
-vim.api.nvim_set_keymap('', '<Leader>X', [[ !chmod +x %<CR> ]], {})
+vim.keymap.set('', '<Leader>X', [[ !chmod +x %<CR> ]])
 
 -- Ensure that locally installed dictionaries work
 vim.opt.runtimepath:append('~/.local/share/nvim/site')
