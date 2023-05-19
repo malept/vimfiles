@@ -13,4 +13,4 @@ term_shortcut('v', 'vertical split')
 term_shortcut('t', 'tabnew')
 
 -- Disable line numbers
-vim.api.nvim_exec([[ autocmd TermOpen * setlocal nonumber ]], false)
+vim.api.nvim_create_autocmd('TermOpen', { callback = function() vim.opt_local.number = false end })

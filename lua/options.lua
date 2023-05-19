@@ -11,7 +11,7 @@ vim.opt.modeline = true
 vim.opt.hlsearch = true
 
 -- omnicompletion
-vim.api.nvim_exec([[ autocmd Filetype * setlocal omnifunc=v:lua.vim.lsp.omnifunc ]], false)
+vim.api.nvim_create_autocmd('Filetype', { callback = function() vim.opt_local.omnifunc = 'v:lua.vim.lsp.omniufnc' end })
 
 -- # Directories
 -- From: https://bitbucket.org/sjl/dotfiles/src/e6f6389e598f/vim/vimrc#cl-198
@@ -69,18 +69,25 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', nbsp = '⎵' }
 
 -- .env* files
-vim.api.nvim_exec([[ autocmd BufRead,BufNewFile .env-*,.env.* setfiletype sh ]], false)
+vim.api.nvim_create_autocmd(
+  { 'BufRead', 'BufNewFile' },
+  { pattern = { '.env-*', '.env.*' }, callback = function() vim.cmd.setfiletype('sh') end }
+)
 
 -- editorconfig
 vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', 'scp://.*' }
 
 -- Python
-vim.api.nvim_exec([[
-augroup python
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.py setl tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-]], false)
+local py_group = vim.api.nvim_create_augroup('python', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
+  pattern = '*.py',
+  group = py_group,
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end
+})
 vim.g.poetv_executables = {'poetry'}
 
 -- SQL
