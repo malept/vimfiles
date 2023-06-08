@@ -47,7 +47,7 @@ vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
 -- Redraw via keyboard shortcut
-vim.keymap.set('', '<Leader>r', [[ :redraw!<CR> ]])
+vim.keymap.set('', '<Leader>r', function() vim.cmd.redraw({ bang = true }) end, { desc = "Redraw screen" })
 
 vim.opt.title = true
 
