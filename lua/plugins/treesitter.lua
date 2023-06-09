@@ -13,22 +13,13 @@ local setup = function()
       -- Instead of true it can also be a list of languages
       additional_vim_regex_highlighting = false,
     },
-    -- TODO: remove once mini.comment has built-in support in a release
-    context_commentstring = {
-      enable = true
-    },
   }
 end
 
 return {
-  -- TODO: remove once mini.comment has built-in support in a release
-  -- Remember to remove config = setup to treesitter plugin
-  plugin.not_vscode_plugin({'JoosepAlviste/nvim-ts-context-commentstring',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = setup,
-  }),
   plugin.not_vscode_plugin({'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    config = setup,
     version = nil, -- nightlies need latest default branch
     branch = 'master',
   }),
