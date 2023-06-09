@@ -27,5 +27,9 @@ return {
     dependencies = 'nvim-treesitter/nvim-treesitter',
     config = setup,
   }),
-  plugin.not_vscode_plugin({'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}),
+  plugin.not_vscode_plugin({'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    version = nil, -- nightlies need latest default branch
+    branch = 'master',
+  }),
 }
