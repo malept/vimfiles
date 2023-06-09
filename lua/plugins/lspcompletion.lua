@@ -5,12 +5,12 @@ local setup = function()
   cmp.setup({
     snippet = {
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+        require('luasnip').lsp_expand(args.body)
       end,
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' },
+      { name = 'luasnip' },
     }),
     mapping = {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -34,8 +34,6 @@ local setup = function()
     buf_set_keymap('gd', function() require('telescope.builtin').lsp_definitions() end, 'Select definition')
     buf_set_keymap('gi', function() require('telescope.builtin').lsp_implementations() end, 'Select implementation')
     buf_set_keymap('gr', function() require('telescope.builtin').lsp_references() end, 'Select reference')
-    -- vsnip
-    require('vsnip_config').buf_config(bufnum)
     -- lsp-format
     require('lsp-format').on_attach(client)
   end
@@ -80,12 +78,22 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/cmp-vsnip',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
       'neovim/nvim-lspconfig',
       'simrat39/rust-tools.nvim',
     },
     config = setup,
+  }),
+  plugin.not_vscode_plugin({'L3MON4D3/LuaSnip',
+    build = 'make install_jsregexp',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip').filetype_extend('ruby', {'rails'})
+    end,
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    }
   }),
   plugin.not_vscode_plugin({'neovim/nvim-lspconfig',
     dependencies = {
