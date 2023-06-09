@@ -1,11 +1,9 @@
 local plugin = require('plugin_util')
 
-local setup = function()
-  if jit ~= nil then
-    require'colorizer'.setup()
-  end
-end
-
 return {
-  plugin.not_vscode_plugin({'norcalli/nvim-colorizer.lua', config = setup}),
+  plugin.not_vscode_plugin({
+    'NVChad/nvim-colorizer.lua',
+    cond = function() return jit ~= nil end,
+    config = function() require('colorizer').setup() end,
+  }),
 }
