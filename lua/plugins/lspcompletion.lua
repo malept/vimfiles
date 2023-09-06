@@ -45,7 +45,6 @@ local setup = function()
     capabilities = lsp_capabilities,
     on_attach = lsp_on_attach
   }
-  -- gopls is not included here because go.nvim handles it, see lua/plugins/go.lua
   local lang_servers = {'cssls', 'eslint', 'html', 'solargraph', 'tsserver', 'vimls'}
   for _, ls in ipairs(lang_servers) do
     lsp[ls].setup(lsp_setup)
