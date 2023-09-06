@@ -25,7 +25,7 @@ local setup = function()
   local lsp_on_attach = function(client, bufnum)
     local function buf_set_keymap(binding, lua_fn, desc)
       local opts = { buffer = bufnum, desc = desc }
-      vim.keymap.set(bufnum, 'n', binding, lua_fn, opts)
+      vim.keymap.set('n', binding, lua_fn, opts)
     end
     buf_set_keymap('gD', function() vim.lsp.buf.declaration() end, '[G]o to [Definition]')
     buf_set_keymap('K', function() vim.lsp.buf.hover() end, 'Hover documentation')
