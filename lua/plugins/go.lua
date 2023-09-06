@@ -19,6 +19,9 @@ end
 
 return {
   plugin.not_vscode_plugin({'ray-x/go.nvim',
+    -- last release was 2022-08-09
+    version = nil,
+    branch = 'master',
     event = 'CmdlineEnter',
     ft = {'go', 'gomod'},
     dependencies = {
@@ -27,5 +30,10 @@ return {
       'ray-x/guihua.lua',
     },
     config = setup,
+  }),
+  plugin.not_vscode_plugin({'ray-x/guihua.lua',
+    -- This plugin has no releases
+    version = nil,
+    branch = 'master',
   }),
 }
