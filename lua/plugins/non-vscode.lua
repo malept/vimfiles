@@ -14,7 +14,7 @@ return {
   plugin.not_vscode_plugin('google/vim-jsonnet'),
   plugin.not_vscode_plugin('jamessan/vim-gnupg'),
   plugin.not_vscode_plugin({'lukas-reineke/lsp-format.nvim',
-    config = function() require('lsp-format').setup {} end
+    config = true,
   }),
   plugin.not_vscode_plugin('othree/javascript-libraries-syntax.vim'),
   plugin.not_vscode_plugin({'othree/html5.vim', ft = 'html'}),
