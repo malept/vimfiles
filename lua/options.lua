@@ -11,7 +11,7 @@ vim.opt.modeline = true
 vim.opt.hlsearch = true
 
 -- omnicompletion
-vim.api.nvim_create_autocmd('Filetype', { callback = function() vim.opt_local.omnifunc = 'v:lua.vim.lsp.omniufnc' end })
+vim.api.nvim_create_autocmd('Filetype', { callback = function() vim.opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc' end })
 
 -- # Directories
 -- From: https://bitbucket.org/sjl/dotfiles/src/e6f6389e598f/vim/vimrc#cl-198
