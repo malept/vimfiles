@@ -11,13 +11,6 @@ local setup = function()
       require('neotest-vim-test')({ ignore_filetypes = { "go", "ruby", "rust" } })
     }
   })
-
-  -- Run nearest test
-  vim.keymap.set('n', '<Leader>t', function() require("neotest").run.run() end, { silent = true })
-  -- Run current file
-  vim.keymap.set('n', '<Leader>T', function() require("neotest").run.run(vim.fn.expand("%")) end, { silent = true })
-  -- Debug nearest test
-  vim.keymap.set('n', '<Leader>dt', function() require("neotest").run.run({strategy = "dap"}) end, { silent = true })
 end
 
 return {
@@ -35,6 +28,11 @@ return {
       'rouge8/neotest-rust',
     },
     config = setup,
+    keys = {
+      { '<Leader>t', function() require("neotest").run.run() end, silent = true, desc = 'Run nearest test' },
+      { '<Leader>T', function() require("neotest").run.run(vim.fn.expand("%")) end, silent = true, desc = 'Run tests for current file' },
+      { '<Leader>dt', function() require("neotest").run.run({strategy = "dap"}) end, silent = true, desc = 'Debug nearest test' },
+    },
   }),
   plugin.not_vscode_plugin({'nvim-neotest/neotest-vim-test', dependencies = 'vim-test/vim-test'}),
 }
