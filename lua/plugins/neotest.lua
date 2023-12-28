@@ -5,6 +5,7 @@ local setup = function()
     adapters = {
       require('neotest-go'),
       require('neotest-jest'),
+      require('neotest-python'),
       require('neotest-rspec'),
       require('neotest-rust'),
       require('neotest-vim-test')({ ignore_filetypes = { "go", "ruby", "rust" } })
@@ -27,6 +28,7 @@ return {
       'haydenmeade/neotest-jest',
       'nvim-lua/plenary.nvim',
       'nvim-neotest/neotest-go',
+      'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-vim-test',
       'nvim-treesitter/nvim-treesitter',
       'olimorris/neotest-rspec',
