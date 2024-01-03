@@ -37,8 +37,6 @@ local setup = function()
   end
   local lsp_on_attach = function(client, bufnum)
     lsp_set_keymaps(bufnum)
-    -- lsp-format
-    require('lsp-format').on_attach(client)
   end
   local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
   local lsp_setup = {
@@ -104,7 +102,6 @@ return {
   }),
   plugin.not_vscode_plugin({'neovim/nvim-lspconfig',
     dependencies = {
-      'lukas-reineke/lsp-format.nvim',
       'b0o/schemastore.nvim',
     }
   }),
