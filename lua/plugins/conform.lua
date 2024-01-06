@@ -6,6 +6,7 @@ return {
     cmd = { 'ConformInfo' },
     opts = {
       formatters_by_ft = {
+        bash = { "shellcheck", "shfmt" },
         go = { "goimports", "gofmt" },
         lua = { "stylua" },
         python = { "ruff_fix", "ruff_format" },
