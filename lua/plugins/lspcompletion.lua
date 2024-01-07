@@ -109,7 +109,7 @@ return {
 		config = function()
 			local vscode = require("luasnip.loaders.from_vscode")
 			vscode.lazy_load()
-      -- luacheck: no max line length
+			-- luacheck: no max line length
 			-- From: https://github.com/rstacruz/vimfiles/blob/b27eb86c44f2e16d50ed436974f5641565b60680/plugins/luasnip_codesnippets_loader/lua/luasnip_codesnippets_loader.lua#L4-L11
 			local snippet_paths =
 				vim.split(vim.fn.glob(vim.fn.getcwd() .. "/.vscode/*.code-snippets"), "\n", { trimempty = true })
