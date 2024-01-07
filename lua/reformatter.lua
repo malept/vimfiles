@@ -1,8 +1,8 @@
 -- Map Leader + character to reformatting executable
 local function map_reformatter(character, bin_name, rest_of_cmd)
-	if vim.fn.executable(bin_name) == 1 then
-		vim.keymap.set("", string.format("<Leader>%s", character), string.format("!%s %s<CR>", bin_name, rest_of_cmd))
-	end
+  if vim.fn.executable(bin_name) == 1 then
+    vim.keymap.set("", string.format("<Leader>%s", character), string.format("!%s %s<CR>", bin_name, rest_of_cmd))
+  end
 end
 
 -- HTML

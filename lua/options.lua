@@ -12,9 +12,9 @@ vim.opt.hlsearch = true
 
 -- omnicompletion
 vim.api.nvim_create_autocmd("Filetype", {
-	callback = function()
-		vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-	end,
+  callback = function()
+    vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+  end,
 })
 
 -- # Directories
@@ -29,15 +29,15 @@ vim.g.prosession_dir = vim.fn.expand("~/.local/share/vim/session/")
 
 -- ## Make the folders automatically if they don't already exist.
 local dirs = {
-	vim.opt.undodir:get()[1],
-	vim.opt.backupdir:get()[1],
-	vim.opt.directory:get()[1],
-	vim.g.prosession_dir,
+  vim.opt.undodir:get()[1],
+  vim.opt.backupdir:get()[1],
+  vim.opt.directory:get()[1],
+  vim.g.prosession_dir,
 }
 for _, dir in ipairs(dirs) do
-	if vim.fn.isdirectory(dir) == 0 then
-		vim.fn.mkdir(dir, "p")
-	end
+  if vim.fn.isdirectory(dir) == 0 then
+    vim.fn.mkdir(dir, "p")
+  end
 end
 
 -- Recommended by nvim-cmp
@@ -52,7 +52,7 @@ vim.opt.termguicolors = true
 
 -- Redraw via keyboard shortcut
 vim.keymap.set("", "<Leader>r", function()
-	vim.cmd.redraw({ bang = true })
+  vim.cmd.redraw({ bang = true })
 end, { desc = "Redraw screen" })
 
 vim.opt.title = true
@@ -66,10 +66,10 @@ vim.opt.listchars = { tab = "» ", nbsp = "⎵" }
 
 -- .env* files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { ".env-*", ".env.*" },
-	callback = function()
-		vim.cmd.setfiletype("sh")
-	end,
+  pattern = { ".env-*", ".env.*" },
+  callback = function()
+    vim.cmd.setfiletype("sh")
+  end,
 })
 
 -- editorconfig
@@ -78,13 +78,13 @@ vim.g.EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" }
 -- Python
 local py_group = vim.api.nvim_create_augroup("python", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-	pattern = "*.py",
-	group = py_group,
-	callback = function()
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-		vim.opt_local.shiftwidth = 4
-	end,
+  pattern = "*.py",
+  group = py_group,
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end,
 })
 vim.g.poetv_executables = { "poetry" }
 
@@ -105,16 +105,16 @@ vim.opt.inccommand = "split"
 
 -- neovim-remote
 if vim.fn.executable("nvr") == 1 then
-	vim.env.EDITOR = "nvr -cc split --remote-wait"
+  vim.env.EDITOR = "nvr -cc split --remote-wait"
 else
-	vim.env.EDITOR = "nvim"
+  vim.env.EDITOR = "nvim"
 end
 
 -- python-neovim
 local function setup_pynvim(python_bin, venv_dir)
-	if vim.fn.isdirectory(venv_dir) == 1 then
-		vim.g[string.format("%s_host_prog", python_bin)] = string.format("%s/bin/%s", venv_dir, python_bin)
-	end
+  if vim.fn.isdirectory(venv_dir) == 1 then
+    vim.g[string.format("%s_host_prog", python_bin)] = string.format("%s/bin/%s", venv_dir, python_bin)
+  end
 end
 setup_pynvim("python", vim.fn.expand("~/.local/share/virtualenv/neovim"))
 setup_pynvim("python3", vim.fn.expand("~/.local/share/virtualenv/neovim3"))

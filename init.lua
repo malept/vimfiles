@@ -5,10 +5,10 @@ vim.opt.runtimepath:append(base_path)
 package.path = ";" .. base_path .. "lua/" .. package.path
 
 if vim.g.vscode then
-	require("vscode")
+  require("vscode")
 else
-	require("options")
-	require("terminal")
+  require("options")
+  require("terminal")
 end
 require("load_lazy")
 require("clipboard")
