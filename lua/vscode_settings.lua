@@ -14,7 +14,9 @@ local loaded_settings = {}
 
 M.expand = function(data, base_dir)
   base_dir = base_dir or vim.fn.getcwd()
-  return string.gsub(data, "${workspaceFolder}", base_dir)
+  data = string.gsub(data, "${workspaceFolder}", base_dir)
+  data = vim.fn.substitute(data, "^./", base_dir .. "/", "")
+  return data
 end
 
 M.load = function(base_dir)
