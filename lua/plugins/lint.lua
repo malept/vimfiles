@@ -1,14 +1,11 @@
 local plugin = require('plugin_util')
 
-local function vscode_expand(data)
-  return string.gsub(data, "${workspaceFolder}", vim.fn.getcwd())
-end
-
 return {
   plugin.not_vscode_plugin({"mfussenegger/nvim-lint",
-    dependencies = { "L3MON4D3/LuaSnip" }
+    dependencies = "L3MON4D3/LuaSnip",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
+      local vscode_settings = require('vscode_settings')
       local lint = require("lint")
       lint.linters_by_ft = {
         bash = { "shellcheck" },
@@ -17,22 +14,14 @@ return {
         python = { "ruff" },
       }
 
-      vscode_settings_path = vim.fn.getcwd() .. "/.vscode/settings.json"
-      local file = io.open(vscode_settings_path, "r")
-      local vscode_settings = {}
-      if file then
-        local contents = file:read("*all")
-        local jsonc = require("luasnip.util.jsonc")
-        vscode_settings = jsonc.decode(contents)
-        file:close()
-
+      local vsc_settings = vscode_settings.load()
+      if vsc_settings ~= nil then
         local golangcilint = lint.linters.golangcilint
-        if vscode_settings["go.alternateTools"] ~= nil and vscode_settings["go.alternateTools"]["golangci-lint"] ~= nil then
-          golangcilint.cmd = vscode_expand(vscode_settings["go.alternateTools"]["golangci-lint"])
+        if vsc_settings["go.alternateTools"] ~= nil and vsc_settings["go.alternateTools"]["golangci-lint"] ~= nil then
+          golangcilint.cmd = vscode_settings.expand(vsc_settings["go.alternateTools"]["golangci-lint"])
         end
-        local shellcheck = lint.linters.shellcheck
-        if vscode_settings["shellcheck.customArgs"] ~= nil then
-          shellcheck.args = vscode_settings["shellcheck.customArgs"]
+        if vsc_settings["shellcheck.customArgs"] ~= nil then
+          lint.linters.shellcheck.args = vsc_settings["shellcheck.customArgs"]
         end
       end
 
