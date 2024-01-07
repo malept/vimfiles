@@ -8,10 +8,10 @@ return {
       local vscode_settings = require('vscode_settings')
       local lint = require("lint")
       lint.linters_by_ft = {
-        bash = { "shellcheck" },
         go = { "golangcilint" },
         lua = { "luacheck" },
         python = { "ruff" },
+        sh = { "shellcheck" },
       }
 
       local vsc_settings = vscode_settings.load()

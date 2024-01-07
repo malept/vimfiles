@@ -6,11 +6,11 @@ return {
     cmd = { 'ConformInfo' },
     opts = {
       formatters_by_ft = {
-        bash = { "shellcheck", "shfmt" },
         go = { "goimports", "gofmt" },
         lua = { "stylua" },
         python = { "ruff_fix", "ruff_format" },
         rust = { "rustfmt" },
+        sh = { "shellcheck", "shfmt" },
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
     },
