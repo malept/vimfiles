@@ -93,7 +93,13 @@ return {
   plugin.not_vscode_plugin({'L3MON4D3/LuaSnip',
     build = 'make install_jsregexp',
     config = function()
-      require('luasnip.loaders.from_vscode').lazy_load()
+      local vscode = require('luasnip.loaders.from_vscode')
+      vscode.lazy_load()
+      -- From: https://github.com/rstacruz/vimfiles/blob/b27eb86c44f2e16d50ed436974f5641565b60680/plugins/luasnip_codesnippets_loader/lua/luasnip_codesnippets_loader.lua#L4-L11
+      local snippet_paths = vim.split(vim.fn.glob(vim.fn.getcwd() .. "/.vscode/*.code-snippets"), "\n", { trimempty = true })
+      for _, snippet_path in ipairs(snippet_paths) do
+        vscode.load_standalone({ path = snippet_path })
+      end
       require('luasnip').filetype_extend('ruby', {'rails'})
     end,
     dependencies = {
