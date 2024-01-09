@@ -54,6 +54,14 @@ return {
         silent = true,
         desc = "Debug nearest test",
       },
+      {
+        "<Leader>tp",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        silent = true,
+        desc = "Toggle neotest output panel",
+      },
     },
   }),
   plugin.not_vscode_plugin({ "nvim-neotest/neotest-vim-test", dependencies = "vim-test/vim-test" }),
