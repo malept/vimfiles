@@ -8,7 +8,7 @@ local setup = function()
       require("neotest-python"),
       require("neotest-rspec"),
       require("neotest-rust"),
-      require("neotest-vim-test")({ ignore_filetypes = { "go", "ruby", "rust" } }),
+      require("neotest-vim-test")({ ignore_filetypes = { "go", "python", "ruby", "rust" } }),
     },
   })
 end
