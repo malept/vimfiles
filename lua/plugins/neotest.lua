@@ -31,7 +31,7 @@ return {
     config = setup,
     keys = {
       {
-        "<Leader>t",
+        "<Leader>tt",
         function()
           require("neotest").run.run()
         end,
@@ -61,6 +61,14 @@ return {
         end,
         silent = true,
         desc = "Toggle neotest output panel",
+      },
+      {
+        "<Leader>ts",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        silent = true,
+        desc = "Toggle neotest summary panel",
       },
     },
   }),
