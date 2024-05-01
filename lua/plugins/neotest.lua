@@ -24,6 +24,7 @@ return {
       "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-vim-test",
+      "nvim-neotest/nvim-nio",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "rouge8/neotest-rust",
