@@ -9,6 +9,7 @@ local setup = function()
       end,
     },
     sources = cmp.config.sources({
+      { name = "lazydev" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
     }),
@@ -53,6 +54,10 @@ local setup = function()
     lsp.gopls.setup(lsp_setup)
   end
 
+  if vim.fn.executable("lua-language-server") == 1 then
+    lsp.lua_ls.setup(lsp_setup)
+  end
+
   if vim.fn.executable("pylsp") == 1 then
     lsp.pylsp.setup(lsp_setup)
   elseif vim.fn.executable("pyright") == 1 then
@@ -84,6 +89,7 @@ return {
     branch = "main",
     event = "InsertEnter",
     dependencies = {
+      "folke/lazydev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
@@ -114,4 +120,11 @@ return {
   plugin.not_vscode_plugin({ "neovim/nvim-lspconfig", dependencies = {
     "b0o/schemastore.nvim",
   } }),
+  plugin.not_vscode_plugin({
+    "folke/lazydev.nvim",
+    ft = "lua",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+  }),
 }
