@@ -5,4 +5,7 @@ require("lazy").setup("plugins", {
     -- Use versioned plugins when possible
     version = "*",
   },
+  rocks = {
+    enabled = false,
+  },
 })
