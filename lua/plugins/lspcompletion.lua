@@ -84,12 +84,15 @@ end
 
 return {
   plugin.not_vscode_plugin({
+    "folke/lazydev.nvim",
+    ft = "lua",
+  }),
+  plugin.not_vscode_plugin({
     "hrsh7th/nvim-cmp",
     version = nil, -- this plugin does not make releases
     branch = "main",
     event = "InsertEnter",
     dependencies = {
-      "folke/lazydev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
@@ -120,11 +123,4 @@ return {
   plugin.not_vscode_plugin({ "neovim/nvim-lspconfig", dependencies = {
     "b0o/schemastore.nvim",
   } }),
-  plugin.not_vscode_plugin({
-    "folke/lazydev.nvim",
-    ft = "lua",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-  }),
 }
