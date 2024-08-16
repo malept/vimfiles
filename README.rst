@@ -23,6 +23,23 @@ To install everything, run the following commands::
 
 Partial installation is left as an exercise to the reader.
 
+Development
+-----------
+
+For working on this repo, you'll want to install some tools to make linting/formatting work:
+
+- ``make``
+- ``luacheck``
+- ``stylua``
+
+Linux
+~~~~~
+
+Commands to install the above mentioned dependencies::
+
+    sudo apt install make lua-check
+    cargo install stylua
+
 License
 -------
 
