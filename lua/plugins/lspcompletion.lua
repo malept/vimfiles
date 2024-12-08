@@ -45,7 +45,7 @@ local setup = function()
     capabilities = lsp_capabilities,
     on_attach = lsp_on_attach,
   }
-  local lang_servers = { "cssls", "eslint", "html", "solargraph", "tsserver", "vimls" }
+  local lang_servers = { "cssls", "eslint", "html", "solargraph", "ts_ls", "vimls" }
   for _, ls in ipairs(lang_servers) do
     lsp[ls].setup(lsp_setup)
   end
