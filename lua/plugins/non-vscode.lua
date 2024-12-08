@@ -33,11 +33,10 @@ return {
   }),
   plugin.not_vscode_plugin({ "saltstack/salt-vim", dependencies = "Glench/Vim-Jinja2-Syntax" }),
   plugin.not_vscode_plugin({
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- recommended by plugin
+    lazy = false, -- This plugin is already lazy per docs
     dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
       "mfussenegger/nvim-dap",
     },
   }),

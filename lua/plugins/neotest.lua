@@ -7,8 +7,8 @@ local setup = function()
       require("neotest-jest"),
       require("neotest-python"),
       require("neotest-rspec"),
-      require("neotest-rust"),
       require("neotest-vim-test")({ ignore_filetypes = { "go", "python", "ruby", "rust" } }),
+      require("rustaceanvim.neotest"),
     },
   })
 end
@@ -20,6 +20,7 @@ return {
     dependencies = {
       "antoinemadec/FixCursorHold.nvim",
       "haydenmeade/neotest-jest",
+      "mrcjkb/rustaceanvim",
       "nvim-lua/plenary.nvim",
       "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-python",

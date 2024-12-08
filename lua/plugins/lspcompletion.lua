@@ -74,12 +74,12 @@ local setup = function()
       },
     },
   })
-  require("rust-tools").setup({
+  vim.g.rustaceanvim = {
     server = {
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       on_attach = lsp_on_attach,
     },
-  })
+  }
 end
 
 return {
@@ -93,11 +93,11 @@ return {
     branch = "main",
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "mrcjkb/rustaceanvim",
       "neovim/nvim-lspconfig",
-      "simrat39/rust-tools.nvim",
+      "saadparwaiz1/cmp_luasnip",
     },
     config = setup,
   }),
