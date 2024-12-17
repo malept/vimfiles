@@ -1,0 +1,34 @@
+[tasks.check]
+description = "Lint repository files"
+depends = ["check-lua", "check-toml"]
+
+[tasks.check-lua]
+
+tools.stylua = "latest"
+description = "Lint lua files"
+run = "luacheck . && stylua --check ."
+sources = ["**/*.lua"]
+
+[tasks.check-toml]
+
+description = "Lint toml files"
+run = "taplo lint --default-schema-catalogs **/*.toml"
+sources = ["**/*.toml"]
+
+[tasks.fmt]
+
+description = "Format repository files"
+depends = ["fmt-lua", "fmt-toml"]
+
+[tasks.fmt-lua]
+
+tools.stylua = "latest"
+description = "Format lua files"
+run = "stylua ."
+sources = ["**/*.lua"]
+
+[tasks.fmt-toml]
+tools.taplo = "latest"
+description = "Format toml files"
+run = "taplo format **/*.toml"
+sources = ["**/*.toml"]

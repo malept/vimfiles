@@ -28,9 +28,13 @@ Development
 
 For working on this repo, you'll want to install some tools to make linting/formatting work:
 
-- ``make``
+- ``mise``
 - ``luacheck``
 - ``stylua``
+
+`mise`_ does some of this for you.
+
+.. mise: https://mise.jdx.dev/
 
 Linux
 ~~~~~
@@ -38,7 +42,13 @@ Linux
 Commands to install the above mentioned dependencies::
 
     sudo apt install make lua-check
-    cargo install stylua
+    curl https://mise.run | sh
+    mise install
+
+Usage
+~~~~~
+
+Run ``mise tasks`` to see the currently defined tasks.
 
 License
 -------
