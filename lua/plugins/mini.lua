@@ -5,7 +5,7 @@ local setup = function()
   if plugin.no_vscode() then
     require("mini.comment").setup()
   end
-  -- mini.completion is very minimal, so using nvim-cmp instead
+  -- mini.completion is very minimal, so using blink.cmp instead
   -- mini.pairs only works on single characters, so using nvim-autopairs instead
   -- mini.sessions doesn't handle auto sessions very well
   -- mini.surround isn't vim-surround compatible, so using nvim-surround instead

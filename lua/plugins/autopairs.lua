@@ -8,17 +8,15 @@ local setup = function()
 
   npairs.add_rules(require("nvim-autopairs.rules.endwise-lua"))
   npairs.add_rules(require("nvim-autopairs.rules.endwise-ruby"))
-
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  local cmp = require("cmp")
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return {
   plugin.not_vscode_plugin({
     "windwp/nvim-autopairs",
     event = "VeryLazy",
-    dependencies = "hrsh7th/nvim-cmp",
+    dependencies = {
+      "Saghen/blink.cmp",
+    },
     config = setup,
   }),
 }
