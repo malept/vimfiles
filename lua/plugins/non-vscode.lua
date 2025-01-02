@@ -17,7 +17,7 @@ return {
   plugin.not_vscode_plugin("othree/javascript-libraries-syntax.vim"),
   plugin.not_vscode_plugin({ "othree/html5.vim", ft = "html" }),
   { "petobens/poet-v", cond = plugin.poetry_exists },
-  plugin.not_vscode_plugin("plasticboy/vim-markdown"),
+  plugin.not_vscode_plugin("tadmccorkle/markdown.nvim"),
   plugin.not_vscode_plugin({ "radenling/vim-dispatch-neovim", dependencies = "tpope/vim-dispatch" }),
   plugin.not_vscode_plugin({
     "sainnhe/gruvbox-material",
