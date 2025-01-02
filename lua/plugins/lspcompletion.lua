@@ -33,13 +33,21 @@ return {
         end,
       },
       sources = {
-        completion = {
-          enabled_providers = { "lsp", "path", "luasnip", "buffer", "lazydev" },
-        },
+        default = { "lazydev", "lsp", "path", "luasnip", "buffer" },
         providers = {
-          -- dont show LuaLS require statements when lazydev has items
-          lsp = { fallback_for = { "lazydev" } },
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+        },
+      },
+      completion = {
+        menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+          end,
         },
       },
     },
