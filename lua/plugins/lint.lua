@@ -8,7 +8,16 @@ return {
     config = function()
       local vscode_settings = require("vscode_settings")
       local lint = require("lint")
+      -- actionlint config from https://github.com/mfussenegger/nvim-lint/issues/660#issuecomment-2363077191
+      vim.filetype.add({
+        pattern = {
+          [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
+          [".*/.github/workflows/.*%.yaml"] = "yaml.ghaction",
+        },
+      })
+
       lint.linters_by_ft = {
+        ghaction = { "actionlint" },
         go = { "golangcilint" },
         lua = { "luacheck" },
         python = { "ruff" },
