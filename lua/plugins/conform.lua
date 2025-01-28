@@ -30,6 +30,7 @@ return {
           python = { "ruff_organize_format", "ruff_fix", "ruff_format" },
           rust = { "rustfmt" },
           sh = { "shellcheck", "shfmt" },
+          toml = { "taplo" },
         },
         format_on_save = { timeout_ms = 500, lsp_fallback = true },
         formatters = formatters,
