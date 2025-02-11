@@ -1,5 +1,6 @@
 local plugin = require("plugin_util")
 
+-- From mini.pick help
 local pick_win_config = function()
   local height = math.floor(0.618 * vim.o.lines)
   local width = math.floor(0.618 * vim.o.columns)
