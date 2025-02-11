@@ -42,6 +42,8 @@ return {
             score_offset = 100,
           },
         },
+        -- Disable cmdline completions
+        cmdline = {},
       },
       completion = {
         menu = {
