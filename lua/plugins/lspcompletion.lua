@@ -89,11 +89,11 @@ return {
         buf_set_keymap("gD", vim.lsp.buf.declaration, "[G]o to [Definition]")
         buf_set_keymap("K", vim.lsp.buf.hover, "Hover documentation")
         buf_set_keymap("<C-k>", vim.lsp.buf.signature_help, "Signature documentation")
-        -- Telescope based
-        local tsbuiltin = require("telescope.builtin")
-        buf_set_keymap("gd", tsbuiltin.lsp_definitions, "Select definition")
-        buf_set_keymap("gi", tsbuiltin.lsp_implementations, "Select implementation")
-        buf_set_keymap("gr", tsbuiltin.lsp_references, "Select reference")
+        -- Picker
+        local miniextra = require("mini.extra")
+        buf_set_keymap("gd", miniextra.pickers.lsp({ scope = "definition" }))
+        buf_set_keymap("gi", miniextra.pickers.lsp({ scope = "implementation" }))
+        buf_set_keymap("gr", miniextra.pickers.lsp({ scope = "references" }))
       end
       local lsp_on_attach = function(_, bufnum)
         lsp_set_keymaps(bufnum)
