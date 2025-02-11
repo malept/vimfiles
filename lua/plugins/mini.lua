@@ -18,6 +18,7 @@ local setup = function()
     require("mini.comment").setup()
     -- mini.completion is very minimal, so using blink.cmp instead
     local extra = require("mini.extra")
+    require("mini.icons").setup()
     local misc = require("mini.misc")
     misc.setup()
     -- Zen mode
@@ -28,6 +29,7 @@ local setup = function()
     vim.keymap.set("n", "<C-p>", pick.builtin.files, { silent = true })
     vim.keymap.set("n", "<Leader>Gb", extra.pickers.git_branches, { silent = true })
     -- mini.sessions doesn't handle auto sessions very well
+    require("mini.statusline").setup()
   end
   -- mini.pairs only works on single characters, so using nvim-autopairs instead
   -- mini.surround isn't vim-surround compatible, so using nvim-surround instead
