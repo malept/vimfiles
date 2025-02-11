@@ -14,7 +14,6 @@ local pick_win_config = function()
 end
 
 local setup = function()
-  require("mini.align").setup()
   if plugin.no_vscode() then
     require("mini.comment").setup()
     -- mini.completion is very minimal, so using blink.cmp instead
@@ -32,6 +31,7 @@ local setup = function()
     -- mini.sessions doesn't handle auto sessions very well
     require("mini.statusline").setup()
   end
+  require("mini.align").setup()
   -- mini.pairs only works on single characters, so using nvim-autopairs instead
   -- mini.surround isn't vim-surround compatible, so using nvim-surround instead
   require("mini.trailspace").setup()
