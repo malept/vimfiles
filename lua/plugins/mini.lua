@@ -16,8 +16,12 @@ local setup = function()
   require("mini.align").setup()
   if plugin.no_vscode() then
     require("mini.comment").setup()
-    local extra = require("mini.extra")
     -- mini.completion is very minimal, so using blink.cmp instead
+    local extra = require("mini.extra")
+    local misc = require("mini.misc")
+    misc.setup()
+    -- Zen mode
+    vim.keymap.set("n", "<Leader>zm", misc.zoom, { silent = true })
     local pick = require("mini.pick")
     -- Centered on screen
     pick.setup({ window = { config = pick_win_config } })
