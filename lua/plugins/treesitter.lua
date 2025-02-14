@@ -5,10 +5,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
-    dependencies = {
-      -- Additional parsers
-      "nushell/tree-sitter-nu",
-    },
+    dependencies = {},
     opts = {
       ensure_installed = "all", -- one of "all" or a list of languages
       ignore_install = { "kotlin" }, -- List of parsers to ignore installing
