@@ -115,6 +115,10 @@ return {
         lsp.pyright.setup(lsp_setup)
       end
 
+      if vim.fn.executable("taplo") == 1 then
+        lsp.taplo.setup(lsp_setup)
+      end
+
       lsp.jsonls.setup({
         capabilities = lsp_capabilities,
         on_attach = lsp_on_attach,
