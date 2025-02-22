@@ -79,9 +79,14 @@ return {
         buf_set_keymap("<C-k>", vim.lsp.buf.signature_help, "Signature documentation")
         -- Picker
         local miniextra = require("mini.extra")
-        buf_set_keymap("gd", miniextra.pickers.lsp({ scope = "definition" }))
-        buf_set_keymap("gi", miniextra.pickers.lsp({ scope = "implementation" }))
-        buf_set_keymap("gr", miniextra.pickers.lsp({ scope = "references" }))
+        local function lsp_picker(scope)
+          return function()
+            miniextra.pickers.lsp({ scope = scope })
+          end
+        end
+        buf_set_keymap("gd", lsp_picker("definition"))
+        buf_set_keymap("gi", lsp_picker("implementation"))
+        buf_set_keymap("gr", lsp_picker("references"))
       end
       local lsp_on_attach = function(_, bufnum)
         lsp_set_keymaps(bufnum)
