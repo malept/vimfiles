@@ -119,6 +119,25 @@ return {
         lsp.taplo.setup(lsp_setup)
       end
 
+      if vim.fn.executable("yaml-language-server") == 1 then
+        lsp.yamlls.setup({
+          capabilities = lsp_capabilities,
+          on_attach = lsp_on_attach,
+          settings = {
+            yaml = {
+              schemaStore = {
+                -- You must disable built-in schemaStore support if you want to use
+                -- schemastore.nvim and its advanced options like `ignore`.
+                enable = false,
+                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                url = "",
+              },
+              schemas = require("schemastore").yaml.schemas(),
+            },
+          },
+        })
+      end
+
       lsp.jsonls.setup({
         capabilities = lsp_capabilities,
         on_attach = lsp_on_attach,
