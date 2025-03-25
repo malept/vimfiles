@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
 -- SQL
 vim.g.sql_type_default = "postgresql"
 
--- Shell
+-- Shell syntax
 vim.g.is_bash = 1
 
 -- Make current file executable

@@ -8,6 +8,7 @@ if vim.g.vscode then
   require("vscode")
 else
   require("options")
+  require("nushell")
   require("terminal")
 end
 require("load_lazy")
