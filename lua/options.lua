@@ -86,7 +86,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     vim.opt_local.shiftwidth = 4
   end,
 })
-vim.g.poetv_executables = { "poetry" }
 
 -- SQL
 vim.g.sql_type_default = "postgresql"

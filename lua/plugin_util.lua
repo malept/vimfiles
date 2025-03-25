@@ -18,9 +18,6 @@ end
 M.no_vscode = function()
   return vim.g.vscode == nil
 end
-M.poetry_exists = function()
-  return (M.no_vscode() and vim.fn.executable("poetry") == 1)
-end
 M.older_than_nvim09 = function()
   return (M.no_vscode() and vim.fn.has("nvim-0.9") == 0)
 end
