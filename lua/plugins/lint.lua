@@ -17,12 +17,15 @@ return {
       })
 
       lint.linters_by_ft = {
-        ghaction = { "actionlint" },
         go = { "golangcilint" },
         lua = { "luacheck" },
         python = { "ruff" },
         sh = { "shellcheck" },
       }
+
+      if vim.fn.executable("actionlint") == 1 then
+        lint.linters_by_ft["ghaction"] = { "actionlint" }
+      end
 
       local vsc_settings = vscode_settings.load()
       if vsc_settings ~= nil then
