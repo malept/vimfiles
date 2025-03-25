@@ -1,34 +1,46 @@
-[tasks.check]
-description = "Lint repository files"
-depends = ["check-lua", "check-toml"]
-
-[tasks.check-lua]
-
-tools.stylua = "latest"
-description = "Lint lua files"
-run = "luacheck . && stylua --check ."
-sources = ["**/*.lua"]
-
-[tasks.check-toml]
-
-description = "Lint toml files"
-run = "taplo lint --default-schema-catalogs **/*.toml"
-sources = ["**/*.toml"]
-
 [tasks.fmt]
-
 description = "Format repository files"
-depends = ["fmt-lua", "fmt-toml"]
+depends = ["fmt:*"]
 
-[tasks.fmt-lua]
-
+[tasks."fmt:stylua"]
 tools.stylua = "latest"
 description = "Format lua files"
 run = "stylua ."
 sources = ["**/*.lua"]
 
-[tasks.fmt-toml]
+[tasks."fmt:taplo"]
 tools.taplo = "latest"
 description = "Format toml files"
 run = "taplo format **/*.toml"
 sources = ["**/*.toml"]
+
+[tasks.lint]
+description = "Lint repository files"
+depends = ["lint:*"]
+
+[tasks."lint:luacheck"]
+# luacheck is not installable via mise
+description = "Lint lua files with luacheck"
+run = "luacheck ."
+sources = ["**/*.lua"]
+
+[tasks."lint:shellcheck"]
+description = "Lint shell files with shellcheck"
+run = "shellcheck ./*.sh"
+sources = ["**/*.sh"]
+
+[tasks."lint:stylua"]
+tools.stylua = "latest"
+description = "Check formatting of lua files with stylua"
+run = "stylua --check ."
+sources = ["**/*.lua"]
+
+[tasks."lint:taplo"]
+tools.taplo = "latest"
+description = "Lints TOML files with Taplo"
+run = "taplo lint"
+
+[tasks."lint:taplo-format"]
+tools.taplo = "latest"
+description = "Checks if TOML files are formatted correctly"
+run = "taplo format --check --diff"
