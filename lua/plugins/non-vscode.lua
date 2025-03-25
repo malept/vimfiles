@@ -14,8 +14,6 @@ return {
   { "editorconfig/editorconfig-vim", cond = plugin.older_than_nvim09 },
   plugin.not_vscode_plugin("google/vim-jsonnet"),
   plugin.not_vscode_plugin("jamessan/vim-gnupg"),
-  plugin.not_vscode_plugin("othree/javascript-libraries-syntax.vim"),
-  plugin.not_vscode_plugin({ "othree/html5.vim", ft = "html" }),
   { "petobens/poet-v", cond = plugin.poetry_exists },
   plugin.not_vscode_plugin("tadmccorkle/markdown.nvim"),
   plugin.not_vscode_plugin({ "radenling/vim-dispatch-neovim", dependencies = "tpope/vim-dispatch" }),
