@@ -109,6 +109,10 @@ return {
         lsp.lua_ls.setup(lsp_setup)
       end
 
+      if vim.fn.executable("jinja-lsp") == 1 then
+        lsp.jinja_lsp.setup(lsp_setup)
+      end
+
       if vim.fn.executable("pylsp") == 1 then
         lsp.pylsp.setup(lsp_setup)
       elseif vim.fn.executable("pyright") == 1 then
