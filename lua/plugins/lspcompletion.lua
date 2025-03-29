@@ -9,7 +9,7 @@ return {
     "Saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
     -- use a release tag to download pre-built binaries
-    version = "v0.*",
+    version = "v1.*",
     dependencies = {
       "L3MON4D3/LuaSnip",
       "mrcjkb/rustaceanvim",
@@ -28,18 +28,15 @@ return {
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
-          cmdline = {
-            enabled = false,
-          },
         },
       },
-      completion = {
-        menu = {
-          auto_show = function(ctx)
-            return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
-          end,
-        },
-      },
+      -- completion = {
+      --   menu = {
+      --     auto_show = function(ctx)
+      --       return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+      --     end,
+      --   },
+      -- },
     },
   }),
   plugin.not_vscode_plugin({
