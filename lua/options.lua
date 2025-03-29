@@ -10,13 +10,6 @@ vim.opt.formatoptions = "tcroqn" -- see :help fo-table for option explanations
 vim.opt.modeline = true
 vim.opt.hlsearch = true
 
--- omnicompletion
-vim.api.nvim_create_autocmd("Filetype", {
-  callback = function()
-    vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-  end,
-})
-
 -- # Directories
 -- From: https://bitbucket.org/sjl/dotfiles/src/e6f6389e598f/vim/vimrc#cl-198
 vim.opt.undodir = vim.fn.expand("~/.local/share/vim/undo/")
@@ -39,9 +32,6 @@ for _, dir in ipairs(dirs) do
     vim.fn.mkdir(dir, "p")
   end
 end
-
--- Recommended by nvim-cmp
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- # EX command customization
 vim.opt.wildmode = { "longest", "list", "full" }
@@ -117,3 +107,8 @@ local function setup_pynvim(python_bin, venv_dir)
 end
 setup_pynvim("python", vim.fn.expand("~/.local/share/virtualenv/neovim"))
 setup_pynvim("python3", vim.fn.expand("~/.local/share/virtualenv/neovim3"))
+
+-- Diagnostics
+vim.diagnostic.config({
+  virtual_lines = true,
+})
