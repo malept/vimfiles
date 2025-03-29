@@ -68,22 +68,16 @@ return {
       local lsp = require("lspconfig")
       local lsp_set_keymaps = function(bufnum)
         local function buf_set_keymap(binding, lua_fn, desc)
-          local opts = { buffer = bufnum, desc = desc }
-          vim.keymap.set("n", binding, lua_fn, opts)
+          vim.keymap.set("n", binding, lua_fn, { buffer = bufnum, desc = desc })
         end
-        buf_set_keymap("gD", vim.lsp.buf.declaration, "[G]o to [Definition]")
-        buf_set_keymap("K", vim.lsp.buf.hover, "Hover documentation")
-        buf_set_keymap("<C-k>", vim.lsp.buf.signature_help, "Signature documentation")
+        buf_set_keymap("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration")
         -- Picker
-        local miniextra = require("mini.extra")
         local function lsp_picker(scope)
           return function()
-            miniextra.pickers.lsp({ scope = scope })
+            require("mini.extra").pickers.lsp({ scope = scope })
           end
         end
-        buf_set_keymap("gd", lsp_picker("definition"))
-        buf_set_keymap("gi", lsp_picker("implementation"))
-        buf_set_keymap("gr", lsp_picker("references"))
+        buf_set_keymap("grr", lsp_picker("references"), "[g]o to [r]eferences")
       end
       local lsp_on_attach = function(_, bufnum)
         lsp_set_keymaps(bufnum)
