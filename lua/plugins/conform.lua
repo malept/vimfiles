@@ -27,7 +27,7 @@ return {
         formatters_by_ft = {
           go = { "goimports", "gofmt" },
           lua = { "stylua" },
-          python = { "ruff_organize_format", "ruff_fix", "ruff_format" },
+          python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
           rust = { "rustfmt" },
           sh = { "shellcheck", "shfmt" },
           toml = { "taplo" },
