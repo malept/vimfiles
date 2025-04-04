@@ -2,7 +2,7 @@ local plugin = require("plugin_util")
 
 local setup = function()
   require("go").setup({
-    goimport = "gopls", -- if set to 'gopls' will use golsp format
+    goimports = "gopls", -- if set to 'gopls' will use golsp format
     gofmt = "gopls", -- if set to gopls will use golsp format
     lsp_cfg = false, -- let lspcompletion.lua handle LSP
   })
@@ -10,7 +10,7 @@ local setup = function()
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.go",
     callback = function()
-      require("go.format").goimport()
+      require("go.format").goimports()
     end,
     group = vim.api.nvim_create_augroup("GoImport", {}),
   })
