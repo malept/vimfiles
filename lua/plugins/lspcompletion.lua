@@ -51,7 +51,7 @@ return {
       -- luacheck: no max line length
       -- From: https://github.com/rstacruz/vimfiles/blob/b27eb86c44f2e16d50ed436974f5641565b60680/plugins/luasnip_codesnippets_loader/lua/luasnip_codesnippets_loader.lua#L4-L11
       local snippet_paths =
-          vim.split(vim.fn.glob(vim.fn.getcwd() .. "/.vscode/*.code-snippets"), "\n", { trimempty = true })
+        vim.split(vim.fn.glob(vim.fn.getcwd() .. "/.vscode/*.code-snippets"), "\n", { trimempty = true })
       for _, snippet_path in ipairs(snippet_paths) do
         vscode.load_standalone({ path = snippet_path })
       end
@@ -68,59 +68,55 @@ return {
       "Saghen/blink.cmp",
     },
     config = function()
-      local lsp = require("lspconfig")
-      local lsp_set_keymaps = function(bufnum)
-        local function buf_set_keymap(binding, lua_fn, desc)
-          vim.keymap.set("n", binding, lua_fn, { buffer = bufnum, desc = desc })
-        end
-        buf_set_keymap("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration")
-        -- Picker
-        local function lsp_picker(scope)
-          return function()
-            require("mini.extra").pickers.lsp({ scope = scope })
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        on_attach = function(_, bufnum)
+          local function buf_set_keymap(binding, lua_fn, desc)
+            vim.keymap.set("n", binding, lua_fn, { buffer = bufnum, desc = desc })
           end
-        end
-        buf_set_keymap("grr", lsp_picker("references"), "[g]o to [r]eferences")
-      end
-      local lsp_on_attach = function(_, bufnum)
-        lsp_set_keymaps(bufnum)
-      end
-      local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lsp_setup = {
-        capabilities = lsp_capabilities,
-        on_attach = lsp_on_attach,
-      }
+          buf_set_keymap("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration")
+          -- Picker
+          local function lsp_picker(scope)
+            return function()
+              require("mini.extra").pickers.lsp({ scope = scope })
+            end
+          end
+          buf_set_keymap("grr", lsp_picker("references"), "[g]o to [r]eferences")
+        end,
+      })
       local lang_servers = { "cssls", "eslint", "html", "ts_ls", "vimls" }
       for _, ls in ipairs(lang_servers) do
-        lsp[ls].setup(lsp_setup)
+        vim.lsp.config(ls, {})
+        vim.lsp.enable(ls)
       end
 
       if vim.fn.executable("gopls") == 1 then
-        lsp.gopls.setup(lsp_setup)
+        vim.lsp.config("gopls", {})
+        vim.lsp.enable("gopls")
       end
 
       if vim.fn.executable("lua-language-server") == 1 then
-        lsp.lua_ls.setup(lsp_setup)
+        vim.lsp.config("lua_ls", {})
+        vim.lsp.enable("lua_ls")
       end
 
       if vim.fn.executable("jinja-lsp") == 1 then
-        lsp.jinja_lsp.setup(lsp_setup)
+        vim.lsp.config("jinja_lsp", {})
+        vim.lsp.enable("jinja_lsp")
       end
 
       if vim.fn.executable("pylsp") == 1 then
-        lsp.pylsp.setup(lsp_setup)
-      elseif vim.fn.executable("pyright") == 1 then
-        lsp.pyright.setup(lsp_setup)
+        vim.lsp.config("pylsp", {})
+        vim.lsp.enable("pylsp")
       end
 
       if vim.fn.executable("taplo") == 1 then
-        lsp.taplo.setup(lsp_setup)
+        vim.lsp.config("taplo", {})
+        vim.lsp.enable("taplo")
       end
 
       if vim.fn.executable("yaml-language-server") == 1 then
-        lsp.yamlls.setup({
-          capabilities = lsp_capabilities,
-          on_attach = lsp_on_attach,
+        vim.lsp.config("yamlls", {
           settings = {
             yaml = {
               schemaStore = {
@@ -134,11 +130,10 @@ return {
             },
           },
         })
+        vim.lsp.enable("yamlls")
       end
 
-      lsp.jsonls.setup({
-        capabilities = lsp_capabilities,
-        on_attach = lsp_on_attach,
+      vim.lsp.config("jsonls", {
         settings = {
           json = {
             schemas = require("schemastore").json.schemas(),
@@ -146,9 +141,9 @@ return {
           },
         },
       })
-      vim.g.rustaceanvim = {
-        server = lsp_setup,
-      }
+      vim.lsp.enable("jsonls")
+
+      vim.lsp.config("rust-analyzer", {})
     end,
   }),
 }
