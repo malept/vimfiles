@@ -4,6 +4,9 @@ return {
   plugin.not_vscode_plugin({
     "folke/lazydev.nvim",
     ft = "lua",
+    opts = {
+      debug = true,
+    },
   }),
   plugin.not_vscode_plugin({
     "Saghen/blink.cmp",
