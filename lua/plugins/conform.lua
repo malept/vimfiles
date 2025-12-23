@@ -15,6 +15,10 @@ return {
           formatters.shfmt = {
             command = vscode_settings.expand(vsc_settings["shellformat.path"]),
           }
+        elseif vsc_settings["bashIde.shfmt.path"] ~= nil then
+          formatters.shfmt = {
+            command = vscode_settings.expand(vsc_settings["bashIde.shfmt.path"]),
+          }
         end
         if vsc_settings["shellcheck.customArgs"] ~= nil then
           formatters.shellcheck = {

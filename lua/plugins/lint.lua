@@ -33,8 +33,14 @@ return {
         if vsc_settings["go.alternateTools"] ~= nil and vsc_settings["go.alternateTools"]["golangci-lint"] ~= nil then
           golangcilint.cmd = vscode_settings.expand(vsc_settings["go.alternateTools"]["golangci-lint"])
         end
+        local shellcheck = lint.linters.shellcheck
+        if vsc_settings["bashIde.shellcheckPath"] ~= nil then
+          shellcheck.cmd = vscode_settings.expand(vsc_settings["bashIde.shellcheckPath"])
+        end
         if vsc_settings["shellcheck.customArgs"] ~= nil then
-          lint.linters.shellcheck.args = vsc_settings["shellcheck.customArgs"]
+          shellcheck.args = vsc_settings["shellcheck.customArgs"]
+        elseif vsc_settings["bashIde.shellcheckArguments"] ~= nil then
+          shellcheck.args = vsc_settings["bashIde.shellcheckArguments"]
         end
       end
 
